@@ -1,0 +1,22 @@
+INSERT INTO Ho_khau (Ma_ho_khau, So_nha, Ten_duong, Ten_phuong, Ten_quan, Ten_thanh_pho, Da_xac_nhan) VALUES
+(1, 'T1001', 'Đại Cồ Việt', 'Lê Đại Hành', 'Hai Bà Trưng', 'Hà nội', TRUE),
+(2, 'T1002', 'Đại Cồ Việt', 'Lê Đại Hành', 'Hai Bà Trưng', 'Hà nội', TRUE),
+(3, 'T1003', 'Đại Cồ Việt', 'Lê Đại Hành', 'Hai Bà Trưng', 'Hà nội', TRUE),
+(4, 'T1004', 'Đại Cồ Việt', 'Lê Đại Hành', 'Hai Bà Trưng', 'Hà nội', TRUE),
+(5, 'T1005', 'Đại Cồ Việt', 'Lê Đại Hành', 'Hai Bà Trưng', 'Hà nội', TRUE),
+(6, 'T1006', 'Đại Cồ Việt', 'Lê Đại Hành', 'Hai Bà Trưng', 'Hà nội', TRUE),
+(7, 'T1007', 'Đại Cồ Việt', 'Lê Đại Hành', 'Hai Bà Trưng', 'Hà nội', TRUE),
+(8, 'T1008', 'Đại Cồ Việt', 'Lê Đại Hành', 'Hai Bà Trưng', 'Hà nội', TRUE),
+(9, 'T1009', 'Đại Cồ Việt', 'Lê Đại Hành', 'Hai Bà Trưng', 'Hà nội', TRUE),
+(10, 'T1010', 'Đại Cồ Việt', 'Lê Đại Hành', 'Hai Bà Trưng', 'Hà nội', TRUE),
+(11, '151', 'Mậu Lương', 'Kiến Hưng', 'Hà Đông', 'Hà Nội', TRUE),
+(12, '152', 'Mậu Lương', 'Kiến Hưng', 'Hà Đông', 'Hà Nội', TRUE),
+(13, '153', 'Mậu Lương', 'Kiến Hưng', 'Hà Đông', 'Hà Nội', TRUE),
+(14, '154', 'Mậu Lương', 'Kiến Hưng', 'Hà Đông', 'Hà Nội', TRUE),
+(15, '155', 'Mậu Lương', 'Kiến Hưng', 'Hà Đông', 'Hà Nội', TRUE),
+(16, '156', 'Mậu Lương', 'Kiến Hưng', 'Hà Đông', 'Hà Nội', TRUE),
+(17, '157', 'Mậu Lương', 'Kiến Hưng', 'Hà Đông', 'Hà Nội', TRUE),
+(18, '158', 'Mậu Lương', 'Kiến Hưng', 'Hà Đông', 'Hà Nội', TRUE),
+(19, '159', 'Mậu Lương', 'Kiến Hưng', 'Hà Đông', 'Hà Nội', TRUE),
+(20, '160', 'Mậu Lương', 'Kiến Hưng', 'Hà Đông', 'Hà Nội', TRUE);
+

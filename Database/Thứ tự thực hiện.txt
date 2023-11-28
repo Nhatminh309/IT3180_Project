@@ -1,0 +1,2 @@
+B1: Chạy file createTable.sql
+B2: Chạy các file theo thứ tự: insertHo_khau -> insertCan_cuoc_cong_dan -> insertNhan_khau -> insertCan_bo -> insertPhan_thuong->insertThu_phi
