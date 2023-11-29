@@ -5,7 +5,8 @@ CREATE TABLE Ho_khau(
     Ten_phuong VARCHAR(50) NOT NULL,
     Ten_quan VARCHAR(50) NOT NULL,
     Ten_thanh_pho VARCHAR(50) NOT NULL,
-    Da_xac_nhan BOOLEAN DEFAULT FALSE
+    Da_xac_nhan BOOLEAN DEFAULT FALSE,
+    Dien_tich INT NOT NULL
 );
 
 CREATE TABLE Can_cuoc_cong_dan(
@@ -132,7 +133,7 @@ CREATE TABLE Phan_thuong(
 
 CREATE TABLE Bang_phi(
     Ma_hoa_don VARCHAR(10) PRIMARY KEY,
-    Dia_diem VARCHAR(20),
+    Dia_diem VARCHAR(20) CHECK (Dia_diem IN ('Tổ dân phố 7', 'Chung cư BlueMoon')) NOT NULL,
     Phi_ve_sinh INTEGER,
     Phi_qly_chung_cu INTEGER,
     Phi_dvu_chung_cu INTEGER,
@@ -143,7 +144,7 @@ CREATE TABLE Bang_phi(
 );
 
 CREATE TABLE Dang_nhap(
-    Usernam VARCHAR(20),
+    Username VARCHAR(20),
     Pass VARCHAR(20),
     Vai_tro VARCHAR(20),
     Ma_nhan_khau INTEGER,
