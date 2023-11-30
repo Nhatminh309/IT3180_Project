@@ -132,13 +132,13 @@ CREATE TABLE Phan_thuong(
 );
 
 CREATE TABLE Bang_phi(
-    Ma_hoa_don VARCHAR(10) PRIMARY KEY,
+    Ma_hoa_don VARCHAR(20) PRIMARY KEY,
     Dia_diem VARCHAR(20) CHECK (Dia_diem IN ('Tổ dân phố 7', 'Chung cư BlueMoon')) NOT NULL,
     Phi_ve_sinh INTEGER,
     Phi_qly_chung_cu INTEGER,
     Phi_dvu_chung_cu INTEGER,
     Phi_dong_gop INTEGER,
-    Thoi_diem_dong DATE,
+    Thoi_diem_dong DATE CHECK (Thoi_diem_dong = to_date(Thoi_diem_dong::text, 'YYYY-MM-DD')),
     Da_xac_nhan BOOLEAN DEFAULT FALSE,
     Ma_ho_khau INT,
     FOREIGN KEY (Ma_ho_khau) REFERENCES Ho_khau(Ma_ho_khau)
