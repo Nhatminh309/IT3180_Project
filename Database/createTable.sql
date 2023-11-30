@@ -139,6 +139,7 @@ CREATE TABLE Bang_phi(
     Phi_dvu_chung_cu INTEGER,
     Phi_dong_gop INTEGER,
     Thoi_diem_dong DATE,
+    Da_xac_nhan BOOLEAN DEFAULT FALSE,
     Ma_ho_khau INT,
     FOREIGN KEY (Ma_ho_khau) REFERENCES Ho_khau(Ma_ho_khau)
 );
