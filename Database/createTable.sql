@@ -144,10 +144,9 @@ CREATE TABLE Bang_phi(
     FOREIGN KEY (Ma_ho_khau) REFERENCES Ho_khau(Ma_ho_khau)
 );
 
-CREATE TABLE Dang_nhap(
-    Username VARCHAR(20),
-    Pass VARCHAR(20),
-    Vai_tro VARCHAR(20),
-    Ma_nhan_khau INTEGER,
-    FOREIGN KEY (Ma_nhan_khau) REFERENCES Nhan_khau(Ma_nhan_khau)
-);
+CREATE TABLE DangNhap (
+    username VARCHAR(20) NOT NULL,
+    password VARCHAR(20) NOT NULL,
+    vaitro VARCHAR(10) NOT NULL,
+    Ma_nhan_khau INT REFERENCES Nhan_khau(Ma_nhan_khau)
+)
