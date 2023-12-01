@@ -7,6 +7,7 @@ import java.awt.event.MouseEvent;
 import java.sql.*;
 import dangnhap.*;
 import danhsachhoadon.*;
+import quanlyhokhau.TamVang;
 import timkiemhoadon.*;
 public class GiaoDienQuanLy extends DangNhap{
     private static JFrame frame;
@@ -153,16 +154,29 @@ public class GiaoDienQuanLy extends DangNhap{
         JMenuItem menuItem2 = new JMenuItem("2. Thay đổi chủ hộ");
         JMenuItem menuItem3 = new JMenuItem("3. Cấp giấy tạm vắng");
         JMenuItem menuItem4 = new JMenuItem("4. Cấp giấy tạm trú");
+        JMenuItem menuItem5 = new JMenuItem("5. Danh sách tạm vắng");
+        JMenuItem menuItem6 = new JMenuItem("5. Danh sách tạm trú");
 
         menuItem1.setFont(menuFont);
         menuItem2.setFont(menuFont);
         menuItem3.setFont(menuFont);
         menuItem4.setFont(menuFont);
+        menuItem5.setFont(menuFont);
+        menuItem6.setFont(menuFont);
 
         popMenu.add(menuItem1);
         popMenu.add(menuItem2);
         popMenu.add(menuItem3);
         popMenu.add(menuItem4);
+        popMenu.add(menuItem5);
+        popMenu.add(menuItem6);
+
+        menuItem5.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new TamVang();
+            }
+        });
 
         popMenu.show(co, 0, co.getHeight());
     }

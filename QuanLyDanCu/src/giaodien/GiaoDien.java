@@ -31,7 +31,7 @@ public class GiaoDien {
         panelBoard.setBounds(200, 100, 1480, 800);
         //panelBoard.setLayout(new BoxLayout(panelBoard, BoxLayout.Y_AXIS));
         panelBoard.setBackground(Color.WHITE);
-        panelBoard.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        //panelBoard.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
 
 
 

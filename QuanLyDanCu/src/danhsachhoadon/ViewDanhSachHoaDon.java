@@ -11,8 +11,7 @@ public class ViewDanhSachHoaDon extends DanhSachHoaDon {
     private static DefaultTableModel model;
     private static JPanel viewPanel;
     private static JLabel viewLabel;
-    private static JLabel dvuLabel;
-    private static JLabel qlyLabel;
+
     public void viewChungCu() {
         JPanel panelBoard = getPanelBoard();
         panelBoard.removeAll();
