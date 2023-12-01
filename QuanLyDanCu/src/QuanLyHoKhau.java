@@ -1,5 +1,5 @@
 import javax.swing.*;
-
+import giaodien.GiaoDien;
 public class QuanLyHoKhau extends GiaoDien {
     private static JFrame hoKhauFrame;
     private static JButton thayDoiChuHo;

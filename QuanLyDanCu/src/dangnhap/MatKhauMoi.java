@@ -1,8 +1,9 @@
+package dangnhap;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import giaodien.*;
 public class MatKhauMoi extends GiaoDien {
     public void changPassword() {
         JPanel panelBoard = getPanelBoard();
@@ -55,6 +56,8 @@ public class MatKhauMoi extends GiaoDien {
                 //Pose a message
                 if(!newPswField.getText().equals(repeatNewPswField.getText())) {
                     JOptionPane.showMessageDialog(panelBoard, "Mật khẩu mới không giống nhau");
+                } else if(newPswField.getText().equals("") || repeatNewPswField.getText().equals("")) {
+                    JOptionPane.showMessageDialog(panelBoard, "Bạn chưa điền mật khẩu");
                 } else {
                     //Update in sqp here
 

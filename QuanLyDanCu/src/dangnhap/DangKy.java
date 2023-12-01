@@ -1,8 +1,9 @@
+package dangnhap;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import giaodien.*;
 public class DangKy extends GiaoDien {
     public void displaySignUp() {
         JPanel panelBoard = getPanelBoard();
