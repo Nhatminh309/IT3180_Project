@@ -34,7 +34,6 @@ public class GiaoDien {
         //panelBoard.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
 
 
-
         //Panel toolbar
         panelToolbar.add(Box.createRigidArea(new Dimension(30, 0)));
         ImageIcon icon = new ImageIcon("/Users/macbookair/2023.1/nhapmoncnpm/IT3180_Project/QuanLyDanCu/src/icon/iconHoKhau.png");

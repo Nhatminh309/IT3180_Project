@@ -2,6 +2,7 @@ package danhsachhoadon;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -36,6 +37,13 @@ public class ViewDanhSachHoaDon extends DanhSachHoaDon {
         model.addColumn("Phí dịch vụ");
         model.addColumn("Thời điểm bắt đầu đóng");
         model.addColumn("Mã hộ khẩu");
+        JTableHeader header = table.getTableHeader();
+        header.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 18));
+        int[] columnWidth = {25, 50, 30, 30, 60, 25};
+        for(int i = 0; i < columnWidth.length; i++) {
+            table.getColumnModel().getColumn(i).setPreferredWidth(columnWidth[i]);
+        }
+
         try {
             String URL = "jdbc:postgresql://localhost:5432/QuanLyDanCu";
             Connection connection = DriverManager.getConnection(URL, "postgres", "271203");
@@ -49,6 +57,7 @@ public class ViewDanhSachHoaDon extends DanhSachHoaDon {
                 for(int col = 1; col <= numberCol; col++) {
                     row[col - 1] = resultSet.getObject(col);
                     table.setRowHeight(50);
+
                 }
                 model.addRow(row);
             }
@@ -89,6 +98,8 @@ public class ViewDanhSachHoaDon extends DanhSachHoaDon {
         model.addColumn("Phí vệ sinh");
         model.addColumn("Thời điểm bắt đầu đóng");
         model.addColumn("Mã hộ khẩu");
+        JTableHeader header = table.getTableHeader();
+        header.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 18));
         try {
             String URL = "jdbc:postgresql://localhost:5432/QuanLyDanCu";
             Connection connection = DriverManager.getConnection(URL, "postgres", "271203");

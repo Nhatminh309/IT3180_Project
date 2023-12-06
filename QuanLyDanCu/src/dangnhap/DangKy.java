@@ -9,7 +9,7 @@ public class DangKy extends GiaoDien {
         JPanel panelBoard = getPanelBoard();
         panelBoard.removeAll();
         JPanel panel = new JPanel();
-        panel.setBounds(350, 100, 600, 600);
+        panel.setBounds(300, 100, 500, 550);
         panel.setLayout(null);
 
         JLabel signUpLabel = new JLabel("Đăng ký tài khoản");
@@ -19,7 +19,7 @@ public class DangKy extends GiaoDien {
         JTextField userNameField = new JTextField(20);
         JLabel pswLabel = new JLabel("Password: ");
         JPasswordField pswField = new JPasswordField(20);
-        JButton signUpButton = new JButton("Đăng nhập");
+        JButton signUpButton = new JButton("Đăng ký");
 
         //Set position
         signUpLabel.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
@@ -28,23 +28,27 @@ public class DangKy extends GiaoDien {
         pswLabel.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
         signUpButton.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
 
-        signUpLabel.setBounds(150, 50, 300, 50);
-        teleNumLabel.setBounds(150, 100, 200, 50);
-        teleNumField.setBounds(150, 150, 300, 50);
-        userNameLabel.setBounds(150, 200, 200, 50);
-        userNameField.setBounds(150, 250, 300, 50);
-        pswLabel.setBounds(150, 300, 200, 50);
-        pswField.setBounds(150, 350, 300, 50);
-        signUpButton.setBounds(150, 420, 300, 50);
+        signUpLabel.setBounds(100, 50, 300, 50);
+        teleNumLabel.setBounds(100, 100, 200, 50);
+        teleNumField.setBounds(100, 150, 300, 50);
+        userNameLabel.setBounds(100, 200, 200, 50);
+        userNameField.setBounds(100, 250, 300, 50);
+        pswLabel.setBounds(100, 300, 200, 50);
+        pswField.setBounds(100, 350, 300, 50);
+        signUpButton.setBounds(100, 440, 300, 50);
 
         //Action Listener
         signUpButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //Compare with SQL here
+                if(teleNumField.getText().equals("") || userNameField.getText().equals("") || pswField.getPassword().equals("")) {
+                    JOptionPane.showMessageDialog(panelBoard, "Bạn chưa nhập thông tin");
+                } else {
+                    JOptionPane.showMessageDialog(panelBoard, "Đăng ký tài khoản thành công");
+                    new DangNhap().displaySignIn();
+                }
 
-                JOptionPane.showMessageDialog(panelBoard, "Đăng ký tài khoản thành công");
-                new DangNhap().displaySignIn();
             }
         });
 
@@ -58,7 +62,7 @@ public class DangKy extends GiaoDien {
         panel.add(pswLabel);
         panel.add(pswField);
         panel.add(signUpButton);
-        panel.setBackground(Color.LIGHT_GRAY);
+        //panel.setBackground(Color.LIGHT_GRAY);
 
         panelBoard.setLayout(null);
         panelBoard.add(panel);

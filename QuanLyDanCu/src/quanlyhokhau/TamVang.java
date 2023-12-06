@@ -2,6 +2,7 @@ package quanlyhokhau;
 import giaodien.GiaoDienQuanLy;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import java.awt.*;
 import java.sql.*;
 
@@ -11,12 +12,14 @@ public class TamVang extends GiaoDienQuanLy {
     private static JLabel tamVangLabel;
     public TamVang() {
         JPanel panelBoard = getPanelBoard();
-        panelBoard.setLayout(new BorderLayout());
         panelBoard.removeAll();
+
+        JPanel viewPanel = new JPanel(new BorderLayout());
+        viewPanel.setBounds(0, 0, 1280, 700);
 
         tamVangLabel = new JLabel("Danh sách tạm vắng");
         tamVangLabel.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 28));
-        panelBoard.add(tamVangLabel, BorderLayout.NORTH);
+        viewPanel.add(tamVangLabel, BorderLayout.NORTH);
 
         model = new DefaultTableModel();
         table = new JTable(model);
@@ -28,7 +31,10 @@ public class TamVang extends GiaoDienQuanLy {
         model.addColumn("Ngày tạm vắng");
         model.addColumn("Nơi đến");
         model.addColumn("Đã xác nhận");
-        int[] columnWidth = {30, 30, 50, 30, 30};
+        JTableHeader header = table.getTableHeader();
+        header.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 18));
+
+        int[] columnWidth = {50, 100, 100, 100, 80};
         for(int i = 0; i < columnWidth.length; i++) {
             table.getColumnModel().getColumn(i).setPreferredWidth(columnWidth[i]);
         }
@@ -54,9 +60,11 @@ public class TamVang extends GiaoDienQuanLy {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         JScrollPane scrollPane = new JScrollPane(table);
-        panelBoard.add(scrollPane, BorderLayout.CENTER);
+        viewPanel.add(scrollPane, BorderLayout.CENTER);
+
+        panelBoard.setLayout(null);
+        panelBoard.add(viewPanel);
         panelBoard.revalidate(); // Revalidate the panel to display changes
         panelBoard.repaint(); // Repaint the panel
 

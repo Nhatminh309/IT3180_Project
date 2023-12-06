@@ -2,6 +2,7 @@ package timkiemhoadon;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -78,7 +79,13 @@ public class TimKiemHoaDon extends DanhSachHoaDon{
         model.addColumn("Thời điểm bắt đầu đóng");
         model.addColumn("Đã xác nhận");
         model.addColumn("Mã hộ khẩu");
-
+        JTableHeader header = table.getTableHeader();
+        header.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 18));
+        table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        int[] columnWidth = {10, 20, 15, 15, 15, 20, 60, 15, 20};
+        for(int i = 0; i < columnWidth.length; i++) {
+            table.getColumnModel().getColumn(i).setPreferredWidth(columnWidth[i]);
+        }
         try {
             String URL = "jdbc:postgresql://localhost:5432/QuanLyDanCu";
             Connection connection = DriverManager.getConnection(URL, "postgres", "271203");

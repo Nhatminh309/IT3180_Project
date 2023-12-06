@@ -18,7 +18,7 @@ public class DangNhap extends GiaoDien  {
         JPanel panelBoard = getPanelBoard();
         panelBoard.removeAll();
         JPanel panel = new JPanel();
-        panel.setBounds(350, 100, 600, 600);
+        panel.setBounds(300, 100, 500, 480);
         panel.setLayout(null);
 
         JLabel signInLabel = new JLabel("Đăng nhập");
@@ -37,15 +37,15 @@ public class DangNhap extends GiaoDien  {
         signInButton.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
 
 
-        signInLabel.setBounds(150, 100, 300, 50);
-        userNameLabel.setBounds(150, 150, 200, 50);
-        userNameField.setBounds(150, 200, 300, 50);
-        pswLabel.setBounds(150, 250, 200, 50);
-        pswField.setBounds(150, 300, 300, 50);
-        forgotPswButton.setBounds(65, 350, 300, 20);
+        signInLabel.setBounds(100, 50, 300, 50);
+        userNameLabel.setBounds(100, 100, 200, 50);
+        userNameField.setBounds(100, 150, 300, 50);
+        pswLabel.setBounds(100, 200, 200, 50);
+        pswField.setBounds(100, 250, 300, 50);
+        forgotPswButton.setBounds(65, 300, 200, 20);
         forgotPswButton.setBorderPainted(false);
         forgotPswButton.setFocusable(false);
-        signInButton.setBounds(150, 400, 300, 50);
+        signInButton.setBounds(100, 350, 300, 50);
 
 
         ImageIcon icon = new ImageIcon("/Users/macbookair/2023.1/nhapmoncnpm/IT3180_Project/QuanLyDanCu/src/icon/avatar.png");
@@ -95,7 +95,7 @@ public class DangNhap extends GiaoDien  {
         panel.add(pswField);
         panel.add(signInButton);
         panel.add(forgotPswButton);
-        panel.setBackground(Color.lightGray);
+        //panel.setBackground(Color.lightGray);
 
         panelBoard.setLayout(null);
         panelBoard.add(panel);

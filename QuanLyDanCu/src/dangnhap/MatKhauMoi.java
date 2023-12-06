@@ -9,7 +9,7 @@ public class MatKhauMoi extends GiaoDien {
         JPanel panelBoard = getPanelBoard();
         panelBoard.removeAll();
         JPanel panel = new JPanel();
-        panel.setBounds(350, 100, 600, 500);
+        panel.setBounds(300, 100, 500, 450);
         panel.setLayout(null);
 
         JLabel changePswLabel = new JLabel("Thay đổi mật khẩu");
@@ -25,12 +25,12 @@ public class MatKhauMoi extends GiaoDien {
         repeatNewPswLabel.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
         changeButton.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
 
-        changePswLabel.setBounds(150, 100, 300, 50);
-        newPswLabel.setBounds(150, 150, 200, 50);
-        newPswField.setBounds(150, 200, 300, 50);
-        repeatNewPswLabel.setBounds(150, 250, 300, 50);
-        repeatNewPswField.setBounds(150, 300, 300, 50);
-        changeButton.setBounds(150, 380, 300, 50);
+        changePswLabel.setBounds(100, 50, 300, 50);
+        newPswLabel.setBounds(100, 100, 200, 50);
+        newPswField.setBounds(100, 150, 300, 50);
+        repeatNewPswLabel.setBounds(100, 200, 300, 50);
+        repeatNewPswField.setBounds(100, 250, 300, 50);
+        changeButton.setBounds(100, 320, 300, 50);
 
 
         //Add to panel
