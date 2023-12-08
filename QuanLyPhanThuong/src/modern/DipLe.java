@@ -1,10 +1,11 @@
 package modern;
 import java.util.*;
+import java.time.LocalDate;
 public class DipLe {
     private String tenDipLe;
-    private Date ngay;
+    private LocalDate ngay;
     private float kinhPhi;
-    public DipLe(String tenDipLe, Date ngay) {
+    public DipLe(String tenDipLe, LocalDate ngay) {
         this.tenDipLe = tenDipLe;
         this.ngay = ngay;
     }
@@ -14,10 +15,10 @@ public class DipLe {
     public void setTenDipLe(String tenDipLe) {
         this.tenDipLe = tenDipLe;
     }
-    public Date getNgay() {
+    public LocalDate getNgay() {
         return ngay;
     }
-    public void setNgay(Date ngay) {
+    public void setNgay(LocalDate ngay) {
         this.ngay = ngay;
     }
     public float getKinhPhi() {
