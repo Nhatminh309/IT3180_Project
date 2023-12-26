@@ -82,4 +82,32 @@ INSERT INTO Nhan_khau (Ma_nhan_khau, Ho_va_ten, Bi_danh, Ngay_sinh, Gioi_tinh, N
 -- Dữ liệu con của Ma_ho_khau = 13
 (61, 'Phạm Van K', NULL, '2018-07-10', 'Nam', 'Bệnh viện Xanh Pôn', 'Quận 4, TP.HCM', 'Kinh', 'Không', NULL, NULL, '2024-08-01', '61', NULL, 'Con', 13, TRUE),
 (62, 'Phạm Thi L', NULL, '2016-10-05', 'Nữ', 'Bệnh viện Chợ Rẫy', 'Quận 1, TP.HCM', 'Kinh', 'Phật giáo', NULL, NULL, '2024-09-01', '62', NULL, 'Con', 13, TRUE);
+INSERT INTO Nhan_khau (Ma_nhan_khau, Ho_va_ten, Bi_danh, Ngay_sinh, Gioi_tinh, Noi_sinh, Que_quan, Dan_toc, Ton_giao, Nghe_nghiep, Noi_lam_viec, Ngay_dang_ky, So_CCCD, So_dien_thoai, Quan_he_voi_chu_ho, Ma_ho_khau, Da_xac_nhan) VALUES
+-- Dữ liệu con của Ma_ho_khau = 14
+(63, 'Hoang Van A', NULL, '2019-02-14', 'Nam', 'Bệnh viện Gia Định', 'Quận 10, TP.HCM', 'Kinh', 'Công giáo', NULL, NULL, '2024-10-01', '63', NULL, 'Con', 14, TRUE),
+(64, 'Hoang Thi B', NULL, '2017-05-30', 'Nữ', 'Bệnh viện Nguyễn Tri Phương', 'Quận 11, TP.HCM', 'Kinh', 'Không', NULL, NULL, '2024-11-01', '64', NULL, 'Con', 14, TRUE),
+
+-- Dữ liệu con của Ma_ho_khau = 15
+(65, 'Le Van C', NULL, '2018-11-09', 'Nam', 'Bệnh viện Hùng Vương', 'Quận Tân Bình, TP.HCM', 'Kinh', 'Phật giáo', NULL, NULL, '2024-12-01', '65', NULL, 'Con', 15, TRUE),
+(66, 'Le Thi D', NULL, '2016-06-20', 'Nữ', 'Bệnh viện Đại học Y Dược', 'Quận Tân Phú, TP.HCM', 'Kinh', 'Công giáo', NULL, NULL, '2025-01-01', '66', NULL, 'Con', 15, TRUE),
+
+-- Dữ liệu con của Ma_ho_khau = 16
+(67, 'Nguyen Van E', NULL, '2017-03-17', 'Nam', 'Bệnh viện Quốc tế Sài Gòn', 'Quận Bình Thạnh, TP.HCM', 'Kinh', 'Tin lành', NULL, NULL, '2025-02-01', '67', NULL, 'Con', 16, TRUE),
+(68, 'Nguyen Thi F', NULL, '2015-08-28', 'Nữ', 'Bệnh viện Quân Y 175', 'Quận Gò Vấp, TP.HCM', 'Kinh', 'Phật giáo', NULL, NULL, '2025-03-01', '68', NULL, 'Con', 16, TRUE),
+
+-- Dữ liệu con của Ma_ho_khau = 17
+(69, 'Tran Van G', NULL, '2018-06-05', 'Nam', 'Bệnh viện Từ Dũ', 'Quận Phú Nhuận, TP.HCM', 'Kinh', 'Không', NULL, NULL, '2025-04-01', '69', NULL, 'Con', 17, TRUE),
+(70, 'Tran Thi H', NULL, '2016-09-10', 'Nữ', 'Bệnh viện Nhi Đồng 1', 'Quận Bình Tân, TP.HCM', 'Kinh', 'Phật giáo', NULL, NULL, '2025-05-01', '70', NULL, 'Con', 17, TRUE),
+
+-- Dữ liệu con của Ma_ho_khau = 18
+(71, 'Pham Van I', NULL, '2019-07-20', 'Nam', 'Bệnh viện Đa Khoa Khu vực Thủ Đức', 'Quận Thủ Đức, TP.HCM', 'Kinh', 'Công giáo', NULL, NULL, '2025-06-01', '71', NULL, 'Con', 18, TRUE),
+(72, 'Pham Thi J', NULL, '2017-10-15', 'Nữ', 'Bệnh viện Quận 9', 'Quận 9, TP.HCM', 'Kinh', 'Tin lành', NULL, NULL, '2025-07-01', '72', NULL, 'Con', 18, TRUE),
+
+-- Dữ liệu con của Ma_ho_khau = 19
+(73, 'Hoang Van K', NULL, '2018-08-10', 'Nam', 'Bệnh viện Chợ Rẫy 2', 'Quận 6, TP.HCM', 'Kinh', 'Không', NULL, NULL, '2025-08-01', '73', NULL, 'Con', 19, TRUE),
+(74, 'Hoang Thi L', NULL, '2016-11-05', 'Nữ', 'Bệnh viện Quận 8', 'Quận 8, TP.HCM', 'Kinh', 'Phật giáo', NULL, NULL, '2025-09-01', '74', NULL, 'Con', 19, TRUE),
+
+-- Dữ liệu con của Ma_ho_khau = 20
+(75, 'Le Van M', NULL, '2017-12-20', 'Nam', 'Bệnh viện Bình Dân', 'Quận Bình Tân, TP.HCM', 'Kinh', 'Công giáo', NULL, NULL, '2025-10-01', '75', NULL, 'Con', 20, TRUE),
+(76, 'Le Thi N', NULL, '2015-05-15', 'Nữ', 'Bệnh viện Từ Dũ', 'Quận Phú Nhuận, TP.HCM', 'Kinh', 'Tin lành', NULL, NULL, '2025-11-01', '76', NULL, 'Con', 20, TRUE);
 

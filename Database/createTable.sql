@@ -6,6 +6,8 @@ CREATE TABLE Ho_khau(
     Ten_quan VARCHAR(50) NOT NULL,
     Ten_thanh_pho VARCHAR(50) NOT NULL,
     Da_xac_nhan BOOLEAN DEFAULT FALSE,
+    So_luong_xe_may INT NOT NULL DEFAULT 0,
+    So_luong_o_to INT NOT NULL DEFAULT 0,
     Dien_tich INT NOT NULL
 );
 
@@ -149,4 +151,11 @@ CREATE TABLE DangNhap (
     password VARCHAR(20) NOT NULL,
     vaitro VARCHAR(10) NOT NULL,
     Ma_nhan_khau INT REFERENCES Nhan_khau(Ma_nhan_khau)
-)
+);
+
+ALTER TABLE Ho_khau ADD COLUMN so_luong_xe_may INT NOT NULL DEFAULT 0,
+ADD COLUMN so_luong_o_to INT NOT NULL DEFAULT 0;
+
+ALTER TABLE Thu_phi
+ADD COLUMN Phi_gui_xe INTEGER,
+ADD COLUMN Phi_dien_nuoc_internet INTEGER;
