@@ -140,6 +140,8 @@ CREATE TABLE Bang_phi(
     Phi_qly_chung_cu INTEGER,
     Phi_dvu_chung_cu INTEGER,
     Phi_dong_gop INTEGER,
+    Phi_gui_xe INTEGER,
+    Phi_dien_nuoc_internet INTEGER,
     Thoi_diem_dong DATE CHECK (Thoi_diem_dong = to_date(Thoi_diem_dong::text, 'YYYY-MM-DD')),
     Da_xac_nhan BOOLEAN DEFAULT FALSE,
     Ma_ho_khau INT,
@@ -152,10 +154,3 @@ CREATE TABLE DangNhap (
     vaitro VARCHAR(10) NOT NULL,
     Ma_nhan_khau INT REFERENCES Nhan_khau(Ma_nhan_khau)
 );
-
-ALTER TABLE Ho_khau ADD COLUMN so_luong_xe_may INT NOT NULL DEFAULT 0,
-ADD COLUMN so_luong_o_to INT NOT NULL DEFAULT 0;
-
-ALTER TABLE Thu_phi
-ADD COLUMN Phi_gui_xe INTEGER,
-ADD COLUMN Phi_dien_nuoc_internet INTEGER;

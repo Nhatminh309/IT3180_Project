@@ -41,61 +41,95 @@ INSERT INTO Can_cuoc_cong_dan (So_CCCD, Ngay_cap, Noi_cap, Gia_tri_den_ngay, Dac
 ('38', '2016-03-10', 'Hà Nội', '9999-12-31', 'Dac_diem_nhan_dang_58', TRUE),
 ('39', '2019-11-11', 'TP.HCM', '9999-12-31', 'Dac_diem_nhan_dang_59', TRUE),
 ('40', '2018-10-21', 'Hà Nội', '9999-12-31', 'Dac_diem_nhan_dang_60', TRUE),
-('41', '2017-04-30', 'TP.HCM', '9999-12-31', 'Dac_diem_nhan_dang_61', TRUE);
+
 
 -- Dữ liệu con của Ma_ho_khau = 3
 INSERT INTO Can_cuoc_cong_dan (So_CCCD, Ngay_cap, Noi_cap, Gia_tri_den_ngay, Dac_diem_nhan_dang, Da_xac_nhan) VALUES
-('42', '2022-12-01', 'Hà Nội', '9999-12-31', 'Dac_diem_nhan_dang_con_11', TRUE),
-('43', '2023-01-01', 'TP.HCM', '9999-12-31', 'Dac_diem_nhan_dang_con_12', TRUE);
+('41', '2022-12-01', 'Hà Nội', '9999-12-31', 'Dac_diem_nhan_dang_con_11', TRUE),
+('42', '2023-01-01', 'TP.HCM', '9999-12-31', 'Dac_diem_nhan_dang_con_12', TRUE);
 
 -- Dữ liệu con của Ma_ho_khau = 4
 INSERT INTO Can_cuoc_cong_dan (So_CCCD, Ngay_cap, Noi_cap, Gia_tri_den_ngay, Dac_diem_nhan_dang, Da_xac_nhan) VALUES
-('44', '2023-02-01', 'Hà Nội', '9999-12-31', 'Dac_diem_nhan_dang_con_13', TRUE),
-('45', '2023-03-01', 'TP.HCM', '9999-12-31', 'Dac_diem_nhan_dang_con_14', TRUE);
+('43', '2023-02-01', 'Hà Nội', '9999-12-31', 'Dac_diem_nhan_dang_con_13', TRUE),
+('44', '2023-03-01', 'TP.HCM', '9999-12-31', 'Dac_diem_nhan_dang_con_14', TRUE);
 
 -- Dữ liệu con của Ma_ho_khau = 5
 INSERT INTO Can_cuoc_cong_dan (So_CCCD, Ngay_cap, Noi_cap, Gia_tri_den_ngay, Dac_diem_nhan_dang, Da_xac_nhan) VALUES
-('46', '2023-04-01', 'Hà Nội', '9999-12-31', 'Dac_diem_nhan_dang_con_15', TRUE),
-('47', '2023-05-01', 'TP.HCM', '9999-12-31', 'Dac_diem_nhan_dang_con_16', TRUE);
+('45', '2023-04-01', 'Hà Nội', '9999-12-31', 'Dac_diem_nhan_dang_con_15', TRUE),
+('46', '2023-05-01', 'TP.HCM', '9999-12-31', 'Dac_diem_nhan_dang_con_16', TRUE);
 
 -- Dữ liệu con của Ma_ho_khau = 6
 INSERT INTO Can_cuoc_cong_dan (So_CCCD, Ngay_cap, Noi_cap, Gia_tri_den_ngay, Dac_diem_nhan_dang, Da_xac_nhan) VALUES
-('48', '2023-06-01', 'Hà Nội', '9999-12-31', 'Dac_diem_nhan_dang_con_17', TRUE),
-('49', '2023-07-01', 'TP.HCM', '9999-12-31', 'Dac_diem_nhan_dang_con_18', TRUE);
+('47', '2023-06-01', 'Hà Nội', '9999-12-31', 'Dac_diem_nhan_dang_con_17', TRUE),
+('48', '2023-07-01', 'TP.HCM', '9999-12-31', 'Dac_diem_nhan_dang_con_18', TRUE);
 
 -- Dữ liệu con của Ma_ho_khau = 7
 INSERT INTO Can_cuoc_cong_dan (So_CCCD, Ngay_cap, Noi_cap, Gia_tri_den_ngay, Dac_diem_nhan_dang, Da_xac_nhan) VALUES
-('50', '2023-08-01', 'Hà Nội', '9999-12-31', 'Dac_diem_nhan_dang_con_19', TRUE),
-('51', '2023-09-01', 'TP.HCM', '9999-12-31', 'Dac_diem_nhan_dang_con_20', TRUE);
+('49', '2023-08-01', 'Hà Nội', '9999-12-31', 'Dac_diem_nhan_dang_con_19', TRUE),
+('50', '2023-09-01', 'TP.HCM', '9999-12-31', 'Dac_diem_nhan_dang_con_20', TRUE);
 
 -- Dữ liệu con của Ma_ho_khau = 8
 INSERT INTO Can_cuoc_cong_dan (So_CCCD, Ngay_cap, Noi_cap, Gia_tri_den_ngay, Dac_diem_nhan_dang, Da_xac_nhan) VALUES
-('52', '2023-10-01', 'Hà Nội', '9999-12-31', 'Dac_diem_nhan_dang_con_21', TRUE),
-('53', '2023-11-01', 'TP.HCM', '9999-12-31', 'Dac_diem_nhan_dang_con_22', TRUE);
+('51', '2023-10-01', 'Hà Nội', '9999-12-31', 'Dac_diem_nhan_dang_con_21', TRUE),
+('52', '2023-11-01', 'TP.HCM', '9999-12-31', 'Dac_diem_nhan_dang_con_22', TRUE);
 
 -- Dữ liệu con của Ma_ho_khau = 9
 INSERT INTO Can_cuoc_cong_dan (So_CCCD, Ngay_cap, Noi_cap, Gia_tri_den_ngay, Dac_diem_nhan_dang, Da_xac_nhan) VALUES
-('54', '2023-12-01', 'Hà Nội', '9999-12-31', 'Dac_diem_nhan_dang_con_23', TRUE),
-('55', '2024-01-01', 'TP.HCM', '9999-12-31', 'Dac_diem_nhan_dang_con_24', TRUE);
+('53', '2023-12-01', 'Hà Nội', '9999-12-31', 'Dac_diem_nhan_dang_con_23', TRUE),
+('54', '2024-01-01', 'TP.HCM', '9999-12-31', 'Dac_diem_nhan_dang_con_24', TRUE);
 
 -- Dữ liệu con của Ma_ho_khau = 10
 INSERT INTO Can_cuoc_cong_dan (So_CCCD, Ngay_cap, Noi_cap, Gia_tri_den_ngay, Dac_diem_nhan_dang, Da_xac_nhan) VALUES
-('56', '2024-02-01', 'Hà Nội', '9999-12-31', 'Dac_diem_nhan_dang_con_25', TRUE),
-('57', '2024-03-01', 'TP.HCM', '9999-12-31', 'Dac_diem_nhan_dang_con_26', TRUE);
+('55', '2024-02-01', 'Hà Nội', '9999-12-31', 'Dac_diem_nhan_dang_con_25', TRUE),
+('56', '2024-03-01', 'TP.HCM', '9999-12-31', 'Dac_diem_nhan_dang_con_26', TRUE);
 
 -- Dữ liệu con của Ma_ho_khau = 11
 INSERT INTO Can_cuoc_cong_dan (So_CCCD, Ngay_cap, Noi_cap, Gia_tri_den_ngay, Dac_diem_nhan_dang, Da_xac_nhan) VALUES
-('58', '2024-04-01', 'Hà Nội', '9999-12-31', 'Dac_diem_nhan_dang_con_27', TRUE),
-('59', '2024-05-01', 'TP.HCM', '9999-12-31', 'Dac_diem_nhan_dang_con_28', TRUE);
+('57', '2024-04-01', 'Hà Nội', '9999-12-31', 'Dac_diem_nhan_dang_con_27', TRUE),
+('58', '2024-05-01', 'TP.HCM', '9999-12-31', 'Dac_diem_nhan_dang_con_28', TRUE);
 
 -- Dữ liệu con của Ma_ho_khau = 12
 INSERT INTO Can_cuoc_cong_dan (So_CCCD, Ngay_cap, Noi_cap, Gia_tri_den_ngay, Dac_diem_nhan_dang, Da_xac_nhan) VALUES
-('60', '2024-06-01', 'Hà Nội', '9999-12-31', 'Dac_diem_nhan_dang_con_29', TRUE),
-('61', '2024-07-01', 'TP.HCM', '9999-12-31', 'Dac_diem_nhan_dang_con_30', TRUE);
+('59', '2024-06-01', 'Hà Nội', '9999-12-31', 'Dac_diem_nhan_dang_con_29', TRUE),
+('60', '2024-07-01', 'TP.HCM', '9999-12-31', 'Dac_diem_nhan_dang_con_30', TRUE);
 
 -- Dữ liệu con của Ma_ho_khau = 13
 INSERT INTO Can_cuoc_cong_dan (So_CCCD, Ngay_cap, Noi_cap, Gia_tri_den_ngay, Dac_diem_nhan_dang, Da_xac_nhan) VALUES
-('62', '2024-08-01', 'Hà Nội', '9999-12-31', 'Dac_diem_nhan_dang_con_31', TRUE),
-('63', '2024-09-01', 'TP.HCM', '9999-12-31', 'Dac_diem_nhan_dang_con_32', TRUE);
+('61', '2024-08-01', 'Hà Nội', '9999-12-31', 'Dac_diem_nhan_dang_con_31', TRUE),
+('62', '2024-09-01', 'TP.HCM', '9999-12-31', 'Dac_diem_nhan_dang_con_32', TRUE);
 
+-- Dữ liệu con của Ma_ho_khau = 14
+INSERT INTO Can_cuoc_cong_dan (So_CCCD, Ngay_cap, Noi_cap, Gia_tri_den_ngay, Dac_diem_nhan_dang, Da_xac_nhan) VALUES
+('63', '2025-04-01', 'Hà Nội', '9999-12-31', 'Dac_diem_nhan_dang_con_39', TRUE),
+('64', '2025-05-01', 'TP.HCM', '9999-12-31', 'Dac_diem_nhan_dang_con_40', TRUE);
+
+-- Dữ liệu con của Ma_ho_khau = 15
+INSERT INTO Can_cuoc_cong_dan (So_CCCD, Ngay_cap, Noi_cap, Gia_tri_den_ngay, Dac_diem_nhan_dang, Da_xac_nhan) VALUES
+('65', '2025-06-01', 'Hà Nội', '9999-12-31', 'Dac_diem_nhan_dang_con_41', TRUE),
+('66', '2025-07-01', 'TP.HCM', '9999-12-31', 'Dac_diem_nhan_dang_con_42', TRUE);
+
+-- Dữ liệu con của Ma_ho_khau = 16
+INSERT INTO Can_cuoc_cong_dan (So_CCCD, Ngay_cap, Noi_cap, Gia_tri_den_ngay, Dac_diem_nhan_dang, Da_xac_nhan) VALUES
+('67', '2025-08-01', 'Hà Nội', '9999-12-31', 'Dac_diem_nhan_dang_con_43', TRUE),
+('68', '2025-09-01', 'TP.HCM', '9999-12-31', 'Dac_diem_nhan_dang_con_44', TRUE);
+
+-- Dữ liệu con của Ma_ho_khau = 17
+INSERT INTO Can_cuoc_cong_dan (So_CCCD, Ngay_cap, Noi_cap, Gia_tri_den_ngay, Dac_diem_nhan_dang, Da_xac_nhan) VALUES
+('69', '2025-10-01', 'Hà Nội', '9999-12-31', 'Dac_diem_nhan_dang_con_45', TRUE),
+('70', '2025-11-01', 'TP.HCM', '9999-12-31', 'Dac_diem_nhan_dang_con_46', TRUE);
+
+-- Dữ liệu con của Ma_ho_khau = 18
+INSERT INTO Can_cuoc_cong_dan (So_CCCD, Ngay_cap, Noi_cap, Gia_tri_den_ngay, Dac_diem_nhan_dang, Da_xac_nhan) VALUES
+('71', '2025-12-01', 'Hà Nội', '9999-12-31', 'Dac_diem_nhan_dang_con_47', TRUE),
+('72', '2026-01-01', 'TP.HCM', '9999-12-31', 'Dac_diem_nhan_dang_con_48', TRUE);
+
+-- Dữ liệu con của Ma_ho_khau = 19
+INSERT INTO Can_cuoc_cong_dan (So_CCCD, Ngay_cap, Noi_cap, Gia_tri_den_ngay, Dac_diem_nhan_dang, Da_xac_nhan) VALUES
+('73', '2026-02-01', 'Hà Nội', '9999-12-31', 'Dac_diem_nhan_dang_con_49', TRUE),
+('74', '2026-03-01', 'TP.HCM', '9999-12-31', 'Dac_diem_nhan_dang_con_50', TRUE);
+
+-- Dữ liệu con của Ma_ho_khau = 20
+INSERT INTO Can_cuoc_cong_dan (So_CCCD, Ngay_cap, Noi_cap, Gia_tri_den_ngay, Dac_diem_nhan_dang, Da_xac_nhan) VALUES
+('75', '2026-04-01', 'Hà Nội', '9999-12-31', 'Dac_diem_nhan_dang_con_51', TRUE),
+('76', '2026-05-01', 'TP.HCM', '9999-12-31', 'Dac_diem_nhan_dang_con_52', TRUE);
 
