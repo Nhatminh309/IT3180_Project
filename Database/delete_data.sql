@@ -8,3 +8,4 @@ delete from phan_thuong;
 delete from so_tam_tru;
 delete from tam_vang;
 delete from bang_phi;
+drop table bang_phi cascade;
