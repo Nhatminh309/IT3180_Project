@@ -25,6 +25,9 @@
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="45fffacf-5f53-415f-bf78-0e85919c2eb7" />
   </component>
+  <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="45fffacf-5f53-415f-bf78-0e85919c2eb7" dataset="public.cancuoccongdan" active-filter-id="" />
+  </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />
   </component>
