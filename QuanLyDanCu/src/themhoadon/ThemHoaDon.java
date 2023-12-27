@@ -1,21 +1,20 @@
-package danhsachhoadon;
+package themhoadon;
+
+import danhsachhoadon.DanhSachHoaDon;
+import danhsachhoadon.ViewDanhSachHoaDon;
+import giaodien.GiaoDienQuanLy;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import giaodien.*;
-public class DanhSachHoaDon extends GiaoDienQuanLy {
+
+public class ThemHoaDon extends GiaoDienQuanLy{
     private static JPanel selectionPanel;
     private static JLabel selectionLabel;
     private static JButton dropDownButton;
     private static JPopupMenu dropDownMenu;
-    public JPanel getSelectionPanel() {
-        return selectionPanel;
-    }
-    public JButton getDropDownButton() {
-        return dropDownButton;
-    }
-    public DanhSachHoaDon() {
+    public ThemHoaDon() {
         JPanel panelBoard = getPanelBoard();
         panelBoard.removeAll();
 
@@ -66,18 +65,16 @@ public class DanhSachHoaDon extends GiaoDienQuanLy {
         menuItem1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new ViewDanhSachHoaDon().viewChungCu();
-
+                new ThemHoaDonChungCu();
             }
 
         });
         menuItem2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new ViewDanhSachHoaDon().viewToDanPho();
+                new ThemHoaDonTDP();
             }
         });
         dropDownMenu.show(co, 0, co.getHeight());
     }
-
 }
