@@ -29,10 +29,17 @@
     <retain-sticky-names value="false" />
   </component>
   <component name="DBNavigator.Project.FileConnectionMappingManager">
+    <mapping file-url="file://$PROJECT_DIR$/insertPhan_thuong.sql" connection-id="45fffacf-5f53-415f-bf78-0e85919c2eb7" session-id="MAIN" current-schema="public" />
+    <mapping file-url="file://$PROJECT_DIR$/insertSo_tam_tru.sql" connection-id="45fffacf-5f53-415f-bf78-0e85919c2eb7" session-id="MAIN" current-schema="public" />
+    <mapping file-url="file://$PROJECT_DIR$/insertCan_bo.sql" connection-id="45fffacf-5f53-415f-bf78-0e85919c2eb7" session-id="MAIN" current-schema="public" />
     <mapping file-url="file://$PROJECT_DIR$/insertTam_vang.sql" connection-id="45fffacf-5f53-415f-bf78-0e85919c2eb7" session-id="MAIN" current-schema="public" />
+    <mapping file-url="file://$PROJECT_DIR$/insertCan_cuoc_cong_dan.sql" connection-id="45fffacf-5f53-415f-bf78-0e85919c2eb7" session-id="MAIN" current-schema="public" />
     <mapping file-url="file://$PROJECT_DIR$/delete_data.sql" connection-id="45fffacf-5f53-415f-bf78-0e85919c2eb7" session-id="MAIN" current-schema="public" />
+    <mapping file-url="file://$PROJECT_DIR$/inserNhan_khau.sql" connection-id="45fffacf-5f53-415f-bf78-0e85919c2eb7" session-id="MAIN" current-schema="public" />
     <mapping file-url="file://$PROJECT_DIR$/createTable.sql" connection-id="45fffacf-5f53-415f-bf78-0e85919c2eb7" session-id="MAIN" current-schema="public" />
     <mapping file-url="file://$PROJECT_DIR$/insertHo_khau.sql" connection-id="45fffacf-5f53-415f-bf78-0e85919c2eb7" session-id="MAIN" current-schema="public" />
+    <mapping file-url="file://$PROJECT_DIR$/insertDang_nhap.sql" connection-id="45fffacf-5f53-415f-bf78-0e85919c2eb7" session-id="MAIN" current-schema="public" />
+    <mapping file-url="file://$PROJECT_DIR$/insertThu_phi.sql" connection-id="45fffacf-5f53-415f-bf78-0e85919c2eb7" session-id="MAIN" current-schema="public" />
   </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
     <last-used-operator value="EQUAL" />

@@ -40,7 +40,7 @@ INSERT INTO Can_cuoc_cong_dan (So_CCCD, Ngay_cap, Noi_cap, Gia_tri_den_ngay, Dac
 ('37', '2017-09-03', 'TP.HCM', '9999-12-31', 'Dac_diem_nhan_dang_57', TRUE),
 ('38', '2016-03-10', 'Hà Nội', '9999-12-31', 'Dac_diem_nhan_dang_58', TRUE),
 ('39', '2019-11-11', 'TP.HCM', '9999-12-31', 'Dac_diem_nhan_dang_59', TRUE),
-('40', '2018-10-21', 'Hà Nội', '9999-12-31', 'Dac_diem_nhan_dang_60', TRUE),
+('40', '2018-10-21', 'Hà Nội', '9999-12-31', 'Dac_diem_nhan_dang_60', TRUE);
 
 
 -- Dữ liệu con của Ma_ho_khau = 3
