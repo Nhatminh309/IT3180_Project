@@ -7,4 +7,4 @@ delete from dang_nhap;
 delete from phan_thuong;
 delete from so_tam_tru;
 delete from tam_vang;
-delete from thu_phi;
+delete from bang_phi;
