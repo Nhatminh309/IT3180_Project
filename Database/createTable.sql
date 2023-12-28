@@ -114,24 +114,6 @@ CREATE TABLE Phieu_chuyen_den(
     FOREIGN KEY (Ma_nhan_khau) REFERENCES Nhan_khau(Ma_nhan_khau)
 );
 
-CREATE TABLE Can_bo(
-    Ma_can_bo INTEGER PRIMARY KEY,
-    Ho_ten VARCHAR(30),
-    Ngay_sinh DATE,
-    Gioi_tinh VARCHAR(10),
-    Chuc_vu VARCHAR(30)
-);
-CREATE TABLE Phan_thuong(
-    Ma_phan_phuong INTEGER PRIMARY KEY,
-    Dip_le VARCHAR(100),
-    Loai_phan_thuong VARCHAR(100),
-    Gia_tri NUMERIC(10, 2),
-    Ngay_dang_ky DATE,
-    Ma_nhan_khau INTEGER,
-    Ma_can_bo INTEGER,
-    FOREIGN KEY (Ma_nhan_khau) REFERENCES Nhan_khau(Ma_nhan_khau),
-    FOREIGN KEY (Ma_can_bo) REFERENCES Can_bo(Ma_can_bo)
-);
 
 CREATE TABLE Bang_phi(
     Ma_hoa_don VARCHAR(20) PRIMARY KEY,
@@ -155,4 +137,33 @@ CREATE TABLE DangNhap (
     password VARCHAR(20) NOT NULL,
     vaitro VARCHAR(10) NOT NULL,
     Ma_nhan_khau INT REFERENCES Nhan_khau(Ma_nhan_khau)
+);
+
+CREATE TABLE Can_bo(
+    Ma_can_bo INTEGER PRIMARY KEY,
+    Ho_ten VARCHAR(30),
+    Ngay_sinh DATE,
+    Gioi_tinh VARCHAR(10),
+    Chuc_vu VARCHAR(30)
+);
+CREATE TABLE Phan_thuong(
+    Ma_phan_thuong INTEGER PRIMARY KEY,
+    Loai_phan_thuong VARCHAR(100),
+    Gia_tri NUMERIC(10, 2)
+);
+
+CREATE TABLE Phat_thuong (
+    Ma_phat_thuong INTEGER PRIMARY KEY,
+    Ma_phan_thuong INTEGER,
+    Ma_nhan_khau INTEGER,
+    Ma_can_bo INTEGER,
+    Ngay_phat DATE,
+    Dip_le VARCHAR(15) CHECK (Dip_le IN ('Tết Nguyên Đán', 'Tết Thiếu Nhi', 'Cuối Năm Học', 'Tết Trung Thu')),
+    Loai_phan_thuong VARCHAR(15),
+    So_luong INTEGER,
+    Da_xac_nhan BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (Ma_phan_thuong) REFERENCES Phan_thuong(Ma_phan_thuong),
+    FOREIGN KEY (Ma_nhan_khau) REFERENCES Nhan_khau(Ma_nhan_khau),
+    FOREIGN KEY (Ma_can_bo) REFERENCES Can_bo(Ma_can_bo),
+    FOREIGN KEY (Loai_phan_thuong) REFERENCES Phan_thuong(Loai_phan_thuong)
 );

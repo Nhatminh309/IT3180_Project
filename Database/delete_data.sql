@@ -8,3 +8,5 @@ delete from phan_thuong;
 delete from so_tam_tru;
 delete from tam_vang;
 delete from bang_phi;
+delete from phat_thuong;
+delete from phan_thuong;
