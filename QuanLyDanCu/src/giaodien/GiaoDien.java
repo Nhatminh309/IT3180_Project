@@ -4,6 +4,10 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 import dangnhap.*;
 public class GiaoDien {
     private static JFrame frame;
@@ -67,6 +71,7 @@ public class GiaoDien {
         dangNhap.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                frame.dispose();
                 new DangNhap().displaySignIn();
 
             }
@@ -75,6 +80,7 @@ public class GiaoDien {
         dangKy.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                frame.dispose();
                 new DangKy().displaySignUp();
             }
         });
@@ -91,6 +97,19 @@ public class GiaoDien {
     public JPanel getPanelBoard() {
         return panelBoard;
     }
+    public JFrame getFrame() {
+        return frame;
+    }
+    public String getStringURL() {
+        String URL = "jdbc:postgresql://localhost:5432/QuanLyDanCu";
+        return URL;
+    }
+    public Connection getConnectDatabase() throws SQLException {
+        String URL = getStringURL();
+        Connection connection = DriverManager.getConnection(URL, "postgres", "271203");
+        return connection;
+    }
+
 
     public static void main(String[] args) {
         new GiaoDien();

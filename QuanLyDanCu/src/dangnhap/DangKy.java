@@ -3,8 +3,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 import giaodien.*;
 public class DangKy extends GiaoDien {
+    private static JTextField userNameField;
+    private static JPasswordField pswField;
     public void displaySignUp() {
         JPanel panelBoard = getPanelBoard();
         panelBoard.removeAll();
@@ -16,9 +22,9 @@ public class DangKy extends GiaoDien {
         JLabel teleNumLabel = new JLabel("Số điện thoại: ");
         JTextField teleNumField = new JTextField(20);
         JLabel userNameLabel = new JLabel("Tên tài khoản: ");
-        JTextField userNameField = new JTextField(20);
+        userNameField = new JTextField(20);
         JLabel pswLabel = new JLabel("Password: ");
-        JPasswordField pswField = new JPasswordField(20);
+        pswField = new JPasswordField(20);
         JButton signUpButton = new JButton("Đăng ký");
 
         //Set position
@@ -45,6 +51,7 @@ public class DangKy extends GiaoDien {
                 if(teleNumField.getText().equals("") || userNameField.getText().equals("") || pswField.getPassword().equals("")) {
                     JOptionPane.showMessageDialog(panelBoard, "Bạn chưa nhập thông tin");
                 } else {
+                    addSignInToSQL();
                     JOptionPane.showMessageDialog(panelBoard, "Đăng ký tài khoản thành công");
                     new DangNhap().displaySignIn();
                 }
@@ -69,5 +76,20 @@ public class DangKy extends GiaoDien {
 
         panelBoard.revalidate(); // Revalidate the panel to display changes
         panelBoard.repaint(); // Repaint the panel
+    }
+    public void addSignInToSQL() {
+        try {
+            Connection connection = getConnectDatabase();
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO dangnhap VALUES(?, ?, ?)");
+            preparedStatement.setString(1, userNameField.getText());
+            preparedStatement.setString(2, String.valueOf(pswField.getPassword()));
+            preparedStatement.setString(3, "admin");
+            preparedStatement.executeUpdate();
+
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

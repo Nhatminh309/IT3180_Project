@@ -1,7 +1,8 @@
 package quanlyhokhau;
+
 import giaodien.GiaoDienQuanLy;
+
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import java.awt.*;
@@ -11,20 +12,20 @@ import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TamVang extends GiaoDienQuanLy {
+public class TamTru extends GiaoDienQuanLy {
     private static JTable table;
     private static DefaultTableModel model;
-    private static JLabel tamVangLabel;
-    public TamVang() {
+    private static JLabel tamTruLabel;
+    public TamTru() {
         JPanel panelBoard = getPanelBoard();
         panelBoard.removeAll();
 
         JPanel viewPanel = new JPanel(new BorderLayout());
         viewPanel.setBounds(0, 0, 1280, 700);
 
-        tamVangLabel = new JLabel("Danh sách tạm vắng");
-        tamVangLabel.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 28));
-        viewPanel.add(tamVangLabel, BorderLayout.NORTH);
+        tamTruLabel = new JLabel("Danh sách tạm trú");
+        tamTruLabel.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 28));
+        viewPanel.add(tamTruLabel, BorderLayout.NORTH);
 
         model = new DefaultTableModel();
         table = new JTable(model);
@@ -32,14 +33,15 @@ public class TamVang extends GiaoDienQuanLy {
         //table.setPreferredSize(new Dimension(1100, 650));
 
         model.addColumn("ID");
+        model.addColumn("Địa chỉ thường trú");
+        model.addColumn("Ngày đăng ký");
+        model.addColumn("Thời hạn");
         model.addColumn("Mã nhân khẩu");
-        model.addColumn("Ngày tạm vắng");
-        model.addColumn("Nơi đến");
         model.addColumn("Đã xác nhận");
         JTableHeader header = table.getTableHeader();
         header.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 18));
 
-        int[] columnWidth = {50, 100, 100, 100, 80};
+        int[] columnWidth = {5, 350, 30, 30, 10, 10};
         for(int i = 0; i < columnWidth.length; i++) {
             table.getColumnModel().getColumn(i).setPreferredWidth(columnWidth[i]);
         }
@@ -48,7 +50,7 @@ public class TamVang extends GiaoDienQuanLy {
             //Connection connection = DriverManager.getConnection(URL, "postgres", "271203");
             Connection connection = getConnectDatabase();
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM tam_vang");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM so_tam_tru");
             ResultSetMetaData metaData = resultSet.getMetaData();
             int numberCol = metaData.getColumnCount();
 
@@ -93,9 +95,10 @@ public class TamVang extends GiaoDienQuanLy {
 
         Map<String, String> columnToAttributeMap = new HashMap<>();
         columnToAttributeMap.put("ID", "id");
+        columnToAttributeMap.put("Địa chỉ thường trú", "dia_chi_thuong_tru");
+        columnToAttributeMap.put("Ngày đăng ký", "ngay_dang_ky");
+        columnToAttributeMap.put("Thời hạn", "thoi_han");
         columnToAttributeMap.put("Mã nhân khẩu", "ma_nhan_khau");
-        columnToAttributeMap.put("Ngày tạm vắng", "ngay_tam_vang");
-        columnToAttributeMap.put("Nơi đến", "noi_den");
         columnToAttributeMap.put("Đã xác nhận", "da_xac_nhan");
 
         int[] selectedRows = table.getSelectedRows();
@@ -108,7 +111,7 @@ public class TamVang extends GiaoDienQuanLy {
                 int modelRowIndex = table.convertRowIndexToModel(selectedRows[i]); // Convert to model index
                 Object idValue = model.getValueAt(modelRowIndex, 0);
 
-                StringBuilder query = new StringBuilder("UPDATE Tam_vang SET ");
+                StringBuilder query = new StringBuilder("UPDATE so_tam_tru SET ");
                 for (int j = 0; j < model.getColumnCount(); j++) {
                     String columnName = model.getColumnName(j);
                     String attribute = columnToAttributeMap.get(columnName);

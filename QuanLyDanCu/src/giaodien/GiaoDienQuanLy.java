@@ -7,7 +7,11 @@ import java.awt.event.MouseEvent;
 import java.sql.*;
 import dangnhap.*;
 import danhsachhoadon.*;
-import quanlyhokhau.TamVang;
+import quanlyhokhau.*;
+import quanlyphathuong.DanhSachPhatThuong;
+import quanlyphathuong.ThongKePhatThuong;
+import themhoadon.ThemHoaDon;
+import thongkethuphi.ThongKeThuPhi;
 import timkiemhoadon.*;
 public class GiaoDienQuanLy extends DangNhap{
     private static JFrame frame;
@@ -46,7 +50,7 @@ public class GiaoDienQuanLy extends DangNhap{
         panelBoard.setBounds(200, 100, 1480, 800);
         //panelBoard.setLayout(new BoxLayout(panelBoard, BoxLayout.Y_AXIS));
         panelBoard.setBackground(Color.WHITE);
-        panelBoard.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        //panelBoard.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
 
         //Panel Buttons
         quanLyHoKhau = new JButton("Quản lý hộ khẩu");
@@ -122,7 +126,7 @@ public class GiaoDienQuanLy extends DangNhap{
         toolBarLabel.setFont(newFont);
         toolBarLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         panelToolbar.add(toolBarLabel);
-        panelToolbar.add(Box.createRigidArea(new Dimension(200, 0)));
+        panelToolbar.add(Box.createRigidArea(new Dimension(300, 0)));
 
         JLabel subLabel = new JLabel("Xin chào");
         JLabel userNameLabel = new JLabel(getUserNameField().getText());
@@ -151,11 +155,11 @@ public class GiaoDienQuanLy extends DangNhap{
         JPopupMenu popMenu = new JPopupMenu();
         Font menuFont = new Font(Font.SANS_SERIF, Font.BOLD, 16);
         JMenuItem menuItem1 = new JMenuItem("1. Tạo hộ khẩu mới");
-        JMenuItem menuItem2 = new JMenuItem("2. Thay đổi chủ hộ");
-        JMenuItem menuItem3 = new JMenuItem("3. Cấp giấy tạm vắng");
-        JMenuItem menuItem4 = new JMenuItem("4. Cấp giấy tạm trú");
+        JMenuItem menuItem2 = new JMenuItem("2. Tìm kiếm hộ khẩu");
+        JMenuItem menuItem3 = new JMenuItem("3. Đăng ký tạm vắng");
+        JMenuItem menuItem4 = new JMenuItem("4. Đăng ký tạm trú");
         JMenuItem menuItem5 = new JMenuItem("5. Danh sách tạm vắng");
-        JMenuItem menuItem6 = new JMenuItem("5. Danh sách tạm trú");
+        JMenuItem menuItem6 = new JMenuItem("6. Danh sách tạm trú");
 
         menuItem1.setFont(menuFont);
         menuItem2.setFont(menuFont);
@@ -171,10 +175,46 @@ public class GiaoDienQuanLy extends DangNhap{
         popMenu.add(menuItem5);
         popMenu.add(menuItem6);
 
+        menuItem1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                new ThemHoKhau();
+            }
+        });
+        menuItem2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                new TimKiemHoKhau();
+            }
+        });
+        menuItem3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                new DangKyTamVang();
+            }
+        });
+        menuItem4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                new DangKyTamTru();
+            }
+        });
         menuItem5.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                frame.dispose();
                 new TamVang();
+            }
+        });
+        menuItem6.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                new TamTru();
             }
         });
 
@@ -201,13 +241,29 @@ public class GiaoDienQuanLy extends DangNhap{
         menuItem1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                frame.dispose();
                 new DanhSachHoaDon();
+            }
+        });
+        menuItem2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                new ThemHoaDon();
             }
         });
         menuItem3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                frame.dispose();
                 new TimKiemHoaDon();
+            }
+        });
+        menuItem4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                new ThongKeThuPhi();
             }
         });
         popMenu.show(co, 0, co.getHeight());
@@ -216,14 +272,38 @@ public class GiaoDienQuanLy extends DangNhap{
         JPopupMenu popMenu = new JPopupMenu();
         Font menuFont = new Font(Font.SANS_SERIF, Font.BOLD, 16);
         JMenuItem menuItem1 = new JMenuItem("1. Danh sách phát thưởng");
-        JMenuItem menuItem2 = new JMenuItem("2. Danh sách quà tặng");
+        JMenuItem menuItem2 = new JMenuItem("2. Thống kê quà tặng");
 
         menuItem1.setFont(menuFont);
         menuItem2.setFont(menuFont);
         popMenu.add(menuItem1);
         popMenu.add(menuItem2);
+        menuItem1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                new DanhSachPhatThuong();
+            }
+        });
+        menuItem2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                new ThongKePhatThuong();
+            }
+        });
 
         popMenu.show(co, 0, co.getHeight());
+    }
+    //Get connection of Database
+    public String getStringURL() {
+        String URL = "jdbc:postgresql://localhost:5432/QuanLyDanCu";
+        return URL;
+    }
+    public Connection getConnectDatabase() throws SQLException {
+        String URL = getStringURL();
+        Connection connection = DriverManager.getConnection(URL, "postgres", "271203");
+        return connection;
     }
     public JPanel getPanelBoard() {
         return panelBoard;

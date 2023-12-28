@@ -69,6 +69,8 @@ public class DangNhap extends GiaoDien  {
                 } else if(validateSignIn(userName, password).equals("admin")) {
                     System.out.println("Đăng nhập thành công với vai trò admin");
                     JOptionPane.showMessageDialog(panelBoard, "Đăng nhập thành công");
+                    JFrame frame = getFrame();
+                    frame.dispose();
                     new GiaoDienQuanLy();
                 } else if(validateSignIn(userName, password).equals("user")) {
                     System.out.println("Đăng nhập thành công với vai trò user");
@@ -82,6 +84,7 @@ public class DangNhap extends GiaoDien  {
         forgotPswButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                getFrame().dispose();
                 new MatKhauMoi().changPassword();
             }
         });
@@ -104,10 +107,10 @@ public class DangNhap extends GiaoDien  {
         panelBoard.repaint(); // Repaint the panel
     }
     public Connection connectSQL(String username, String password) {
-        String URL = "jdbc:postgresql://localhost:5432/QuanLyDanCu";
+        //String URL = "jdbc:postgresql://localhost:5432/QuanLyDanCu";
         Connection connection = null;
         try {
-            connection = DriverManager.getConnection(URL, "postgres", "271203");
+            connection = getConnectDatabase();
             System.out.println("Connect successfully");
         } catch (SQLException e) {
             System.out.println("Connection failed");;
