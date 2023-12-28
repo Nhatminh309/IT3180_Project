@@ -1,4 +1,4 @@
-package giaodien;
+package QuanLyDanCu.src.giaodien;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -8,7 +8,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import dangnhap.*;
+import QuanLyDanCu.src.dangnhap.*;
 public class GiaoDien {
     private static JFrame frame;
     private static JButton dangNhap;
@@ -40,7 +40,7 @@ public class GiaoDien {
 
         //Panel toolbar
         panelToolbar.add(Box.createRigidArea(new Dimension(30, 0)));
-        ImageIcon icon = new ImageIcon("/Users/macbookair/2023.1/nhapmoncnpm/IT3180_Project/QuanLyDanCu/src/icon/iconHoKhau.png");
+        ImageIcon icon = new ImageIcon("QuanLyDanCu/src/icon/iconHoKhau.png");
         Image img = icon.getImage();
         Image scaledImg = img.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(scaledImg);
@@ -101,12 +101,12 @@ public class GiaoDien {
         return frame;
     }
     public String getStringURL() {
-        String URL = "jdbc:postgresql://localhost:5432/QuanLyDanCu";
+        String URL = "jdbc:postgresql://localhost:5432/postgres";
         return URL;
     }
     public Connection getConnectDatabase() throws SQLException {
         String URL = getStringURL();
-        Connection connection = DriverManager.getConnection(URL, "postgres", "271203");
+        Connection connection = DriverManager.getConnection(URL, "postgres", "anhbopcolen");
         return connection;
     }
 

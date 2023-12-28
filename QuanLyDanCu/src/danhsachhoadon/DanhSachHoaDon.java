@@ -1,9 +1,9 @@
-package danhsachhoadon;
+package QuanLyDanCu.src.danhsachhoadon;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import giaodien.*;
+import QuanLyDanCu.src.giaodien.*;
 public class DanhSachHoaDon extends GiaoDienQuanLy {
     private static JPanel selectionPanel;
     private static JLabel selectionLabel;
@@ -29,7 +29,7 @@ public class DanhSachHoaDon extends GiaoDienQuanLy {
         selectionPanel.add(Box.createRigidArea(new Dimension(320, 0)));
 
         dropDownButton = new JButton();
-        ImageIcon icon = new ImageIcon("/Users/macbookair/2023.1/nhapmoncnpm/IT3180_Project/QuanLyDanCu/src/icon/downArrow.png");
+        ImageIcon icon = new ImageIcon("QuanLyDanCu/src/icon/downArrow.png");
         Image img = icon.getImage();
         Image scaledImg = img.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(scaledImg);

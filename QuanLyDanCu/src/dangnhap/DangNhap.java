@@ -1,11 +1,12 @@
-package dangnhap;
+package QuanLyDanCu.src.dangnhap;
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
-import giaodien.*;
-public class DangNhap extends GiaoDien  {
+import QuanLyDanCu.src.giaodien.*;
+public class DangNhap extends GiaoDien {
 
     private static JTextField userNameField;
     private static JTextField pswField;
@@ -44,11 +45,13 @@ public class DangNhap extends GiaoDien  {
         pswField.setBounds(100, 250, 300, 50);
         forgotPswButton.setBounds(65, 300, 200, 20);
         forgotPswButton.setBorderPainted(false);
+        forgotPswButton.setBorder(null);
+        forgotPswButton.setContentAreaFilled(false);
         forgotPswButton.setFocusable(false);
         signInButton.setBounds(100, 350, 300, 50);
 
 
-        ImageIcon icon = new ImageIcon("/Users/macbookair/2023.1/nhapmoncnpm/IT3180_Project/QuanLyDanCu/src/icon/avatar.png");
+        ImageIcon icon = new ImageIcon("QuanLyDanCu/src/icon/avatar.png");
         Image img = icon.getImage();
         Image scaledImg = img.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(scaledImg);
@@ -119,10 +122,10 @@ public class DangNhap extends GiaoDien  {
         return connection;
     }
     public String validateSignIn(String username, String password) {
-        String URL = "jdbc:postgresql://localhost:5432/QuanLyDanCu";
+        String URL = "jdbc:postgresql://localhost:5432/postgres";
         String querry = "SELECT * FROM DangNhap WHERE username = ? AND password = ?";
         String role = null;
-        try(Connection connection = DriverManager.getConnection(URL, "postgres", "271203")) {
+        try(Connection connection = DriverManager.getConnection(URL, "postgres", "anhbopcolen")) {
             PreparedStatement pS = connection.prepareStatement(querry);
             pS.setString(1, username);
             pS.setString(2, password);

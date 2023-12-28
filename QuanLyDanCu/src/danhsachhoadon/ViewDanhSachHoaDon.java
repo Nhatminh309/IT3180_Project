@@ -1,4 +1,4 @@
-package danhsachhoadon;
+package QuanLyDanCu.src.danhsachhoadon;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
@@ -24,7 +24,7 @@ public class ViewDanhSachHoaDon extends DanhSachHoaDon {
         JPanel backPanel = new JPanel();
         backPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
         backButton = new JButton("Back");
-        ImageIcon icon = new ImageIcon("/Users/macbookair/2023.1/nhapmoncnpm/IT3180_Project/QuanLyDanCu/src/icon/backIcon.png");
+        ImageIcon icon = new ImageIcon("QuanLyDanCu/src/icon/backIcon.png");
         Image img = icon.getImage();
         Image scaledImg = img.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(scaledImg);

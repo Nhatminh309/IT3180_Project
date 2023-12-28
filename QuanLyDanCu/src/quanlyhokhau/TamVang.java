@@ -1,5 +1,5 @@
-package quanlyhokhau;
-import giaodien.GiaoDienQuanLy;
+package QuanLyDanCu.src.quanlyhokhau;
+import QuanLyDanCu.src.giaodien.GiaoDienQuanLy;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;

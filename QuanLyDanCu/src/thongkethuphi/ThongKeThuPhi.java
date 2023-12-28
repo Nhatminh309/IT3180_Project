@@ -1,8 +1,8 @@
-package thongkethuphi;
+package QuanLyDanCu.src.thongkethuphi;
 
-import giaodien.GiaoDienQuanLy;
-import themhoadon.ThemHoaDonChungCu;
-import themhoadon.ThemHoaDonTDP;
+import QuanLyDanCu.src.giaodien.GiaoDienQuanLy;
+import QuanLyDanCu.src.themhoadon.ThemHoaDonChungCu;
+import QuanLyDanCu.src.themhoadon.ThemHoaDonTDP;
 
 import javax.swing.*;
 import java.awt.*;
@@ -28,7 +28,7 @@ public class ThongKeThuPhi extends GiaoDienQuanLy {
         selectionPanel.add(Box.createRigidArea(new Dimension(320, 0)));
 
         dropDownButton = new JButton();
-        ImageIcon icon = new ImageIcon("/Users/macbookair/2023.1/nhapmoncnpm/IT3180_Project/QuanLyDanCu/src/icon/downArrow.png");
+        ImageIcon icon = new ImageIcon("QuanLyDanCu/src/icon/downArrow.png");
         Image img = icon.getImage();
         Image scaledImg = img.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(scaledImg);

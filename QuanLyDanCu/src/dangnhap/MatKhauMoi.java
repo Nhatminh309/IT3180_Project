@@ -1,4 +1,4 @@
-package dangnhap;
+package QuanLyDanCu.src.dangnhap;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import giaodien.*;
+import QuanLyDanCu.src.giaodien.*;
 public class MatKhauMoi extends GiaoDien {
     private static JTextField userNameField;
     private static JTextField newPswField;

@@ -1,6 +1,6 @@
-package quanlyhokhau;
+package QuanLyDanCu.src.quanlyhokhau;
 
-import giaodien.GiaoDienQuanLy;
+import QuanLyDanCu.src.giaodien.GiaoDienQuanLy;
 
 import javax.swing.*;
 import java.awt.*;

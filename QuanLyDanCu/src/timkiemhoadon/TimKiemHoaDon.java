@@ -1,4 +1,4 @@
-package timkiemhoadon;
+package QuanLyDanCu.src.timkiemhoadon;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
@@ -10,7 +10,7 @@ import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
 
-import danhsachhoadon.DanhSachHoaDon;
+import QuanLyDanCu.src.danhsachhoadon.DanhSachHoaDon;
 public class TimKiemHoaDon extends DanhSachHoaDon{
     private static JLabel searchLabel;
     private static JTextField searchField;
@@ -34,7 +34,7 @@ public class TimKiemHoaDon extends DanhSachHoaDon{
 
 
         searchButton = new JButton();
-        ImageIcon icon = new ImageIcon("/Users/macbookair/2023.1/nhapmoncnpm/IT3180_Project/QuanLyDanCu/src/icon/searchIcon.png");
+        ImageIcon icon = new ImageIcon("QuanLyDanCu/src/icon/searchIcon.png");
         Image img = icon.getImage();
         Image scaledImg = img.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(scaledImg);

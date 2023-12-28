@@ -1,4 +1,4 @@
-package dangnhap;
+package QuanLyDanCu.src.dangnhap;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -7,7 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import giaodien.*;
+import QuanLyDanCu.src.giaodien.*;
 public class DangKy extends GiaoDien {
     private static JTextField userNameField;
     private static JPasswordField pswField;

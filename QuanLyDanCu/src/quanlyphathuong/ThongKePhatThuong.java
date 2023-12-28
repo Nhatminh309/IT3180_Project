@@ -1,6 +1,6 @@
-package quanlyphathuong;
+package QuanLyDanCu.src.quanlyphathuong;
 
-import giaodien.GiaoDienQuanLy;
+import QuanLyDanCu.src.giaodien.GiaoDienQuanLy;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,7 +25,7 @@ public class ThongKePhatThuong extends GiaoDienQuanLy {
         searchField.setBounds(200, 100, 400, 50);
 
         searchButton = new JButton();
-        ImageIcon icon = new ImageIcon("/Users/macbookair/2023.1/nhapmoncnpm/IT3180_Project/QuanLyDanCu/src/icon/searchIcon.png");
+        ImageIcon icon = new ImageIcon("QuanLyDanCu/src/icon/searchIcon.png");
         Image img = icon.getImage();
         Image scaledImg = img.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(scaledImg);

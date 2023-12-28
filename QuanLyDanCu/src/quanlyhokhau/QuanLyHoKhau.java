@@ -1,6 +1,6 @@
-package quanlyhokhau;
+package QuanLyDanCu.src.quanlyhokhau;
 import javax.swing.*;
-import giaodien.*;
+import QuanLyDanCu.src.giaodien.*;
 public class QuanLyHoKhau extends GiaoDienQuanLy {
     private static JFrame hoKhauFrame;
     private static JButton thayDoiChuHo;

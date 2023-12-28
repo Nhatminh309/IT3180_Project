@@ -1,6 +1,6 @@
-package quanlyhokhau;
+package QuanLyDanCu.src.quanlyhokhau;
 
-import giaodien.GiaoDienQuanLy;
+import QuanLyDanCu.src.giaodien.GiaoDienQuanLy;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -32,7 +32,7 @@ public class TimKiemHoKhau extends GiaoDienQuanLy {
 
 
         searchButton = new JButton();
-        ImageIcon icon = new ImageIcon("/Users/macbookair/2023.1/nhapmoncnpm/IT3180_Project/QuanLyDanCu/src/icon/searchIcon.png");
+        ImageIcon icon = new ImageIcon("QuanLyDanCu/src/icon/searchIcon.png");
         Image img = icon.getImage();
         Image scaledImg = img.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(scaledImg);

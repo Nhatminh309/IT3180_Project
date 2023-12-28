@@ -1,18 +1,18 @@
-package giaodien;
+package QuanLyDanCu.src.giaodien;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.sql.*;
-import dangnhap.*;
-import danhsachhoadon.*;
-import quanlyhokhau.*;
-import quanlyphathuong.DanhSachPhatThuong;
-import quanlyphathuong.ThongKePhatThuong;
-import themhoadon.ThemHoaDon;
-import thongkethuphi.ThongKeThuPhi;
-import timkiemhoadon.*;
+import QuanLyDanCu.src.dangnhap.*;
+import QuanLyDanCu.src.danhsachhoadon.*;
+import QuanLyDanCu.src.quanlyhokhau.*;
+import QuanLyDanCu.src.quanlyphathuong.DanhSachPhatThuong;
+import QuanLyDanCu.src.quanlyphathuong.ThongKePhatThuong;
+import QuanLyDanCu.src.themhoadon.ThemHoaDon;
+import QuanLyDanCu.src.thongkethuphi.ThongKeThuPhi;
+import QuanLyDanCu.src.timkiemhoadon.*;
 public class GiaoDienQuanLy extends DangNhap{
     private static JFrame frame;
     private static JButton quanLyHoKhau;
@@ -115,7 +115,7 @@ public class GiaoDienQuanLy extends DangNhap{
 
         //Panel toolbar
         panelToolbar.add(Box.createRigidArea(new Dimension(30, 0)));
-        ImageIcon icon = new ImageIcon("/Users/macbookair/2023.1/nhapmoncnpm/IT3180_Project/QuanLyDanCu/src/icon/iconHoKhau.png");
+        ImageIcon icon = new ImageIcon("QuanLyDanCu/src/icon/iconHoKhau.png");
         Image img = icon.getImage();
         Image scaledImg = img.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(scaledImg);
@@ -297,12 +297,12 @@ public class GiaoDienQuanLy extends DangNhap{
     }
     //Get connection of Database
     public String getStringURL() {
-        String URL = "jdbc:postgresql://localhost:5432/QuanLyDanCu";
+        String URL = "jdbc:postgresql://localhost:5432/postgres";
         return URL;
     }
     public Connection getConnectDatabase() throws SQLException {
         String URL = getStringURL();
-        Connection connection = DriverManager.getConnection(URL, "postgres", "271203");
+        Connection connection = DriverManager.getConnection(URL, "postgres", "anhbopcolen");
         return connection;
     }
     public JPanel getPanelBoard() {

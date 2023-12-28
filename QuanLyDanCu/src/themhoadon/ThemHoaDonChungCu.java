@@ -1,6 +1,6 @@
-package themhoadon;
+package QuanLyDanCu.src.themhoadon;
 
-import giaodien.GiaoDienQuanLy;
+import QuanLyDanCu.src.giaodien.GiaoDienQuanLy;
 
 import javax.swing.*;
 import java.awt.*;
@@ -30,7 +30,7 @@ public class ThemHoaDonChungCu extends GiaoDienQuanLy  {
         JPanel backPanel = new JPanel();
         backPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
         JButton backButton = new JButton("Back");
-        ImageIcon icon = new ImageIcon("/Users/macbookair/2023.1/nhapmoncnpm/IT3180_Project/QuanLyDanCu/src/icon/backIcon.png");
+        ImageIcon icon = new ImageIcon("QuanLyDanCu/src/icon/backIcon.png");
         Image img = icon.getImage();
         Image scaledImg = img.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(scaledImg);
