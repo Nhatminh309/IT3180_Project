@@ -84,6 +84,7 @@ public class DangNhap extends GiaoDien  {
         forgotPswButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                getFrame().dispose();
                 new MatKhauMoi().changPassword();
             }
         });

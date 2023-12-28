@@ -170,6 +170,8 @@ public class ThemHoaDonChungCu extends GiaoDienQuanLy  {
             public void actionPerformed(ActionEvent e) {
                 addHDToSQL();
                 //set blank text to field
+                addHDToSQL();
+                JOptionPane.showMessageDialog(panelBoard, "Đã thêm hoá đơn thành công");
                 maHDField.setText("");
                 maHKField.setText("");
                 phiDvuField.setText("");
@@ -179,7 +181,6 @@ public class ThemHoaDonChungCu extends GiaoDienQuanLy  {
                 phiDienField.setText("");
                 phiNuocField.setText("");
                 phiGuiXeField.setText("");
-                JOptionPane.showMessageDialog(panelBoard, "Đã thêm hoá đơn thành công");
             }
         });
 
@@ -197,18 +198,19 @@ public class ThemHoaDonChungCu extends GiaoDienQuanLy  {
         try {
             Connection connection = getConnectDatabase();
             Statement statement = connection.createStatement();
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO bang_phi(ma_ho_khau, dia_diem, phi_qly_chung_cu, phi_dvu_chung_cu, phi_gui_xe, phi_dien, phi_nuoc, phi_internet, thoi_diem_dong,da_xac_nhan, ma_ho_khau) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO bang_phi(ma_hoa_don, dia_diem, phi_qly_chung_cu, phi_dvu_chung_cu, phi_gui_xe, phi_dien, phi_nuoc, phi_internet, thoi_diem_dong,da_xac_nhan, ma_ho_khau) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             preparedStatement.setString(1, maHDField.getText());
-            preparedStatement.setString(2, "Chung cư Bluemoon");
+            preparedStatement.setString(2, "Chung cư BlueMoon");
             preparedStatement.setInt(3, calculatePhiQuanLy());
             preparedStatement.setInt(4, calculatePhiDichVu());
             preparedStatement.setInt(5, calculatePhiGuiXe());
             preparedStatement.setInt(6, Integer.parseInt(phiDienField.getText()));
             preparedStatement.setInt(7, Integer.parseInt(phiNuocField.getText()));
             preparedStatement.setInt(8, Integer.parseInt(phiInternetField.getText()));
-            preparedStatement.setDate(8, Date.valueOf(hanDongField.getText()));
-            preparedStatement.setBoolean(9, false);
-            preparedStatement.setInt(10, Integer.parseInt(maHKField.getText()));
+            preparedStatement.setDate(9, Date.valueOf(hanDongField.getText()));
+            preparedStatement.setBoolean(10, false);
+            preparedStatement.setInt(11, Integer.parseInt(maHKField.getText()));
+            preparedStatement.executeQuery();
 
             statement.close();
             connection.close();

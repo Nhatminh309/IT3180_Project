@@ -101,7 +101,7 @@ public class DangKyTamVang extends GiaoDienQuanLy {
             preparedStatement.setString(4, noiDenField.getText());
             preparedStatement.setBoolean(5, true);
 
-            preparedStatement.executeUpdate();
+            preparedStatement.executeQuery();
 
             statement.close();
             connection.close();

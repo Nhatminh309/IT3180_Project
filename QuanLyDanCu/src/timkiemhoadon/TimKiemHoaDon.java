@@ -170,14 +170,23 @@ public class TimKiemHoaDon extends DanhSachHoaDon{
                 Object idValue = model.getValueAt(modelRowIndex, 0);
 
                 StringBuilder query = new StringBuilder("UPDATE bang_phi SET ");
+                boolean firstAttribute = true;
                 for (int j = 0; j < model.getColumnCount(); j++) {
                     String columnName = model.getColumnName(j);
                     String attribute = columnToAttributeMap.get(columnName);
                     Object value = model.getValueAt(modelRowIndex, j);
+                    if(value == null) {
+                        value = 0;
+                    }
                     if (attribute != null && !attribute.equals("ma_hoa_don")) {
-                        query.append(attribute).append("='").append(value).append("'");
-                        if (j < model.getColumnCount() - 1) {
-                            query.append(", ");
+                        if (attribute != null && !attribute.equals("ma_hoa_don")) {
+                            if (!firstAttribute) {
+                                query.append(", "); // Add a comma if it's not the first attribute
+                            } else {
+                                firstAttribute = false; // Set the flag to false after adding the first attribute
+                            }
+
+                            query.append(attribute).append("='").append(value).append("'");
                         }
                     }
                 }

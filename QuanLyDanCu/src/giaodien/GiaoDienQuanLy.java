@@ -8,7 +8,10 @@ import java.sql.*;
 import dangnhap.*;
 import danhsachhoadon.*;
 import quanlyhokhau.*;
+import quanlyphathuong.DanhSachPhatThuong;
+import quanlyphathuong.ThongKePhatThuong;
 import themhoadon.ThemHoaDon;
+import thongkethuphi.ThongKeThuPhi;
 import timkiemhoadon.*;
 public class GiaoDienQuanLy extends DangNhap{
     private static JFrame frame;
@@ -256,18 +259,39 @@ public class GiaoDienQuanLy extends DangNhap{
                 new TimKiemHoaDon();
             }
         });
+        menuItem4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                new ThongKeThuPhi();
+            }
+        });
         popMenu.show(co, 0, co.getHeight());
     }
     public void showSubFunctionPhatThuong(Component co) {
         JPopupMenu popMenu = new JPopupMenu();
         Font menuFont = new Font(Font.SANS_SERIF, Font.BOLD, 16);
         JMenuItem menuItem1 = new JMenuItem("1. Danh sách phát thưởng");
-        JMenuItem menuItem2 = new JMenuItem("2. Danh sách quà tặng");
+        JMenuItem menuItem2 = new JMenuItem("2. Thống kê quà tặng");
 
         menuItem1.setFont(menuFont);
         menuItem2.setFont(menuFont);
         popMenu.add(menuItem1);
         popMenu.add(menuItem2);
+        menuItem1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                new DanhSachPhatThuong();
+            }
+        });
+        menuItem2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                new ThongKePhatThuong();
+            }
+        });
 
         popMenu.show(co, 0, co.getHeight());
     }

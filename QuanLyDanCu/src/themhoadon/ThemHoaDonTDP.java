@@ -107,11 +107,12 @@ public class ThemHoaDonTDP extends GiaoDienQuanLy {
             public void actionPerformed(ActionEvent e) {
                 addHoaDonToSQL();
                 //set blank text to field
+                addHoaDonToSQL();
+                JOptionPane.showMessageDialog(panelBoard, "Đã thêm hoá đơn thành công");
                 maHkField.setText("");
                 phiVSField.setText("");
                 hanDongField.setText("");
                 maHkField.setText("");
-                JOptionPane.showMessageDialog(panelBoard, "Đã thêm hoá đơn thành công");
             }
         });
 
@@ -135,6 +136,7 @@ public class ThemHoaDonTDP extends GiaoDienQuanLy {
             preparedStatement.setDate(4, Date.valueOf(hanDongField.getText()));
             preparedStatement.setBoolean(5, false);
             preparedStatement.setInt(6, Integer.parseInt(maHkField.getText()));
+            preparedStatement.executeQuery();
 
 
             statement.close();

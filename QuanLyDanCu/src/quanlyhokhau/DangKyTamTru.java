@@ -113,7 +113,7 @@ public class DangKyTamTru extends GiaoDienQuanLy {
             preparedStatement.setInt(5, Integer.parseInt(maNKField.getText()));
             preparedStatement.setBoolean(6, true);
 
-            preparedStatement.executeUpdate();
+            preparedStatement.executeQuery();
 
             statement.close();
             connection.close();

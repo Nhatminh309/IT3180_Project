@@ -90,7 +90,7 @@ public class MatKhauMoi extends GiaoDien {
             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE dangnhap SET password = ? WHERE username = ?");
             preparedStatement.setString(1, newPswField.getText());
             preparedStatement.setString(2, userNameField.getText());
-
+            preparedStatement.executeUpdate();
             statement.close();
             connection.close();
         } catch (SQLException e) {
