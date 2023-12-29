@@ -34,7 +34,7 @@ public class GiaoDien {
         panelBoard = new JPanel();
         panelBoard.setBounds(200, 100, 1480, 800);
         //panelBoard.setLayout(new BoxLayout(panelBoard, BoxLayout.Y_AXIS));
-        panelBoard.setBackground(Color.WHITE);
+//        panelBoard.setBackground(Color.WHITE);
         //panelBoard.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
 
 
@@ -51,12 +51,13 @@ public class GiaoDien {
         toolBarLabel.setFont(newFont);
         toolBarLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         panelToolbar.add(toolBarLabel);
-        panelToolbar.add(Box.createRigidArea(new Dimension(200, 0)));
+        panelToolbar.add(Box.createRigidArea(new Dimension(350, 0)));
         //Dang ky button
         dangKy = new JButton("Đăng ký");
         dangKy.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 24));
         dangKy.setMaximumSize(new Dimension(150, 50));
         dangKy.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+        dangKy.setFocusable(false);
         panelToolbar.add(dangKy);
         panelToolbar.add(Box.createRigidArea(new Dimension(10, 0)));
         //Dang nhap button
@@ -64,6 +65,7 @@ public class GiaoDien {
         dangNhap.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 24));
         dangNhap.setMaximumSize(new Dimension(150, 50));
         dangNhap.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+        dangNhap.setFocusable(false);
         panelToolbar.add(dangNhap);
 
 

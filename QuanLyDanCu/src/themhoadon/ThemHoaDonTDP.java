@@ -37,6 +37,7 @@ public class ThemHoaDonTDP extends GiaoDienQuanLy {
         backButton.setIconTextGap(10);
         backButton.setFont(new Font(Font.SANS_SERIF, Font.ITALIC, 18));
         backPanel.add(backButton);
+        backButton.setMaximumSize(new Dimension(200, 40));
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -100,7 +101,7 @@ public class ThemHoaDonTDP extends GiaoDienQuanLy {
         JPanel updatePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         JButton updateButton = new JButton("Thêm hoá đơn");
         updateButton.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
-        updateButton.setPreferredSize(new Dimension(150, 50));
+        updateButton.setPreferredSize(new Dimension(200, 50));
         updatePanel.add(updateButton);
         updateButton.addActionListener(new ActionListener() {
             @Override
@@ -109,7 +110,7 @@ public class ThemHoaDonTDP extends GiaoDienQuanLy {
                 //set blank text to field
                 addHoaDonToSQL();
                 JOptionPane.showMessageDialog(panelBoard, "Đã thêm hoá đơn thành công");
-                maHkField.setText("");
+                maHDField.setText("");
                 phiVSField.setText("");
                 hanDongField.setText("");
                 maHkField.setText("");

@@ -1,8 +1,6 @@
 package QuanLyDanCu.src.thongkethuphi;
 
 import QuanLyDanCu.src.giaodien.GiaoDienQuanLy;
-import QuanLyDanCu.src.themhoadon.ThemHoaDonChungCu;
-import QuanLyDanCu.src.themhoadon.ThemHoaDonTDP;
 
 import javax.swing.*;
 import java.awt.*;

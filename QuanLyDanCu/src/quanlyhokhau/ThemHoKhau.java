@@ -116,7 +116,7 @@ public class ThemHoKhau extends GiaoDienQuanLy {
         JPanel updatePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         JButton updateButton = new JButton("Thêm hộ khẩu");
         updateButton.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
-        updateButton.setPreferredSize(new Dimension(150, 50));
+        updateButton.setPreferredSize(new Dimension(200, 50));
         updatePanel.add(updateButton);
         updateButton.addActionListener(new ActionListener() {
             @Override

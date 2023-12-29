@@ -92,7 +92,7 @@ public class GiaoDienQuanLy extends DangNhap{
             }
         });
 
-        ImageIcon iconLogOut = new ImageIcon("/Users/macbookair/2023.1/nhapmoncnpm/IT3180_Project/QuanLyDanCu/src/icon/logout_Icon.png");
+        ImageIcon iconLogOut = new ImageIcon("/QuanLyDanCu/src/icon/logout_Icon.png");
         Image imgLogOut = iconLogOut.getImage();
         Image scaledImgLogOut = imgLogOut.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
         ImageIcon scaleIconLogOut = new ImageIcon(scaledImgLogOut);
@@ -102,7 +102,7 @@ public class GiaoDienQuanLy extends DangNhap{
         //panelButtons.add(Box.createVerticalGlue());
         logOutButton.setMaximumSize(new Dimension(200, 50));
         logOutButton.setFocusable(false);
-        panelButtons.add(Box.createRigidArea(new Dimension(0, 400)));
+        panelButtons.add(Box.createRigidArea(new Dimension(0, 390)));
         panelButtons.add(logOutButton);
 
         logOutButton.addActionListener(new ActionListener() {
@@ -126,7 +126,7 @@ public class GiaoDienQuanLy extends DangNhap{
         toolBarLabel.setFont(newFont);
         toolBarLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         panelToolbar.add(toolBarLabel);
-        panelToolbar.add(Box.createRigidArea(new Dimension(300, 0)));
+        panelToolbar.add(Box.createRigidArea(new Dimension(400, 0)));
 
         JLabel subLabel = new JLabel("Xin chào");
         JLabel userNameLabel = new JLabel(getUserNameField().getText());

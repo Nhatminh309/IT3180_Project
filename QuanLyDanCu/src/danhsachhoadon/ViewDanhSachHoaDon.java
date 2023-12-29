@@ -118,7 +118,7 @@ public class ViewDanhSachHoaDon extends DanhSachHoaDon {
         JPanel backPanel = new JPanel();
         backPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
         backButton = new JButton("Back");
-        ImageIcon icon = new ImageIcon("/Users/macbookair/2023.1/nhapmoncnpm/IT3180_Project/QuanLyDanCu/src/icon/backIcon.png");
+        ImageIcon icon = new ImageIcon("QuanLyDanCu/src/icon/backIcon.png");
         Image img = icon.getImage();
         Image scaledImg = img.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(scaledImg);
@@ -154,8 +154,8 @@ public class ViewDanhSachHoaDon extends DanhSachHoaDon {
         JTableHeader header = table.getTableHeader();
         header.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 18));
         try {
-            String URL = "jdbc:postgresql://localhost:5432/QuanLyDanCu";
-            Connection connection = DriverManager.getConnection(URL, "postgres", "271203");
+            String URL = "jdbc:postgresql://localhost:5432/postgres";
+            Connection connection = DriverManager.getConnection(URL, "postgres", "anhbopcolen");
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT ma_hoa_don, phi_ve_sinh, thoi_diem_dong, da_xac_nhan, ma_ho_khau FROM bang_phi WHERE dia_diem = 'Tổ dân phố 7'");
             ResultSetMetaData metaData = resultSet.getMetaData();

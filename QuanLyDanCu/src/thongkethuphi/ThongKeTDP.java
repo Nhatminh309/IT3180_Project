@@ -57,7 +57,7 @@ public class ThongKeTDP extends GiaoDienQuanLy {
         searchPanel.add(searchField);
 
         searchButton = new JButton();
-        ImageIcon icon2 = new ImageIcon("/Users/macbookair/2023.1/nhapmoncnpm/IT3180_Project/QuanLyDanCu/src/icon/searchIcon.png");
+        ImageIcon icon2 = new ImageIcon("QuanLyDanCu/src/icon/searchIcon.png");
         Image img2 = icon2.getImage();
         Image scaledImg2 = img2.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon2 = new ImageIcon(scaledImg2);
