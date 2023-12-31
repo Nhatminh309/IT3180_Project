@@ -11,12 +11,12 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 
-public class GiaoDien {
+public class GiaoDienChung {
     private static JFrame frame;
     private static JPanel verticalBar;
     private static JPanel horizontalBar;
 
-    public GiaoDien() {
+    public GiaoDienChung() {
         frame = new JFrame("Quản lý dân cư");
         frame.setSize(800, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -77,6 +77,6 @@ public class GiaoDien {
 
 
     public static void main(String[] args) {
-        new GiaoDien();
+        new GiaoDienChung();
     }
 }
