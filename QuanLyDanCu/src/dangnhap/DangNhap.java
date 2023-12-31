@@ -71,13 +71,13 @@ public class DangNhap extends GiaoDien {
                     JOptionPane.showMessageDialog(panelBoard, "Tên tài khoản hoặc mật khẩu không chính xác");
                 } else if(validateSignIn(userName, password).equals("admin")) {
                     System.out.println("Đăng nhập thành công với vai trò admin");
-                    JOptionPane.showMessageDialog(panelBoard, "Đăng nhập thành công");
+//                    JOptionPane.showMessageDialog(panelBoard, "Đăng nhập thành công");
                     JFrame frame = getFrame();
                     frame.dispose();
                     new GiaoDienQuanLy();
                 } else if(validateSignIn(userName, password).equals("user")) {
                     System.out.println("Đăng nhập thành công với vai trò user");
-                    JOptionPane.showMessageDialog(panelBoard, "Đăng nhập thành công");
+                    //JOptionPane.showMessageDialog(panelBoard, "Đăng nhập thành công");
 
                 }
 

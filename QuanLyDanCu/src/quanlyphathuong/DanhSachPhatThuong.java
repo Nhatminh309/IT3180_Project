@@ -23,7 +23,7 @@ public class DanhSachPhatThuong extends GiaoDienQuanLy {
         panelBoard.removeAll();
 
         viewPanel = new JPanel(new BorderLayout());
-        viewPanel.setBounds(0, 0, 1280, 700);
+        viewPanel.setBounds(0, 0, 1350, 800);
         JPanel searchPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 10));
         viewPanel.add(searchPanel, BorderLayout.NORTH);
 

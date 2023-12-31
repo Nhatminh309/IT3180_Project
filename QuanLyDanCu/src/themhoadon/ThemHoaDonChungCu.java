@@ -25,7 +25,7 @@ public class ThemHoaDonChungCu extends GiaoDienQuanLy  {
         panelBoard.removeAll();
 
         JPanel viewPanel = new JPanel(new BorderLayout());
-        viewPanel.setBounds(0, 0, 1280, 700);
+        viewPanel.setBounds(0, 0, 1350, 700);
 
         JPanel backPanel = new JPanel();
         backPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -163,7 +163,7 @@ public class ThemHoaDonChungCu extends GiaoDienQuanLy  {
         JPanel updatePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         JButton updateButton = new JButton("Thêm hoá đơn");
         updateButton.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
-        updateButton.setPreferredSize(new Dimension(150, 50));
+        updateButton.setPreferredSize(new Dimension(200, 50));
         updatePanel.add(updateButton);
         updateButton.addActionListener(new ActionListener() {
             @Override

@@ -20,7 +20,7 @@ public class TamVang extends GiaoDienQuanLy {
         panelBoard.removeAll();
 
         JPanel viewPanel = new JPanel(new BorderLayout());
-        viewPanel.setBounds(0, 0, 1280, 700);
+        viewPanel.setBounds(0, 0, 1350, 800);
 
         tamVangLabel = new JLabel("Danh sách tạm vắng");
         tamVangLabel.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 28));

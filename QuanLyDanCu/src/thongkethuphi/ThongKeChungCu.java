@@ -22,7 +22,7 @@ public class ThongKeChungCu extends GiaoDienQuanLy {
         panelBoard.removeAll();
 
         viewPanel = new JPanel(new BorderLayout());
-        viewPanel.setBounds(0, 0, 1280, 700);
+        viewPanel.setBounds(0, 0, 1350, 800);
 
         JPanel backPanel = new JPanel();
         backPanel.setLayout(new FlowLayout(FlowLayout.LEFT));

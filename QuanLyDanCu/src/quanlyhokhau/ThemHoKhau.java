@@ -27,7 +27,7 @@ public class ThemHoKhau extends GiaoDienQuanLy {
         panelBoard.removeAll();
 
         JPanel viewPanel = new JPanel(new BorderLayout());
-        viewPanel.setBounds(0, 0, 1280, 700);
+        viewPanel.setBounds(0, 0, 1350, 800);
 
         JLabel themHoKhauabel = new JLabel("Đăng ký hộ khẩu thường trú");
         themHoKhauabel.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));

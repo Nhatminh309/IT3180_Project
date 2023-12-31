@@ -24,7 +24,7 @@ public class ThemHoaDonTDP extends GiaoDienQuanLy {
         panelBoard.removeAll();
 
         JPanel viewPanel = new JPanel(new BorderLayout());
-        viewPanel.setBounds(0, 0, 1280, 700);
+        viewPanel.setBounds(0, 0, 1350, 700);
 
         JPanel backPanel = new JPanel();
         backPanel.setLayout(new FlowLayout(FlowLayout.LEFT));

@@ -19,7 +19,7 @@ public class ThongKePhatThuong extends GiaoDienQuanLy {
 
         viewPanel = new JPanel();
         viewPanel.setLayout(null);
-        viewPanel.setBounds(0, 0, 1280, 700);
+        viewPanel.setBounds(0, 0, 1350, 800);
 
         searchField = new JTextField(20);
         searchField.setBounds(200, 100, 400, 50);

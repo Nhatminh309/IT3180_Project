@@ -18,7 +18,7 @@ public class DangKyTamVang extends GiaoDienQuanLy {
         panelBoard.removeAll();
 
         JPanel viewPanel = new JPanel(new BorderLayout());
-        viewPanel.setBounds(0, 0, 1280, 700);
+        viewPanel.setBounds(0, 0, 1350, 800);
 
         JLabel themTamVangLabel = new JLabel("Đăng ký tạm vắng trực tuyến");
         themTamVangLabel.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));

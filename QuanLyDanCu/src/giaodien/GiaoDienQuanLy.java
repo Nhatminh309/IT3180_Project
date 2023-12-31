@@ -126,7 +126,7 @@ public class GiaoDienQuanLy extends DangNhap{
         toolBarLabel.setFont(newFont);
         toolBarLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         panelToolbar.add(toolBarLabel);
-        panelToolbar.add(Box.createRigidArea(new Dimension(400, 0)));
+        panelToolbar.add(Box.createRigidArea(new Dimension(450, 0)));
 
         JLabel subLabel = new JLabel("Xin chào");
         JLabel userNameLabel = new JLabel(getUserNameField().getText());
