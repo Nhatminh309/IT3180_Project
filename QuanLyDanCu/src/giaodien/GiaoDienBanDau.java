@@ -11,94 +11,69 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 
-public class GiaoDienBanDau extends GiaoDien {
-    private static JFrame frame;
-    private static JButton dangNhap;
-    private static JButton dangKy;
-    private static JButton btnHome;
-    private static JButton btnAbout;
-    private static JLabel toolBarLabel = new JLabel("CỔNG THÔNG TIN THỦ TỤC HÀNH CHÍNH");
-    private static JPanel verticalBar;
-    private static JPanel horizontalBar;
+public class GiaoDienBanDau extends GiaoDienChung {
+
     public GiaoDienBanDau() {
-        frame = new JFrame("Quản lý dân cư");
-        frame.setSize(800, 600);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLocationRelativeTo(null);
-        frame.setResizable(true)    ;
+        super();
 
-        JPanel mainPanel = new JPanel();
-        mainPanel.setLayout(new BorderLayout());
-
-        verticalBar = new JPanel() {
+        JButton dangNhap = new JButton("ĐĂNG NHẬP") {
             @Override
             public Dimension getPreferredSize() {
-                return new Dimension(frame.getWidth() / 6, frame.getHeight());
+                return new Dimension(horizontalBar.getWidth() / 6, horizontalBar.getHeight() / 2);
             }
         };
-        verticalBar.setBackground(Color.decode("#004AAD"));
-        verticalBar.setPreferredSize(new Dimension(frame.getWidth() / 5, frame.getHeight())); // Chiều rộng 15%, chiều cao full
-
-        horizontalBar = new JPanel() {
-            @Override
-            public Dimension getPreferredSize() {
-                return new Dimension(frame.getWidth(), frame.getHeight() / 6);
-            }
-        };
-        horizontalBar.setBackground(Color.decode("#004AAD"));
-        horizontalBar.setPreferredSize(new Dimension(frame.getWidth(), frame.getHeight() / 6)); // Chiều rộng full, chiều cao 15%
-
-
-        dangNhap = new JButton("Đăng nhập");
         dangNhap.setBackground(Color.decode("#38B6FF"));
         dangNhap.setForeground(Color.WHITE);
         dangNhap.setFont(new Font("Arial", Font.PLAIN, 20));
         dangNhap.setBorder(BorderFactory.createEmptyBorder(5, 15, 5, 15)); // Thiết lập border
         dangNhap.setFocusPainted(false); // Loại bỏ viền focus
-        
-        dangKy = new JButton("Đăng ký");
+
+//        dangNhap.setBorder(BorderFactory.createLineBorder(Color.decode("#004AAD"), 1, true));
+        JButton dangKy = new JButton("ĐĂNG KÝ") {
+            @Override
+            public Dimension getPreferredSize() {
+                return new Dimension(horizontalBar.getWidth() / 6, horizontalBar.getHeight() / 2);
+            }
+        };
+
         dangKy.setBackground(Color.decode("#38B6FF"));
         dangKy.setForeground(Color.WHITE);
         dangKy.setFont(new Font("Arial", Font.PLAIN, 20));
         dangKy.setBorder(BorderFactory.createEmptyBorder(5, 15, 5, 15)); // Thiết lập border
         dangKy.setFocusPainted(false); // Loại bỏ viền focus
-
-
         horizontalBar.add(Box.createHorizontalGlue()); // Thêm glue đưa các thành phần về bên phải
         horizontalBar.add(dangKy);
-        horizontalBar.add(Box.createRigidArea(new Dimension(10, 0))); // Để tạo khoảng cách giữa nút
         horizontalBar.add(dangNhap);
+        horizontalBar.add(Box.createRigidArea(new Dimension(20, 0))); // Để tạo khoảng cách giữa nút
 
-        btnHome = new JButton("Home");
-        btnAbout = new JButton("About");
-        verticalBar.setLayout(new BoxLayout(verticalBar, BoxLayout.Y_AXIS));
-        verticalBar.add(btnHome);
-        verticalBar.add(btnAbout);
-
-        mainPanel.add(verticalBar, BorderLayout.WEST);
-        mainPanel.add(horizontalBar, BorderLayout.NORTH);
-
-        frame.addComponentListener(new ComponentAdapter() {
+        JPanel mainPanel = new JPanel() {
             @Override
-            public void componentResized(ComponentEvent e) {
-                verticalBar.setPreferredSize(new Dimension(frame.getWidth() / 6, frame.getHeight()));
-                horizontalBar.setPreferredSize(new Dimension(frame.getWidth(), frame.getHeight() / 6));
-                frame.revalidate();
+            public Dimension getPreferredSize() {
+                return new Dimension(rightPanel.getWidth(), rightPanel.getHeight() / 2);
             }
-        });
-        frame.add(mainPanel);
-        frame.setVisible(true);
-    }
-    public String getStringURL() {
-        String URL = "jdbc:postgresql://localhost:5432/postgres";
-        return URL;
-    }
-    public Connection getConnectDatabase() throws SQLException {
-        String URL = getStringURL();
-        Connection connection = DriverManager.getConnection(URL, "postgres", "anhbopcolen");
-        return connection;
-    }
+        };
+        mainPanel.setLayout(new BorderLayout());
+        mainPanel.setBackground(Color.WHITE);
 
+        JLabel title = new JLabel("HỆ THỐNG QUẢN LÝ DÂN CƯ") {
+            @Override
+            public Dimension getPreferredSize() {
+                return new Dimension(mainPanel.getWidth(), mainPanel.getHeight() / 4);
+            }
+            @Override
+            public Font getFont() {
+                return new Font("Arial", Font.PLAIN, mainPanel.getHeight() / 16);
+            }
+        };
+        title.setFont(new Font("Arial", Font.PLAIN, 20));
+        title.setHorizontalAlignment(JLabel.CENTER);
+        title.setVerticalAlignment(JLabel.CENTER);
+        title.setForeground(Color.decode("#004AAD"));
+
+        mainPanel.add(title, BorderLayout.NORTH);
+
+        rightPanel.add(mainPanel, BorderLayout.CENTER);
+    }
 
     public static void main(String[] args) {
         new GiaoDienBanDau();
