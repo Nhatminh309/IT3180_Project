@@ -68,7 +68,7 @@ public class GiaoDienBanDau extends GiaoDienChung {
         title.setFont(new Font("Arial", Font.PLAIN, 20));
         title.setHorizontalAlignment(JLabel.CENTER);
         title.setVerticalAlignment(JLabel.CENTER);
-        title.setForeground(Color.decode("#004AAD"));
+        title.setForeground(Color.decode("#0097B2"));
 
         mainPanel.add(title, BorderLayout.NORTH);
 
