@@ -140,7 +140,7 @@ CREATE TABLE DangNhap (
 );
 
 CREATE TABLE Can_bo(
-    Ma_can_bo INTEGER PRIMARY KEY,
+    Ma_can_bo SERIAL INTEGER PRIMARY KEY,
     Ho_ten VARCHAR(30),
     Ngay_sinh DATE,
     Gioi_tinh VARCHAR(10),
