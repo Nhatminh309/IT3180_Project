@@ -16,10 +16,10 @@ public class GiaoDienBanDau extends GiaoDienChung {
     public GiaoDienBanDau() {
         super();
 
-        JButton dangNhap = new JButton("ĐĂNG NHẬP") {
+        JButton dangNhap = new JButton("Đăng nhập") {
             @Override
             public Dimension getPreferredSize() {
-                return new Dimension(horizontalBar.getWidth() / 6, horizontalBar.getHeight() / 2);
+                return new Dimension(horizontalBar.getWidth() / 5, horizontalBar.getHeight());
             }
         };
         dangNhap.setBackground(Color.decode("#38B6FF"));
@@ -28,11 +28,10 @@ public class GiaoDienBanDau extends GiaoDienChung {
         dangNhap.setBorder(BorderFactory.createEmptyBorder(5, 15, 5, 15)); // Thiết lập border
         dangNhap.setFocusPainted(false); // Loại bỏ viền focus
 
-//        dangNhap.setBorder(BorderFactory.createLineBorder(Color.decode("#004AAD"), 1, true));
-        JButton dangKy = new JButton("ĐĂNG KÝ") {
+        JButton dangKy = new JButton("Đăng ký") {
             @Override
             public Dimension getPreferredSize() {
-                return new Dimension(horizontalBar.getWidth() / 6, horizontalBar.getHeight() / 2);
+                return new Dimension(horizontalBar.getWidth() / 5, horizontalBar.getHeight());
             }
         };
 
@@ -41,10 +40,12 @@ public class GiaoDienBanDau extends GiaoDienChung {
         dangKy.setFont(new Font("Arial", Font.PLAIN, 20));
         dangKy.setBorder(BorderFactory.createEmptyBorder(5, 15, 5, 15)); // Thiết lập border
         dangKy.setFocusPainted(false); // Loại bỏ viền focus
+
         horizontalBar.add(Box.createHorizontalGlue()); // Thêm glue đưa các thành phần về bên phải
         horizontalBar.add(dangKy);
-        horizontalBar.add(dangNhap);
         horizontalBar.add(Box.createRigidArea(new Dimension(20, 0))); // Để tạo khoảng cách giữa nút
+        horizontalBar.add(dangNhap);
+        horizontalBar.add(Box.createRigidArea(new Dimension(40, 0))); // Để tạo khoảng cách giữa nút
 
         JPanel mainPanel = new JPanel() {
             @Override

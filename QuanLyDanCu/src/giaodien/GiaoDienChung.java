@@ -17,8 +17,6 @@ public class GiaoDienChung {
     protected static JPanel leftPanel;
     protected static JPanel rightPanel;
     protected static JPanel horizontalBar;
-    protected static JPanel homePanel;
-    protected static JPanel aboutPanel;
     public GiaoDienChung() {
         frame = new JFrame("Quản lý dân cư");
         frame.setSize(1000, 578);
@@ -72,7 +70,6 @@ public class GiaoDienChung {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new BorderLayout());
 
-        homePanel = new JPanel();
         JButton btnHome = new JButton("HOME") {
             @Override
             public Dimension getPreferredSize() {
@@ -88,18 +85,17 @@ public class GiaoDienChung {
         btnHome.setFont(new Font("Arial", Font.PLAIN, 20));
         btnHome.setBorder(BorderFactory.createEmptyBorder(5, 15, 5, 15)); // Thiết lập border
         btnHome.setFocusPainted(false); // Loại bỏ viền focus
-
+        buttonPanel.add(btnHome, BorderLayout.NORTH);
         ImageIcon homeIcon = new ImageIcon("QuanLyDanCu/src/icon/homeIcon.png");
-        JLabel homeLabel = new JLabel(homeIcon) {
-            @Override
-            public Dimension getPreferredSize() {
-                return new Dimension(leftPanel.getWidth() / 6, leftPanel.getHeight() / 7);
-            }
-        };
+        int width = btnHome.getWidth();
+        int height = btnHome.getHeight();
+        Image scaledImage = homeIcon.getImage().getScaledInstance(width - 1, height - 1, Image.SCALE_SMOOTH);
 
-        homeLabel.setHorizontalAlignment(JLabel.CENTER);
-        homePanel.add(homeLabel);
-        homePanel.add(btnHome);
+        btnHome.setIcon(new ImageIcon(scaledImage));
+        btnHome.setHorizontalTextPosition(SwingConstants.RIGHT); // Đặt vị trí của văn bản bên phải của icon
+        btnHome.setVerticalTextPosition(SwingConstants.CENTER);
+        btnHome.setIconTextGap(15); // Đặt khoảng cách giữa icon và văn bản
+
         JButton btnAbout = new JButton("ABOUT") {
             @Override
             public Dimension getPreferredSize() {
@@ -116,8 +112,13 @@ public class GiaoDienChung {
         btnAbout.setBorder(BorderFactory.createEmptyBorder(5, 15, 5, 15)); // Thiết lập border
         btnAbout.setFocusPainted(false); // Loại bỏ viền focus
 
-//        buttonPanel.add(Box.createVerticalGlue());
+        ImageIcon aboutIcon = new ImageIcon("QuanLyDanCu/src/icon/aboutIcon.png");
+        scaledImage = aboutIcon.getImage().getScaledInstance(width - 1, height - 1, Image.SCALE_SMOOTH);
 
+        btnAbout.setIcon(new ImageIcon(scaledImage));
+        btnAbout.setHorizontalTextPosition(SwingConstants.RIGHT); // Đặt vị trí của văn bản bên phải của icon
+        btnAbout.setVerticalTextPosition(SwingConstants.CENTER);
+        btnAbout.setIconTextGap(15); // Đặt khoảng cách giữa icon và văn bản
 
         JPanel navigatePanel = new JPanel() {
             @Override
@@ -131,7 +132,7 @@ public class GiaoDienChung {
 
 
 
-        buttonPanel.add(btnHome, BorderLayout.NORTH);
+
         buttonPanel.add(navigatePanel, BorderLayout.CENTER);
 
         leftPanel.add(northLeftPanel, BorderLayout.NORTH);
