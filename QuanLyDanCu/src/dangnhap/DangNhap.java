@@ -57,7 +57,7 @@ public class DangNhap extends ConnectDatabase {
         //mainPanel.setLayout(null);
         //mainPanel.setBackground(Color.decode("#FBFCFC"));
 
-        Font newFont = new Font("Arial", Font.PLAIN, 18);
+        Font newFont = new Font("Arial", Font.PLAIN, 24);
         taiKhoanLabel = new JLabel("Tài khoản:");
         taiKhoanField = new JTextField(20);
         matKhauLabel = new JLabel("Mật khẩu:");
@@ -69,8 +69,9 @@ public class DangNhap extends ConnectDatabase {
         matKhauLabel.setFont(newFont);
         quenMatKhauButton.setFont(new Font("Arial", Font.PLAIN, 15));
         dangNhapButton.setFont(new Font("Arial", Font.BOLD, 20));
-        dangNhapButton.setBackground(Color.decode("#004AAD"));
+        dangNhapButton.setBackground(Color.decode("#38B6FF"));
         dangNhapButton.setOpaque(true);
+        dangNhapButton.setBorder(BorderFactory.createEmptyBorder());
         quenMatKhauButton.setBorder(BorderFactory.createEmptyBorder());
 
 
@@ -170,6 +171,9 @@ public class DangNhap extends ConnectDatabase {
             if(resultSet.next()) {
                 role = resultSet.getString("vaitro");
             }
+
+            preparedStatement.close();
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
