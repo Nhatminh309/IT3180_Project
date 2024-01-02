@@ -1,4 +1,4 @@
-package connect;
+package QuanLyDanCu.src.connect;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

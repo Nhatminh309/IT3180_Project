@@ -21,8 +21,10 @@
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files>
+      <object connection-id="45fffacf-5f53-415f-bf78-0e85919c2eb7" object-ref="schemas/public/tables/can_bo" />
       <object connection-id="45fffacf-5f53-415f-bf78-0e85919c2eb7" object-ref="schemas/public/tables/phat_thuong" />
       <object connection-id="45fffacf-5f53-415f-bf78-0e85919c2eb7" object-ref="schemas/public/tables/nhan_khau" />
+      <object connection-id="45fffacf-5f53-415f-bf78-0e85919c2eb7" object-ref="schemas/public/tables/dangnhap" />
     </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
@@ -34,6 +36,7 @@
     <filter-actions connection-id="45fffacf-5f53-415f-bf78-0e85919c2eb7" dataset="public.can_bo" active-filter-id="" />
     <filter-actions connection-id="45fffacf-5f53-415f-bf78-0e85919c2eb7" dataset="public.phan_thuong" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="45fffacf-5f53-415f-bf78-0e85919c2eb7" dataset="public.phat_thuong" active-filter-id="" />
+    <filter-actions connection-id="45fffacf-5f53-415f-bf78-0e85919c2eb7" dataset="public.dangnhap" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />

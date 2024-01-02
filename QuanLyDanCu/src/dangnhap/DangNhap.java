@@ -1,6 +1,6 @@
-package dangnhap;
+package QuanLyDanCu.src.dangnhap;
 
-import connect.ConnectDatabase;
+import QuanLyDanCu.src.connect.ConnectDatabase;
 
 import javax.swing.*;
 import javax.swing.border.Border;

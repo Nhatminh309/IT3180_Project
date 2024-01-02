@@ -1,22 +1,20 @@
 package QuanLyDanCu.src.giaodien;
+
+import QuanLyDanCu.src.connect.ConnectDatabase;
+
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 
 
-public class GiaoDienChung {
+public class GiaoDienChung extends ConnectDatabase {
     protected static JFrame frame;
     protected static JSplitPane splitPane;
     protected static JPanel leftPanel;
     protected static JPanel rightPanel;
     protected static JPanel horizontalBar;
+    protected static JPanel mainPanel;
+    protected static JPanel buttonPanel;
+    protected static JPanel navigatePanel;
     public GiaoDienChung() {
         frame = new JFrame("Quản lý dân cư");
         frame.setSize(1000, 578);
@@ -64,10 +62,9 @@ public class GiaoDienChung {
         groupLabel.setForeground(Color.WHITE);
         groupLabel.setHorizontalAlignment(JLabel.CENTER);
 
-
         northLeftPanel.add(groupLabel, BorderLayout.CENTER);
 
-        JPanel buttonPanel = new JPanel();
+        buttonPanel = new JPanel();
         buttonPanel.setLayout(new BorderLayout());
 
         JButton btnHome = new JButton("HOME") {
@@ -77,15 +74,15 @@ public class GiaoDienChung {
             }
             @Override
             public Font getFont() {
-                return new Font("Arial", Font.PLAIN, leftPanel.getHeight() / 32  );
+                return new Font("Arial", Font.PLAIN, leftPanel.getHeight() / 30   );
             }
         };
+
         btnHome.setBackground(Color.decode("#004AAD"));
         btnHome.setForeground(Color.WHITE);
         btnHome.setFont(new Font("Arial", Font.PLAIN, 20));
         btnHome.setBorder(BorderFactory.createEmptyBorder(5, 15, 5, 15)); // Thiết lập border
         btnHome.setFocusPainted(false); // Loại bỏ viền focus
-        buttonPanel.add(btnHome, BorderLayout.NORTH);
         ImageIcon homeIcon = new ImageIcon("QuanLyDanCu/src/icon/homeIcon.png");
         int width = btnHome.getWidth();
         int height = btnHome.getHeight();
@@ -96,6 +93,7 @@ public class GiaoDienChung {
         btnHome.setVerticalTextPosition(SwingConstants.CENTER);
         btnHome.setIconTextGap(15); // Đặt khoảng cách giữa icon và văn bản
 
+        buttonPanel.add(btnHome, BorderLayout.NORTH);
         JButton btnAbout = new JButton("ABOUT") {
             @Override
             public Dimension getPreferredSize() {
@@ -103,7 +101,7 @@ public class GiaoDienChung {
             }
             @Override
             public Font getFont() {
-                return new Font("Arial", Font.PLAIN, leftPanel.getHeight() / 32);
+                return new Font("Arial", Font.PLAIN, leftPanel.getHeight() / 30);
             }
         };
         btnAbout.setBackground(Color.decode("#004AAD"));
@@ -120,7 +118,7 @@ public class GiaoDienChung {
         btnAbout.setVerticalTextPosition(SwingConstants.CENTER);
         btnAbout.setIconTextGap(15); // Đặt khoảng cách giữa icon và văn bản
 
-        JPanel navigatePanel = new JPanel() {
+         navigatePanel = new JPanel() {
             @Override
             public Dimension getPreferredSize() {
                 return new Dimension(leftPanel.getWidth(), leftPanel.getHeight() / 2);
@@ -142,7 +140,7 @@ public class GiaoDienChung {
         horizontalBar = new JPanel() {
             @Override
             public Dimension getPreferredSize() {
-                return new Dimension(rightPanel.getWidth(), rightPanel.getHeight() / 6);
+                return new Dimension(rightPanel.getWidth(), rightPanel.getHeight() / 5);
             }
         };
         horizontalBar.setLayout(new BoxLayout(horizontalBar, BoxLayout.X_AXIS));
@@ -152,18 +150,6 @@ public class GiaoDienChung {
         frame.add(splitPane);
         frame.setVisible(true);
     }
-
-
-    public String getStringURL() {
-        String URL = "jdbc:postgresql://localhost:5432/postgres";
-        return URL;
-    }
-    public Connection getConnectDatabase() throws SQLException {
-        String URL = getStringURL();
-        Connection connection = DriverManager.getConnection(URL, "postgres", "anhbopcolen");
-        return connection;
-    }
-
 
     public static void main(String[] args) {
         new GiaoDienChung();
