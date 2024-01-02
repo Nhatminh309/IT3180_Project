@@ -20,7 +20,7 @@ public class DangNhap extends ConnectDatabase {
     private static JLabel taiKhoanLabel;
     private static JTextField taiKhoanField;
     private static JLabel matKhauLabel;
-    private static JTextField matKhauField;
+    private static JPasswordField matKhauField;
     private static JPanel dangKyPanel;
     private static JButton quenMatKhauButton;
     private static JButton dangNhapButton;
@@ -61,7 +61,7 @@ public class DangNhap extends ConnectDatabase {
         taiKhoanLabel = new JLabel("Tài khoản:");
         taiKhoanField = new JTextField(20);
         matKhauLabel = new JLabel("Mật khẩu:");
-        matKhauField = new JTextField(20);
+        matKhauField = new JPasswordField(20);
         quenMatKhauButton = new JButton("Quên mật khẩu ?");
         dangNhapButton = new JButton("Đăng nhập");
 
@@ -138,7 +138,7 @@ public class DangNhap extends ConnectDatabase {
         dangNhapButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(taiKhoanField.getText().equals("") || matKhauField.getText().equals("")) {
+                if(taiKhoanField.getText().equals("") || String.valueOf(matKhauField.getPassword()).equals("")) {
                     JOptionPane.showMessageDialog(mainPanel, "Đăng nhập không thành công");
                 } else if(validateSignIn(taiKhoanField.getText(), matKhauField.getText()) == null) {
                     JOptionPane.showMessageDialog(mainPanel, "Tài khoản hoặc mật khẩu chưa chính xác");
