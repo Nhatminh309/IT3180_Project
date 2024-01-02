@@ -1,6 +1,7 @@
 package dangnhap;
 
 import connect.ConnectDatabase;
+import giaodien.GiaoDienBanDau;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -53,7 +54,7 @@ public class DangNhap extends ConnectDatabase {
         topPanel.add(dangNhapLabel, BorderLayout.CENTER);
 
         mainPanel = new JPanel();
-        mainPanel.setLayout(null);
+        //mainPanel.setLayout(null);
         //mainPanel.setBackground(Color.decode("#FBFCFC"));
 
         Font newFont = new Font("Arial", Font.PLAIN, 18);
@@ -84,25 +85,55 @@ public class DangNhap extends ConnectDatabase {
         dangKyButton.setForeground(Color.decode("#38B6FF"));
         dangKyButton.setBorder(BorderFactory.createEmptyBorder());
         dangKyButton.setBorderPainted(false);
+        dangKyButton.setFocusable(false);
 
         dangKyPanel.add(askLabel);
         dangKyPanel.add(dangKyButton);
 
-        mainPanel.add(taiKhoanLabel);
-        mainPanel.add(taiKhoanField);
-        mainPanel.add(matKhauLabel);
-        mainPanel.add(matKhauField);
-        mainPanel.add(quenMatKhauButton);
-        mainPanel.add(dangNhapButton);
-        mainPanel.add(dangKyPanel);
+        mainPanel.setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.anchor = GridBagConstraints.WEST;
+        gbc.insets = new Insets(5, 5, 5, 5); // Setting insets for components
 
-        taiKhoanLabel.setBounds(350, 30, 300, 50);
-        taiKhoanField.setBounds(350, 80, 300, 50);
-        matKhauLabel.setBounds(350, 130, 300, 50);
-        matKhauField.setBounds(350, 180, 300, 50);
-        quenMatKhauButton.setBounds(260, 230, 300, 20);
-        dangNhapButton.setBounds(350, 280, 300, 50);
-        dangKyPanel.setBounds(350, 330, 300, 50);
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        mainPanel.add(taiKhoanLabel, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy++;
+        gbc.gridwidth = 2;
+        gbc.fill = GridBagConstraints.HORIZONTAL; // Make components stretch horizontally
+        mainPanel.add(taiKhoanField, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy++;
+        mainPanel.add(matKhauLabel, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy++;
+        gbc.gridwidth = 2;
+        mainPanel.add(matKhauField, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy++;
+        gbc.fill = GridBagConstraints.NONE; // Set to none for this button
+        mainPanel.add(quenMatKhauButton, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy++;
+        gbc.gridwidth = 2;
+        gbc.fill = GridBagConstraints.HORIZONTAL; // Make components stretch horizontally
+        mainPanel.add(dangNhapButton, gbc);
+
+        gbc.gridy++;
+        gbc.gridwidth = 2;
+        mainPanel.add(dangKyPanel, gbc);
+
+        taiKhoanLabel.setPreferredSize(new Dimension(300, 30));
+        taiKhoanField.setPreferredSize(new Dimension(300, 50));
+        matKhauLabel.setPreferredSize(new Dimension(300, 30));
+        matKhauField.setPreferredSize(new Dimension(300, 50));
+        dangNhapButton.setPreferredSize(new Dimension(300, 50));
 
         dangNhapButton.addActionListener(new ActionListener() {
             @Override
@@ -114,6 +145,13 @@ public class DangNhap extends ConnectDatabase {
                 } else {
                     JOptionPane.showMessageDialog(mainPanel, "Đăng nhập thành công");
                 }
+            }
+        });
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new GiaoDienBanDau();
+                frame.dispose();
             }
         });
         frame.add(topPanel, BorderLayout.NORTH);
