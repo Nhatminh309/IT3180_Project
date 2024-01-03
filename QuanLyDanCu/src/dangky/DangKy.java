@@ -29,6 +29,8 @@ public class DangKy extends ConnectDatabase {
     private static JTextField taiKhoanField;
     private static JLabel matKhauLabel;
     private static JPasswordField matKhauField;
+    private static JLabel nhapMatKhauLabel;
+    private static JPasswordField nhapMatKhauField;
     private static JButton dangKyButton;
     private static JPanel dangNhapPanel;
     public DangKy() {
@@ -72,10 +74,12 @@ public class DangKy extends ConnectDatabase {
         gioiTinhField = new JTextField();
         chucVuLabel = new JLabel("Chức vụ: ");
         chucVuField = new JTextField();
-        taiKhoanLabel = new JLabel("Tên tài khoản (*)");
+        taiKhoanLabel = new JLabel("Tên tài khoản:");
         taiKhoanField = new JTextField();
-        matKhauLabel = new JLabel("Mật khẩu (*): ");
+        matKhauLabel = new JLabel("Mật khẩu: ");
         matKhauField = new JPasswordField();
+        nhapMatKhauLabel = new JLabel("Nhập lại mật khẩu:");
+        nhapMatKhauField = new JPasswordField();
         dinhDangLabel = new JLabel("Định dạng: YYYY-MM-DD");
         dangKyButton = new JButton("Đăng ký");
 
@@ -87,13 +91,14 @@ public class DangKy extends ConnectDatabase {
         dinhDangLabel.setIcon(scaledIcon2);
         dinhDangLabel.setIconTextGap(10);
 
-        Font newFont = new Font("Arial", Font.PLAIN, 24);
+        Font newFont = new Font("Arial", Font.PLAIN, 22);
         hoTenLabel.setFont(newFont);
         dobLabel.setFont(newFont);
         gioiTinhLabel.setFont(newFont);
         chucVuLabel.setFont(newFont);
         taiKhoanLabel.setFont(newFont);
         matKhauLabel.setFont(newFont);
+        nhapMatKhauLabel.setFont(newFont);
         dinhDangLabel.setFont(new Font("Arial", Font.PLAIN, 18));
         dangKyButton.setFont(newFont);
         dangKyButton.setBackground(Color.decode("#38B6FF"));
@@ -181,40 +186,54 @@ public class DangKy extends ConnectDatabase {
         mainPanel.add(taiKhoanField);
         mainPanel.add(matKhauLabel);
         mainPanel.add(matKhauField);
+        mainPanel.add(nhapMatKhauLabel);
+        mainPanel.add(nhapMatKhauField);
         mainPanel.add(dangKyButton);
         mainPanel.add(dangNhapPanel);
 
+        int X_left = frame.getWidth()/10;
+        final int[] Y_left = {frame.getHeight() / 15};
+        int X_right = frame.getWidth()*3/4;
+        final int[] Y_right = {frame.getHeight() / 15};
         frame.addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent e) {
-                int X_left = frame.getWidth()/10;
-                int Y_left = frame.getHeight()/15;
-                hoTenLabel.setBounds(X_left, Y_left, 200, 40);
-                Y_left += 40;
-                hoTenField.setBounds(X_left, Y_left, 200, 40);
-                Y_left += 40;
-                dobLabel.setBounds(X_left, Y_left, 200, 40);
-                Y_left += 40;
-                dobField.setBounds(X_left, Y_left, 200, 40);
-                dinhDangLabel.setBounds(X_left + 220, Y_left, 300, 40);
-                Y_left += 40;
-                gioiTinhLabel.setBounds(X_left, Y_left, 200, 40);
-                Y_left += 40;
-                gioiTinhField.setBounds(X_left, Y_left, 200, 40);
-                Y_left += 40;
-                chucVuLabel.setBounds(X_left, Y_left, 200,40);
-                Y_left += 40;
-                chucVuField.setBounds(X_left, Y_left, 200, 40);
+                hoTenLabel.setBounds(X_left, Y_left[0], 200, 40);
+                Y_left[0] += 40;
+                hoTenField.setBounds(X_left, Y_left[0], 200, 40);
+                Y_left[0] += 40;
+                dobLabel.setBounds(X_left, Y_left[0], 200, 40);
+                Y_left[0] += 40;
+                dobField.setBounds(X_left, Y_left[0], 200, 40);
+                dinhDangLabel.setBounds(X_left + 220, Y_left[0], 300, 40);
+                Y_left[0] += 40;
+                gioiTinhLabel.setBounds(X_left, Y_left[0], 200, 40);
+                Y_left[0] += 40;
+                gioiTinhField.setBounds(X_left, Y_left[0], 200, 40);
+                Y_left[0] += 40;
+                chucVuLabel.setBounds(X_left, Y_left[0], 300,40);
+                Y_left[0] += 40;
+                chucVuField.setBounds(X_left, Y_left[0], 200, 40);
 
-                int X_right = frame.getWidth()*3/4;
-                int Y_right = frame.getHeight()/15;
-                taiKhoanLabel.setBounds(X_right, Y_right, 200, 40);
-                Y_right += 40;
-                taiKhoanField.setBounds(X_right, Y_right, 200, 40);
-                Y_right += 40;
-                matKhauLabel.setBounds(X_right, Y_right, 200, 40);
-                Y_right += 40;
-                matKhauField.setBounds(X_right, Y_right, 200, 40);
+
+                taiKhoanLabel.setBounds(X_right, Y_right[0], 200, 40);
+                Y_right[0] += 40;
+                taiKhoanField.setBounds(X_right, Y_right[0], 200, 40);
+                Y_right[0] += 40;
+                matKhauLabel.setBounds(X_right, Y_right[0], 200, 40);
+                Y_right[0] += 40;
+                matKhauField.setBounds(X_right, Y_right[0], 200, 40);
+                Y_right[0] += 40;
+                nhapMatKhauLabel.setBounds(X_right, Y_right[0], 300, 40);
+                Y_right[0] += 40;
+                nhapMatKhauField.setBounds(X_right, Y_right[0], 200, 40);
+                Y_right[0] += 40;
+
+                if(!String.valueOf(matKhauField.getPassword()).equals(String.valueOf(nhapMatKhauField.getPassword()))) {
+                    JLabel warnLabel  = new JLabel("Mật khẩu không trùng nhau");
+                    warnLabel.setFont(newFont);
+                    warnLabel.setBounds(X_right, Y_right[0], 200, 40);
+                }
 
                 int X_center = (frame.getWidth() - 200) / 2;
                 int Y_center = frame.getHeight() * 2 / 3;
@@ -236,9 +255,19 @@ public class DangKy extends ConnectDatabase {
         dangKyButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                addSignInToSQL();
-                new DangNhap();
-                frame.dispose();
+                if(!String.valueOf(matKhauField.getPassword()).equals(String.valueOf(nhapMatKhauField.getPassword()))) {
+                    JLabel warnLabel  = new JLabel("Mật khẩu không trùng nhau");
+                    mainPanel.add(warnLabel);
+                    warnLabel.setFont(new Font("Arial", Font.PLAIN, 16));
+                    warnLabel.setIcon(scaledIcon2);
+                    warnLabel.setIconTextGap(10);
+                    warnLabel.setBounds(X_right, Y_right[0], 300, 40);
+                } else {
+                    addSignInToSQL();
+                    new DangNhap();
+                    frame.dispose();
+                }
+
             }
         });
 
@@ -269,6 +298,7 @@ public class DangKy extends ConnectDatabase {
             e.printStackTrace();
         }
     }
+
     public static void main(String[] args) {
         new DangKy();
     }
