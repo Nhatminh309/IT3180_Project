@@ -1,10 +1,12 @@
-package QuanLyDanCu.src.dangnhap;
+package dangnhap;
 
-import QuanLyDanCu.src.connect.ConnectDatabase;
-
+import connect.ConnectDatabase;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+
+import QuanLyDanCu.src.giaodien.GiaoDienChung;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,7 +14,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import QuanLyDanCu.src.giaodien.GiaoDienBanDau;
 
 public class DangNhap extends ConnectDatabase {
     private static JPanel topPanel;
@@ -21,7 +22,7 @@ public class DangNhap extends ConnectDatabase {
     private static JLabel taiKhoanLabel;
     private static JTextField taiKhoanField;
     private static JLabel matKhauLabel;
-    private static JPasswordField matKhauField;
+    private static JTextField matKhauField;
     private static JPanel dangKyPanel;
     private static JButton quenMatKhauButton;
     private static JButton dangNhapButton;
@@ -40,7 +41,7 @@ public class DangNhap extends ConnectDatabase {
         topPanel.setBackground(Color.WHITE);
 
         JButton backButton = new JButton();
-        ImageIcon icon = new ImageIcon("QuanLyDanCu/src/icon/goBackIcon.png");
+        ImageIcon icon = new ImageIcon("src/icon/goBackIcon.png");
         Image img = icon.getImage();
         Image scaledImg = img.getScaledInstance(35, 30, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(scaledImg);
@@ -55,14 +56,14 @@ public class DangNhap extends ConnectDatabase {
         topPanel.add(dangNhapLabel, BorderLayout.CENTER);
 
         mainPanel = new JPanel();
-        //mainPanel.setLayout(null);
+        mainPanel.setLayout(null);
         //mainPanel.setBackground(Color.decode("#FBFCFC"));
 
-        Font newFont = new Font("Arial", Font.PLAIN, 24);
+        Font newFont = new Font("Arial", Font.PLAIN, 18);
         taiKhoanLabel = new JLabel("Tài khoản:");
         taiKhoanField = new JTextField(20);
         matKhauLabel = new JLabel("Mật khẩu:");
-        matKhauField = new JPasswordField(20);
+        matKhauField = new JTextField(20);
         quenMatKhauButton = new JButton("Quên mật khẩu ?");
         dangNhapButton = new JButton("Đăng nhập");
 
@@ -70,9 +71,8 @@ public class DangNhap extends ConnectDatabase {
         matKhauLabel.setFont(newFont);
         quenMatKhauButton.setFont(new Font("Arial", Font.PLAIN, 15));
         dangNhapButton.setFont(new Font("Arial", Font.BOLD, 20));
-        dangNhapButton.setBackground(Color.decode("#38B6FF"));
+        dangNhapButton.setBackground(Color.decode("#004AAD"));
         dangNhapButton.setOpaque(true);
-        dangNhapButton.setBorder(BorderFactory.createEmptyBorder());
         quenMatKhauButton.setBorder(BorderFactory.createEmptyBorder());
 
 
@@ -87,73 +87,37 @@ public class DangNhap extends ConnectDatabase {
         dangKyButton.setForeground(Color.decode("#38B6FF"));
         dangKyButton.setBorder(BorderFactory.createEmptyBorder());
         dangKyButton.setBorderPainted(false);
-        dangKyButton.setFocusable(false);
 
         dangKyPanel.add(askLabel);
         dangKyPanel.add(dangKyButton);
 
-        mainPanel.setLayout(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.anchor = GridBagConstraints.WEST;
-        gbc.insets = new Insets(5, 5, 5, 5); // Setting insets for components
+        mainPanel.add(taiKhoanLabel);
+        mainPanel.add(taiKhoanField);
+        mainPanel.add(matKhauLabel);
+        mainPanel.add(matKhauField);
+        mainPanel.add(quenMatKhauButton);
+        mainPanel.add(dangNhapButton);
+        mainPanel.add(dangKyPanel);
 
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        mainPanel.add(taiKhoanLabel, gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy++;
-        gbc.gridwidth = 2;
-        gbc.fill = GridBagConstraints.HORIZONTAL; // Make components stretch horizontally
-        mainPanel.add(taiKhoanField, gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy++;
-        mainPanel.add(matKhauLabel, gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy++;
-        gbc.gridwidth = 2;
-        mainPanel.add(matKhauField, gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy++;
-        gbc.fill = GridBagConstraints.NONE; // Set to none for this button
-        mainPanel.add(quenMatKhauButton, gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy++;
-        gbc.gridwidth = 2;
-        gbc.fill = GridBagConstraints.HORIZONTAL; // Make components stretch horizontally
-        mainPanel.add(dangNhapButton, gbc);
-
-        gbc.gridy++;
-        gbc.gridwidth = 2;
-        mainPanel.add(dangKyPanel, gbc);
-
-        taiKhoanLabel.setPreferredSize(new Dimension(300, 30));
-        taiKhoanField.setPreferredSize(new Dimension(300, 50));
-        matKhauLabel.setPreferredSize(new Dimension(300, 30));
-        matKhauField.setPreferredSize(new Dimension(300, 50));
-        dangNhapButton.setPreferredSize(new Dimension(300, 50));
+        taiKhoanLabel.setBounds(350, 30, 300, 50);
+        taiKhoanField.setBounds(350, 80, 300, 50);
+        matKhauLabel.setBounds(350, 130, 300, 50);
+        matKhauField.setBounds(350, 180, 300, 50);
+        quenMatKhauButton.setBounds(260, 230, 300, 20);
+        dangNhapButton.setBounds(350, 280, 300, 50);
+        dangKyPanel.setBounds(350, 330, 300, 50);
 
         dangNhapButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(taiKhoanField.getText().equals("") || String.valueOf(matKhauField.getPassword()).equals("")) {
+                if(taiKhoanField.getText().equals("") || matKhauField.getText().equals("")) {
                     JOptionPane.showMessageDialog(mainPanel, "Đăng nhập không thành công");
                 } else if(validateSignIn(taiKhoanField.getText(), matKhauField.getText()) == null) {
                     JOptionPane.showMessageDialog(mainPanel, "Tài khoản hoặc mật khẩu chưa chính xác");
                 } else {
                     JOptionPane.showMessageDialog(mainPanel, "Đăng nhập thành công");
+                    new GiaoDienChung(getTenNguoiDung());
                 }
-            }
-        });
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new GiaoDienBanDau();
-                frame.dispose();
             }
         });
         frame.add(topPanel, BorderLayout.NORTH);
@@ -172,13 +136,14 @@ public class DangNhap extends ConnectDatabase {
             if(resultSet.next()) {
                 role = resultSet.getString("vaitro");
             }
-
-            preparedStatement.close();
-            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return role;
+    }
+
+    public static String getTenNguoiDung() {
+        return taiKhoanField.getText(); 
     }
     public static void main(String[] args) {
         new DangNhap();

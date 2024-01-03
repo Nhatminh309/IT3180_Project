@@ -21,16 +21,11 @@ INSERT INTO Nhan_khau (Ma_nhan_khau, Ho_va_ten, Bi_danh, Ngay_sinh, Gioi_tinh, N
 (18, 'Phạm Văn L', NULL, '1995-06-28', 'Nam', 'Bệnh viện Thái Bình', 'Quận 7, TP.HCM', 'Kinh', 'Hồi giáo', 'Nhân viên văn phòng', 'Công ty XYZ', '2022-06-01', '18', '0369852147', 'Chủ hộ', 18, TRUE),
 (19, 'Hoàng Kim D', NULL, '1992-09-12', 'Nam', 'Bệnh viện Chợ Rẫy', 'Hoàn Kiếm, Hà Nội', 'Kinh', 'Tin lành', 'Bác sĩ', 'Bệnh viện ABC', '2022-07-01', '19', '0987654321', 'Chủ hộ', 19, TRUE),
 (20, 'Nguyễn Văn F', NULL, '1989-12-25', 'Nam', 'Bệnh viện 108', 'Quận 3, TP.HCM', 'Kinh', 'Phật giáo', 'Kỹ thuật viên', 'Công ty XYZ', '2022-08-01', '20', '0123456789', 'Chủ hộ', 20, TRUE),
-
--- Quan hệ với chủ hộ là vợ
 (21, 'Trần Thị Miên', NULL, '1996-10-02', 'Nữ', 'Bệnh viện Bạch Mai', 'Đại Cồ Việt, Hai Bà Trưng, Hà Nội', 'Kinh', 'Khong', 'Ky su', 'Cong ty ABC', '2021-01-01', '21', NULL, 'Vợ', 1, TRUE),
 (22, 'Trần Thị A', NULL, '1998-07-20', 'Nu', 'Bệnh việc chợ Rẫy', 'Nghĩa Tân, Nghĩa Hưng, Nam Định', 'Kinh', 'Phat giao', 'Giao vien', 'Truong THPT Chuyên Chu Thị An', '2021-02-01', '22', NULL, 'Vợ', 2, TRUE),
-
 (23, 'Trần Thị B', NULL, '1990-01-15', 'Nữ', 'Bệnh viện Xanh Pôn', 'Quận 1, TP.HCM', 'Kinh', 'Không', 'Kỹ sư', 'Công ty XYZ', '2021-03-01', '23', NULL, 'Vợ', 3, TRUE),
 (24, 'Trần Thị C', NULL, '1992-05-20', 'Nữ', 'Bệnh viện Chợ Rẫy', 'Quận 5, TP.HCM', 'Kinh', 'Thiên chúa giáo', 'Giáo viên', 'Trường THPT ABC', '2021-04-01', '24', NULL, 'Vợ', 4, TRUE),
-
 (25, 'Trần Thị E', NULL, '1988-08-10', 'Nữ', 'Bệnh viện Thống Nhất', 'Quận 3, TP.HCM', 'Kinh', 'Hồi giáo', 'Bác sĩ', 'Bệnh viện XYZ', '2021-05-01', '25', NULL, 'Vợ', 5, TRUE),
-
 (26, 'Trần Thị D', NULL, '1995-03-25', 'Nữ', 'Bệnh viện Bạch Mai', 'Ba Đình, Hà Nội', 'Kinh', 'Phật giáo', 'Kỹ thuật viên', 'Công ty ABC', '2021-06-01', '26', NULL, 'Vợ', 6, TRUE),
 (27, 'Trần Thị E', NULL, '1997-11-12', 'Nữ', 'Bệnh viện 108', 'Quận 7, TP.HCM', 'Kinh', 'Công giáo', 'Giáo viên', 'Trường THPT XYZ', '2021-07-01', '27', NULL, 'Vợ', 7, TRUE),
 (28, 'Phạm Thị F', NULL, '1986-09-18', 'Nữ', 'Bệnh viện Thái Bình', 'Hoàn Kiếm, Hà Nội', 'Kinh', 'Hồi giáo', 'Nhân viên Thị phòng', 'Công ty XYZ', '2021-08-01', '28', NULL, 'Vợ', 8, TRUE),
@@ -46,10 +41,6 @@ INSERT INTO Nhan_khau (Ma_nhan_khau, Ho_va_ten, Bi_danh, Ngay_sinh, Gioi_tinh, N
 (38, 'Phạm Thị L', NULL, '1995-06-28', 'Nữ', 'Bệnh viện Thái Bình', 'Quận 7, TP.HCM', 'Kinh', 'Hồi giáo', 'Nhân viên Thị phòng', 'Công ty XYZ', '2022-06-01', '38', NULL, 'Vợ', 18, TRUE),
 (39, 'Hoàng Kim D', NULL, '1992-09-12', 'Nữ', 'Bệnh viện Chợ Rẫy', 'Hoàn Kiếm, Hà Nội', 'Kinh', 'Tin lành', 'Bác sĩ', 'Bệnh viện ABC', '2022-07-01', '39', NULL, 'Vợ', 19, TRUE),
 (40, 'Nguyễn Thị F', NULL, '1989-12-25', 'Nữ', 'Bệnh viện 108', 'Quận 3, TP.HCM', 'Kinh', 'Phật giáo', 'Kỹ thuật viên', 'Công ty XYZ', '2022-08-01', '40', NULL, 'Vợ', 20, TRUE),
-
-
-
--- Dữ liệu con của Ma_ho_khau = 3
 (41, 'Nguyen Van X', NULL, '2020-01-01', 'Nam', 'Bệnh viện Xanh Pôn', 'Quận 1, TP.HCM', 'Kinh', 'Không', NULL, NULL, '2022-12-01', '41', NULL, 'Con', 3, TRUE),
 (42, 'Nguyen Thi Y', NULL, '2018-05-10', 'Nữ', 'Bệnh viện Chợ Rẫy', 'Quận 5, TP.HCM', 'Kinh', 'Thiên chúa giáo', NULL, NULL, '2023-01-01', '42', NULL, 'Con', 3, TRUE),
 -- Dữ liệu con của Ma_ho_khau = 4
@@ -86,28 +77,16 @@ INSERT INTO Nhan_khau (Ma_nhan_khau, Ho_va_ten, Bi_danh, Ngay_sinh, Gioi_tinh, N
 -- Dữ liệu con của Ma_ho_khau = 14
 (63, 'Hoang Van A', NULL, '2019-02-14', 'Nam', 'Bệnh viện Gia Định', 'Quận 10, TP.HCM', 'Kinh', 'Công giáo', NULL, NULL, '2024-10-01', '63', NULL, 'Con', 14, TRUE),
 (64, 'Hoang Thi B', NULL, '2017-05-30', 'Nữ', 'Bệnh viện Nguyễn Tri Phương', 'Quận 11, TP.HCM', 'Kinh', 'Không', NULL, NULL, '2024-11-01', '64', NULL, 'Con', 14, TRUE),
-
--- Dữ liệu con của Ma_ho_khau = 15
 (65, 'Le Van C', NULL, '2018-11-09', 'Nam', 'Bệnh viện Hùng Vương', 'Quận Tân Bình, TP.HCM', 'Kinh', 'Phật giáo', NULL, NULL, '2024-12-01', '65', NULL, 'Con', 15, TRUE),
 (66, 'Le Thi D', NULL, '2016-06-20', 'Nữ', 'Bệnh viện Đại học Y Dược', 'Quận Tân Phú, TP.HCM', 'Kinh', 'Công giáo', NULL, NULL, '2025-01-01', '66', NULL, 'Con', 15, TRUE),
-
--- Dữ liệu con của Ma_ho_khau = 16
 (67, 'Nguyen Van E', NULL, '2017-03-17', 'Nam', 'Bệnh viện Quốc tế Sài Gòn', 'Quận Bình Thạnh, TP.HCM', 'Kinh', 'Tin lành', NULL, NULL, '2025-02-01', '67', NULL, 'Con', 16, TRUE),
 (68, 'Nguyen Thi F', NULL, '2015-08-28', 'Nữ', 'Bệnh viện Quân Y 175', 'Quận Gò Vấp, TP.HCM', 'Kinh', 'Phật giáo', NULL, NULL, '2025-03-01', '68', NULL, 'Con', 16, TRUE),
-
--- Dữ liệu con của Ma_ho_khau = 17
 (69, 'Tran Van G', NULL, '2018-06-05', 'Nam', 'Bệnh viện Từ Dũ', 'Quận Phú Nhuận, TP.HCM', 'Kinh', 'Không', NULL, NULL, '2025-04-01', '69', NULL, 'Con', 17, TRUE),
 (70, 'Tran Thi H', NULL, '2016-09-10', 'Nữ', 'Bệnh viện Nhi Đồng 1', 'Quận Bình Tân, TP.HCM', 'Kinh', 'Phật giáo', NULL, NULL, '2025-05-01', '70', NULL, 'Con', 17, TRUE),
-
--- Dữ liệu con của Ma_ho_khau = 18
 (71, 'Pham Van I', NULL, '2019-07-20', 'Nam', 'Bệnh viện Đa Khoa Khu vực Thủ Đức', 'Quận Thủ Đức, TP.HCM', 'Kinh', 'Công giáo', NULL, NULL, '2025-06-01', '71', NULL, 'Con', 18, TRUE),
 (72, 'Pham Thi J', NULL, '2017-10-15', 'Nữ', 'Bệnh viện Quận 9', 'Quận 9, TP.HCM', 'Kinh', 'Tin lành', NULL, NULL, '2025-07-01', '72', NULL, 'Con', 18, TRUE),
-
--- Dữ liệu con của Ma_ho_khau = 19
 (73, 'Hoang Van K', NULL, '2018-08-10', 'Nam', 'Bệnh viện Chợ Rẫy 2', 'Quận 6, TP.HCM', 'Kinh', 'Không', NULL, NULL, '2025-08-01', '73', NULL, 'Con', 19, TRUE),
 (74, 'Hoang Thi L', NULL, '2016-11-05', 'Nữ', 'Bệnh viện Quận 8', 'Quận 8, TP.HCM', 'Kinh', 'Phật giáo', NULL, NULL, '2025-09-01', '74', NULL, 'Con', 19, TRUE),
-
--- Dữ liệu con của Ma_ho_khau = 20
 (75, 'Le Van M', NULL, '2017-12-20', 'Nam', 'Bệnh viện Bình Dân', 'Quận Bình Tân, TP.HCM', 'Kinh', 'Công giáo', NULL, NULL, '2025-10-01', '75', NULL, 'Con', 20, TRUE),
 (76, 'Le Thi N', NULL, '2015-05-15', 'Nữ', 'Bệnh viện Từ Dũ', 'Quận Phú Nhuận, TP.HCM', 'Kinh', 'Tin lành', NULL, NULL, '2025-11-01', '76', NULL, 'Con', 20, TRUE);
 

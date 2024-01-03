@@ -146,24 +146,46 @@ CREATE TABLE Can_bo(
     Gioi_tinh VARCHAR(10),
     Chuc_vu VARCHAR(30)
 );
-CREATE TABLE Phan_thuong(
-    Ma_phan_thuong INTEGER PRIMARY KEY,
-    Loai_phan_thuong VARCHAR(100),
-    Gia_tri NUMERIC(10, 2)
+CREATE TABLE phan_thuong(
+    ma_phan_thuong integer NOT NULL,
+    loai_phan_thuong varchar(100),
+    gia_tri numeric,
+    so_luong integer,
+    PRIMARY KEY(ma_phan_thuong),
+    CONSTRAINT phan_thuong_so_luong_check CHECK ((so_luong > 0))
+);
+COMMENT ON COLUMN phan_thuong.gia_tri IS 'Giá trị cho 1 đơn vị số lươngk';
+
+CREATE TABLE phat_thuong(
+    ma_phat_thuong SERIAL NOT NULL,
+    ma_phan_thuong integer,
+    ma_nhan_khau integer,
+    ngay_phat date,
+    dip_le varchar(15),
+    so_luong integer,
+    da_xac_nhan boolean DEFAULT false,
+    ngay date,
+    PRIMARY KEY(ma_phat_thuong),
+    CONSTRAINT phat_thuong_ma_phan_thuong_fkey FOREIGN key(ma_phan_thuong) REFERENCES phan_thuong(ma_phan_thuong),
+    CONSTRAINT phat_thuong_ma_nhan_khau_fkey FOREIGN key(ma_nhan_khau) REFERENCES nhan_khau(ma_nhan_khau),
+    CONSTRAINT aa FOREIGN key(dip_le,ngay) REFERENCES dip_le(ten_dip_le,ngay),
+    CONSTRAINT phat_thuong_dip_le_check CHECK (((dip_le)::text = ANY ((ARRAY['Tết Nguyên Đán'::character varying, 'Tết Thiếu Nhi'::character varying, 'Cuối Năm Học'::character varying, 'Tết Trung Thu'::character varying])::text[])))
 );
 
-CREATE TABLE Phat_thuong (
-    Ma_phat_thuong INTEGER PRIMARY KEY,
-    Ma_phan_thuong INTEGER,
-    Ma_nhan_khau INTEGER,
-    Ma_can_bo INTEGER,
-    Ngay_phat DATE,
-    Dip_le VARCHAR(15) CHECK (Dip_le IN ('Tết Nguyên Đán', 'Tết Thiếu Nhi', 'Cuối Năm Học', 'Tết Trung Thu')),
-    Loai_phan_thuong VARCHAR(15),
-    So_luong INTEGER,
-    Da_xac_nhan BOOLEAN DEFAULT FALSE,
-    FOREIGN KEY (Ma_phan_thuong) REFERENCES Phan_thuong(Ma_phan_thuong),
-    FOREIGN KEY (Ma_nhan_khau) REFERENCES Nhan_khau(Ma_nhan_khau),
-    FOREIGN KEY (Ma_can_bo) REFERENCES Can_bo(Ma_can_bo),
-    FOREIGN KEY (Loai_phan_thuong) REFERENCES Phan_thuong(Loai_phan_thuong)
+CREATE TABLE dip_le(
+    ten_dip_le varchar(200) NOT NULL,
+    ngay date NOT NULL,
+    PRIMARY KEY(ten_dip_le,ngay)
 );
+
+CREATE TABLE thanh_tich_hoc_tap(
+    ten_hoc_sinh varchar(100),
+    ma_nhan_khau integer NOT NULL,
+    nam_hoc integer NOT NULL,
+    thanh_tich varchar(255),
+    PRIMARY KEY(ma_nhan_khau,nam_hoc),
+    CONSTRAINT thanh_tich_hoc_tap_ma_nhan_khau_fkey FOREIGN key(ma_nhan_khau) REFERENCES nhan_khau(ma_nhan_khau)
+);
+
+
+
