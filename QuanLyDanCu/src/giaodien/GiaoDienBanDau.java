@@ -11,7 +11,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 
-public class GiaoDienBanDau extends QuanLyDanCu.src.giaodien.GiaoDienChung {
+public class GiaoDienBanDau extends GiaoDienChung {
 
     public GiaoDienBanDau() {
         super();

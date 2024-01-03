@@ -1,4 +1,4 @@
-package QuanLyDanCu.src.giaodien;
+package giaodien;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
