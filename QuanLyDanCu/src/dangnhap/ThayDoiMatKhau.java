@@ -1,6 +1,7 @@
 package dangnhap;
 
 import connect.ConnectDatabase;
+import giaodien.GiaoDienBanDau;
 
 import javax.swing.*;
 import java.awt.*;
@@ -138,7 +139,13 @@ public class ThayDoiMatKhau extends ConnectDatabase {
                 }
             }
         });
-
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new GiaoDienBanDau();
+                frame.dispose();
+            }
+        });
         taiKhoanField.setPreferredSize(new Dimension(300, 50));
         matKhauMoiField.setPreferredSize(new Dimension(300, 50));
         nhapLaiMKField.setPreferredSize(new Dimension(300, 50));
