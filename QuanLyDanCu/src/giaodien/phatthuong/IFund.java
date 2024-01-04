@@ -19,8 +19,8 @@ public class IFund extends GiaoDienPhatThuong {
     private JTable phanThuongTable;
     private DefaultTableModel phanThuongTableModel;
 
-    public IFund(String userName) {
-        super(userName);
+    public IFund() {
+        super();
         createFundPanel();
     }
 
@@ -188,7 +188,7 @@ public class IFund extends GiaoDienPhatThuong {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            new IFund("1");
+            new IFund();
         });
     }
 }

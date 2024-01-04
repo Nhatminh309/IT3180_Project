@@ -21,8 +21,8 @@ public class IStatistics extends GiaoDienPhatThuong {
     private DefaultTableModel chungTableModel, hoGiaDinhTableModel;
     private JPanel statisticsPanel;
     JScrollPane hoGiaDinhScrollPane,chungScrollPane;
-    public IStatistics(String userName) {
-        super(userName);
+    public IStatistics() {
+        super();
         createStatisticsPanel();
     }
 
@@ -207,7 +207,7 @@ public class IStatistics extends GiaoDienPhatThuong {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            new IStatistics("1");
+            new IStatistics();
         });
     }
 }

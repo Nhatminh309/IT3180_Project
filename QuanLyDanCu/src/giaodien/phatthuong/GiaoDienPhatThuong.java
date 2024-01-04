@@ -12,8 +12,8 @@ public class GiaoDienPhatThuong extends GiaoDienChung {
     protected JButton btnTaoDip, btnXemDip;
     protected JButton btnQuyPhanThuong, btnThongKe;
   
-    public GiaoDienPhatThuong(String userName) {
-        super(userName);
+    public GiaoDienPhatThuong() {
+        super();
 
         btnTaoDip = new JButton("Tạo dịp ");
         customizeButton(btnTaoDip);
@@ -53,7 +53,7 @@ public class GiaoDienPhatThuong extends GiaoDienChung {
         @Override
         public void actionPerformed(ActionEvent e) {
             // Gọi hàm hoặc thực hiện các tác vụ liên quan khi nhấn nút "Create Awarding Event"
-            new ICreateEvent(tenNguoiDung);
+            new ICreateEvent();
         }
     }
 
@@ -62,7 +62,8 @@ public class GiaoDienPhatThuong extends GiaoDienChung {
         @Override
         public void actionPerformed(ActionEvent e) {
             // Gọi hàm hoặc thực hiện các tác vụ liên quan khi nhấn nút "View Awarding Event"
-            new IViewEvent(tenNguoiDung);
+            new IViewEvent();
+           
         }
     }
 
@@ -71,7 +72,7 @@ public class GiaoDienPhatThuong extends GiaoDienChung {
         @Override
         public void actionPerformed(ActionEvent e) {
             // Gọi hàm hoặc thực hiện các tác vụ liên quan khi nhấn nút "Statistics"
-            new IStatistics(tenNguoiDung);
+            new IStatistics();
         }
     }
 
@@ -80,7 +81,7 @@ public class GiaoDienPhatThuong extends GiaoDienChung {
         @Override
         public void actionPerformed(ActionEvent e) {
             // Gọi hàm hoặc thực hiện các tác vụ liên quan khi nhấn nút "Fund Pool"
-            new IFund(tenNguoiDung);
+            new IFund();
         }
     }
 
@@ -100,6 +101,6 @@ public class GiaoDienPhatThuong extends GiaoDienChung {
     }
 
     public static void main(String[] args) {
-        new GiaoDienPhatThuong("Trường");
+        new GiaoDienPhatThuong();
     }
 }

@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "HoSo",
+            "request": "launch",
+            "mainClass": "QuanLyDanCu.src.giaodien.HoSo",
+            "projectName": "IT3180_Project1_51dde48a"
+        },
+        {
+            "type": "java",
+            "name": "HoSo",
+            "request": "launch",
+            "mainClass": "dangnhap.HoSo",
+            "projectName": "IT3180_Project1_51dde48a"
+        },
+        {
+            "type": "java",
             "name": "IFund",
             "request": "launch",
             "mainClass": "giaodien.phatthuong.IFund",

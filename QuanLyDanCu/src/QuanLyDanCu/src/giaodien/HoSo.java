@@ -28,8 +28,8 @@ public class HoSo extends GiaoDienChung {
     private JPasswordField txtMatKhau;
     private JPasswordField txtNhapLaiMatKhau;
 
-    public HoSo(String userName) {
-        super(userName);
+    public HoSo() {
+        super();
         frame.setTitle("Hồ sơ - Quản lý dân cư");
 
         // Xóa mọi thứ ở horizontal bar
@@ -195,6 +195,6 @@ public class HoSo extends GiaoDienChung {
     }
 
     public static void main(String[] args) {
-        new HoSo("Trường");
+        new HoSo();
     }
 }

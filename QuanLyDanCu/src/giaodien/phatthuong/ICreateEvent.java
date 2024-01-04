@@ -19,8 +19,8 @@ public class ICreateEvent extends GiaoDienPhatThuong {
     private DefaultTableModel tblModel;
     private JScrollPane scrollPane;
 
-    public ICreateEvent(String userName) {
-        super(userName);
+    public ICreateEvent( ) {
+        super();
 
         // Tạo panel mới để chứa label và option menu
         JPanel labelOptionPanel = new JPanel(new FlowLayout(FlowLayout.LEFT)) {
@@ -162,7 +162,7 @@ public class ICreateEvent extends GiaoDienPhatThuong {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            new ICreateEvent("1");
+            new ICreateEvent();
         });
     }
 }

@@ -116,7 +116,7 @@ public class DangNhap extends ConnectDatabase {
                     JOptionPane.showMessageDialog(mainPanel, "Tài khoản hoặc mật khẩu chưa chính xác");
                 } else {
                     JOptionPane.showMessageDialog(mainPanel, "Đăng nhập thành công");
-                    new GiaoDienChung(getTenNguoiDung());
+                    new GiaoDienChung();
                 }
             }
         });

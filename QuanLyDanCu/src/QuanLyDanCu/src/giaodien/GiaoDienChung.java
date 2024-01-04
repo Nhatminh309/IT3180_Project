@@ -16,7 +16,7 @@ public class GiaoDienChung {
     protected JPanel horizontalBar;
     protected JPanel homePanel;
     protected JPanel aboutPanel;
-    protected JLabel welcomeLabel;
+   
     protected String tenNguoiDung;
 
     // Thay đổi JButton và JPanel từ private thành protected
@@ -26,8 +26,8 @@ public class GiaoDienChung {
     // Thay đổi navigatePanel từ private thành protected
     protected JPanel navigatePanel;
 
-    public GiaoDienChung(String userName) {
-        this.tenNguoiDung = userName;
+    public GiaoDienChung() {
+        
         frame = new JFrame("Quản lý dân cư");
         frame.setSize(1000, 578);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -44,26 +44,13 @@ public class GiaoDienChung {
         horizontalBar.setLayout(new BoxLayout(horizontalBar, BoxLayout.X_AXIS));
         horizontalBar.setBackground(Color.decode("#004AAD"));
 
-        welcomeLabel = new JLabel("Xin chào, " + tenNguoiDung) {
-            @Override
-            public Dimension getPreferredSize() {
-                return new Dimension(horizontalBar.getWidth(), horizontalBar.getHeight());
-            }
-
-            @Override
-            public Font getFont() {
-                return new Font("Arial", Font.PLAIN, horizontalBar.getHeight() / 4);
-            }
-        };
-        welcomeLabel.setForeground(Color.WHITE);
-        welcomeLabel.setHorizontalAlignment(JLabel.RIGHT);
-        welcomeLabel.setVisible(true);
+      
 
         Border paddingBorder = BorderFactory.createEmptyBorder(0, 0, 0, 20);
-        welcomeLabel.setBorder(paddingBorder);
+        
 
         horizontalBar.add(Box.createHorizontalGlue());
-        horizontalBar.add(welcomeLabel);
+      
 
         leftPanel = new JPanel() {
             @Override
@@ -196,6 +183,6 @@ public class GiaoDienChung {
     }
 
     public static void main(String[] args) {
-        new GiaoDienChung("Trường");
+        new GiaoDienChung();
     }
 }

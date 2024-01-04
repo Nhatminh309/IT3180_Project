@@ -22,8 +22,8 @@ public class IViewEvent extends GiaoDienPhatThuong {
     private JTable tableView;
     private DefaultTableModel tableModel;
 
-    public IViewEvent(String userName) {
-        super(userName);
+    public IViewEvent( ) {
+        super();
         createViewPanel();
     }
 
@@ -226,7 +226,7 @@ public class IViewEvent extends GiaoDienPhatThuong {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            new IViewEvent("1");
+            new IViewEvent();
         });
     }
 }
