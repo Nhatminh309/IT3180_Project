@@ -22,7 +22,7 @@ public class GiaoDienChung {
         frame.setLocationRelativeTo(null);
         frame.setResizable(true);
         frame.setMinimumSize(new Dimension(600, 400));
-        frame.setUndecorated(true);
+
 
         leftPanel = new JPanel() {
             @Override
@@ -149,8 +149,6 @@ public class GiaoDienChung {
         btnAbout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //frame.remove(splitPane);
-                frame.setOpacity(0.7f);
                 JDialog dialog = new JDialog(frame, "About", Dialog.ModalityType.APPLICATION_MODAL);
                 dialog.setLayout(new BorderLayout());
                 dialog.setSize(new Dimension(frame.getWidth() *2 / 5, frame.getHeight()));
@@ -184,24 +182,12 @@ public class GiaoDienChung {
                 mainPanel.add(aboutLabel);
 
                 dialog.add(mainPanel);
-
-                dialog.addWindowListener(new WindowAdapter() {
-                    @Override
-                    public void windowClosing(WindowEvent e) {
-                        frame.setOpacity(1.0f);
-                        //frame.setUndecorated(false);
-                    }
-                });
-
-                // Display the dialog
                 dialog.setVisible(true);
             }
         });
-
         frame.add(splitPane);
         frame.setVisible(true);
     }
-
 
     public String getStringURL() {
         String URL = "jdbc:postgresql://localhost:5432/postgres";

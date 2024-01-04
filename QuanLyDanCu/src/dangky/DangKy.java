@@ -50,14 +50,14 @@ public class DangKy extends ConnectDatabase {
         JButton backButton = new JButton();
         ImageIcon icon = new ImageIcon("src/icon/goBackIcon.png");
         Image img = icon.getImage();
-        Image scaledImg = img.getScaledInstance(35, 30, Image.SCALE_SMOOTH);
+        Image scaledImg = img.getScaledInstance(frame.getWidth()/20, frame.getHeight()/19, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(scaledImg);
         backButton.setIcon(scaledIcon);
         backButton.setBorder(BorderFactory.createEmptyBorder());
         topPanel.add(backButton, BorderLayout.WEST);
 
         JLabel dangNhapLabel = new JLabel("Đăng ký");
-        dangNhapLabel.setFont(new Font("Arial", Font.PLAIN, 50));
+        dangNhapLabel.setFont(new Font("Arial", Font.PLAIN, frame.getWidth()/20));
         dangNhapLabel.setHorizontalAlignment(SwingConstants.CENTER); // Align label to the center
         dangNhapLabel.setForeground(Color.decode("#38B6FF"));
         topPanel.add(dangNhapLabel, BorderLayout.CENTER);
@@ -86,12 +86,12 @@ public class DangKy extends ConnectDatabase {
         //Set icon for dinhDangLabel
         ImageIcon icon2 = new ImageIcon("src/icon/aboutIcon.png");
         Image img2 = icon2.getImage();
-        Image scaledImg2 = img2.getScaledInstance(15, 15, Image.SCALE_SMOOTH);
+        Image scaledImg2 = img2.getScaledInstance(frame.getWidth()/50, frame.getHeight()/40, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon2 = new ImageIcon(scaledImg2);
         dinhDangLabel.setIcon(scaledIcon2);
         dinhDangLabel.setIconTextGap(10);
 
-        Font newFont = new Font("Arial", Font.PLAIN, 22);
+        Font newFont = new Font("Arial", Font.PLAIN, frame.getWidth()/45);
         hoTenLabel.setFont(newFont);
         dobLabel.setFont(newFont);
         gioiTinhLabel.setFont(newFont);
@@ -99,20 +99,20 @@ public class DangKy extends ConnectDatabase {
         taiKhoanLabel.setFont(newFont);
         matKhauLabel.setFont(newFont);
         nhapMatKhauLabel.setFont(newFont);
-        dinhDangLabel.setFont(new Font("Arial", Font.PLAIN, 18));
+        dinhDangLabel.setFont(new Font("Arial", Font.PLAIN, frame.getWidth()/55));
         dangKyButton.setFont(newFont);
         dangKyButton.setBackground(Color.decode("#38B6FF"));
         dangKyButton.setOpaque(true);
         dangKyButton.setBorder(BorderFactory.createEmptyBorder());
 
-        dangNhapPanel = new JPanel();
-        dangNhapPanel.setLayout(new BoxLayout(dangNhapPanel, BoxLayout.X_AXIS));
-        dangNhapPanel.setBorder(BorderFactory.createEmptyBorder());
-        dangNhapPanel.setOpaque(false);
-        JLabel askLabel = new JLabel("Đã tài khoản ? ");
-        askLabel.setFont(new Font("Arial", Font.PLAIN, 16));
+//        dangNhapPanel = new JPanel();
+//        dangNhapPanel.setLayout(new BoxLayout(dangNhapPanel, BoxLayout.X_AXIS));
+//        dangNhapPanel.setBorder(BorderFactory.createEmptyBorder());
+//        dangNhapPanel.setOpaque(false);
+        JLabel askLabel = new JLabel("Đã có tài khoản ? ");
+        askLabel.setFont(new Font("Arial", Font.PLAIN, frame.getWidth()/60));
         JButton dangNhapButton = new JButton("Đăng nhập");
-        dangNhapButton.setFont(new Font("Arial", Font.PLAIN, 16));
+        dangNhapButton.setFont(new Font("Arial", Font.PLAIN, frame.getWidth()/60));
         dangNhapButton.setForeground(Color.decode("#38B6FF"));
         dangNhapButton.setBorder(BorderFactory.createEmptyBorder());
         dangNhapButton.setBorderPainted(false);
@@ -125,8 +125,8 @@ public class DangKy extends ConnectDatabase {
             }
         });
 
-        dangNhapPanel.add(askLabel);
-        dangNhapPanel.add(dangNhapButton);
+//        dangNhapPanel.add(askLabel);
+//        dangNhapPanel.add(dangNhapButton);
 
         //Add popMenu to gioiTinhField
         JPopupMenu popupMenu1 = new JPopupMenu();
@@ -189,48 +189,53 @@ public class DangKy extends ConnectDatabase {
         mainPanel.add(nhapMatKhauLabel);
         mainPanel.add(nhapMatKhauField);
         mainPanel.add(dangKyButton);
-        mainPanel.add(dangNhapPanel);
+        mainPanel.add(askLabel);
+        mainPanel.add(dangNhapButton);
 
         frame.addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent e) {
-                int X_left = frame.getWidth()/10;
-                int Y_left = frame.getHeight() / 15;
-                int X_right = frame.getWidth()*3/4;
-                int Y_right = frame.getHeight() / 15;
+                int width = frame.getWidth()*2/7;
+                int height = frame.getHeight()/15;
+                int X_left = (frame.getWidth() - width*2)/2;
+                int Y_left = frame.getHeight()/20;
+                int gap = frame.getHeight()/17;
+                //Line 1
+                hoTenLabel.setBounds(X_left, Y_left, width, height);
+                dobLabel.setBounds(X_left + hoTenLabel.getWidth(), Y_left, width, height);
+                Y_left += gap;
+                //Line 2
+                hoTenField.setBounds(X_left, Y_left, width, height);
+                dobField.setBounds(X_left + hoTenField.getWidth(), Y_left, width, height);
+                Y_left += gap;
+                //Line 3
+                gioiTinhLabel.setBounds(X_left, Y_left, width, height);
+                chucVuLabel.setBounds(X_left + gioiTinhLabel.getWidth(), Y_left, width, height);
+                Y_left += gap;
+                //Line 4
+                gioiTinhField.setBounds(X_left, Y_left, width, height);
+                chucVuField.setBounds(X_left + gioiTinhField.getWidth(), Y_left, width, height);
+                Y_left += gap;
+                //Line 5
+                taiKhoanLabel.setBounds(X_left, Y_left, width, height);
+                Y_left += gap;
+                //Line 6
+                taiKhoanField.setBounds(X_left, Y_left, width*2, height);
+                Y_left += gap;
+                //Line 7
+                matKhauLabel.setBounds(X_left, Y_left, width, height);
+                Y_left += gap;
+                //Line 8
+                matKhauField.setBounds(X_left, Y_left, width*2, height);
+                Y_left += gap;
+                //Line 9
+                nhapMatKhauLabel.setBounds(X_left, Y_left, width, height);
+                Y_left += gap;
+                //Line 10
+                nhapMatKhauField.setBounds(X_left, Y_left, width*2, height);
+                Y_left += gap;
 
-                hoTenLabel.setBounds(X_left, Y_left, 200, 40);
-                Y_left += 40;
-                hoTenField.setBounds(X_left, Y_left, 200, 40);
-                Y_left += 40;
-                dobLabel.setBounds(X_left, Y_left, 200, 40);
-                Y_left += 40;
-                dobField.setBounds(X_left, Y_left, 200, 40);
-                dinhDangLabel.setBounds(X_left + 220, Y_left, 300, 40);
-                Y_left += 40;
-                gioiTinhLabel.setBounds(X_left, Y_left, 200, 40);
-                Y_left += 40;
-                gioiTinhField.setBounds(X_left, Y_left, 200, 40);
-                Y_left += 40;
-                chucVuLabel.setBounds(X_left, Y_left, 300,40);
-                Y_left += 40;
-                chucVuField.setBounds(X_left, Y_left, 200, 40);
-
-
-                taiKhoanLabel.setBounds(X_right, Y_right, 200, 40);
-                Y_right += 40;
-                taiKhoanField.setBounds(X_right, Y_right, 200, 40);
-                Y_right += 40;
-                matKhauLabel.setBounds(X_right, Y_right, 200, 40);
-                Y_right += 40;
-                matKhauField.setBounds(X_right, Y_right, 200, 40);
-                Y_right += 40;
-                nhapMatKhauLabel.setBounds(X_right, Y_right, 300, 40);
-                Y_right += 40;
-                nhapMatKhauField.setBounds(X_right, Y_right, 200, 40);
-                Y_right += 40;
-
-                int Y_right_focus = Y_right;
+                int Y_dinhDang = Y_left;
                 nhapMatKhauField.addFocusListener(new FocusListener() {
                     @Override
                     public void focusGained(FocusEvent e) {
@@ -245,20 +250,20 @@ public class DangKy extends ConnectDatabase {
                             warnLabel.setIcon(scaledIcon2);
                             warnLabel.setIconTextGap(10);
                             warnLabel.setFont(new Font("Arial", Font.PLAIN, 16));
-                            warnLabel.setBounds(X_right, Y_right_focus, 300, 40);
+                            warnLabel.setBounds(X_left, Y_dinhDang, width*2, height);
                         }
+
                     }
                 });
-
-                int X_center = (frame.getWidth() - 200) / 2;
-                int Y_center = frame.getHeight() * 2 / 3;
-                dangKyButton.setBounds(X_center, Y_center, 200, 40);
-                Y_center += 40;
-                dangNhapPanel.setBounds(X_center, Y_center , 200, 40);
+                Y_left += gap;
+                int X_center = (frame.getWidth() - width) / 2;
+                dangKyButton.setBounds(X_center, Y_left, width, height);
+                Y_left += gap;
+                askLabel.setBounds(X_center, Y_left , width/2, height);
+                dangNhapButton.setBounds(X_center + askLabel.getWidth()*2/3, Y_left, width/2, height);
 
             }
         });
-        dangNhapPanel.setBounds((frame.getWidth() - 200) / 2, (frame.getHeight() * 2 / 3) + 40 , 200, 40);
 
         backButton.addActionListener(new ActionListener() {
             @Override
@@ -270,9 +275,29 @@ public class DangKy extends ConnectDatabase {
         dangKyButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                addSignInToSQL();
-                new DangNhap();
-                frame.dispose();
+                if(hoTenField.getText().equals("")) {
+                    JOptionPane.showMessageDialog(mainPanel, "Bạn chưa điền đủ thông tin");
+                } else if(dobField.getText().equals("")) {
+                    JOptionPane.showMessageDialog(mainPanel, "Bạn chưa điền đủ thông tin");
+                } else if(gioiTinhField.getText().equals("")) {
+                    JOptionPane.showMessageDialog(mainPanel, "Bạn chưa điền đủ thông tin");
+                } else if(chucVuField.getText().equals("")) {
+                    JOptionPane.showMessageDialog(mainPanel, "Bạn chưa điền đủ thông tin");
+                } else if(taiKhoanField.getText().equals("")) {
+                    JOptionPane.showMessageDialog(mainPanel, "Bạn chưa điền đủ thông tin");
+                } else if(String.valueOf(matKhauField.getPassword()).equals("")) {
+                    JOptionPane.showMessageDialog(mainPanel, "Bạn chưa điền đủ thông tin");
+                } else if(String.valueOf(nhapMatKhauField.getPassword()).equals("")) {
+                    JOptionPane.showMessageDialog(mainPanel, "Bạn chưa điền đủ thông tin");
+                } else {
+                    if(String.valueOf(matKhauField.getPassword()).equals(String.valueOf(nhapMatKhauField.getPassword()))) {
+                        addSignInToSQL();
+                        JOptionPane.showMessageDialog(mainPanel, "Đăng ký thành công");
+                        new DangNhap();
+                        frame.dispose();
+                    }
+                }
+
 
 
             }
