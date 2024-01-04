@@ -27,7 +27,7 @@ public class TaoChuHo extends GiaoDienChung {
         btnTaoChuHo = new JButton("Tạo Chủ Hộ");
 
         JPanel inputPanel = new JPanel();
-        inputPanel.setLayout(new GridLayout(3, 2));
+        inputPanel.setLayout(new GridLayout(5, 2));
         inputPanel.add(createLabel("Mã Hộ Khẩu:"));
         inputPanel.add(txtMaHoKhau);
         inputPanel.add(createLabel("Mã Chủ Hộ:"));
@@ -85,7 +85,10 @@ public class TaoChuHo extends GiaoDienChung {
         btnQuayVe.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                quayVeQuanLyHoKhau();
+
+                frame.dispose();
+                new QuanLyHoKhau();
+                frame.dispose();
             }
         });
         // Add the "Quay về" button to the rightPanel

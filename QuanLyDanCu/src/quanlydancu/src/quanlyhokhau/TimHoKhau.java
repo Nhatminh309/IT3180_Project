@@ -93,7 +93,10 @@ public class TimHoKhau extends GiaoDienChung {
         btnQuayVe.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                quayVeQuanLyHoKhau();
+
+                frame.dispose();
+                new QuanLyHoKhau();
+                frame.dispose();
             }
         });
         // Add the "Quay về" button to the rightPanel

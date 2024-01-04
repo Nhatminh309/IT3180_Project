@@ -20,6 +20,7 @@ public class QuanLyHoKhau extends GiaoDienChung {
     private JButton btnDSTamTru;
     private JButton btnDSTamVang;
     private JButton btnKhaiTu;
+    private JButton btnDSThanhVien;
 
     public QuanLyHoKhau() {
         // Gọi constructor của lớp cha (GiaoDienChung)
@@ -41,6 +42,7 @@ public class QuanLyHoKhau extends GiaoDienChung {
         btnDSTamTru = new JButton("DS Tạm trú");
         btnDSTamVang = new JButton("DS Tạm vắng");
         btnKhaiTu = new JButton("Khai tử");
+        btnDSThanhVien = new JButton("DS thành viên");
 
         // Thêm sự kiện cho các nút bấm
         btnThemHoKhau.addActionListener(new ActionListener() {
@@ -131,6 +133,15 @@ public class QuanLyHoKhau extends GiaoDienChung {
             }
         });
 
+        btnDSThanhVien.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DSThanhVien dsThanhVienFrame = new DSThanhVien();
+                showFrame();
+            }
+        });
+
+
         // Thêm các nút vào thanh horizontalBar
         horizontalBar.add(btnThemHoKhau);
         horizontalBar.add(btnTachHoKhau);
@@ -143,6 +154,7 @@ public class QuanLyHoKhau extends GiaoDienChung {
         horizontalBar.add(btnDSTamTru);
         horizontalBar.add(btnDSTamVang);
         horizontalBar.add(btnKhaiTu);
+        horizontalBar.add(btnDSThanhVien);
     }
     public void showFrame() {
         // Make the frame visible

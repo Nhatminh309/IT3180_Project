@@ -1,5 +1,4 @@
 package quanlydancu.src.quanlyhokhau;
-
 import quanlydancu.src.giaodien.GiaoDienChung;
 
 import javax.swing.*;
@@ -16,38 +15,45 @@ import java.text.SimpleDateFormat;
 
 import static com.sun.glass.ui.Cursor.setVisible;
 
-public class DangKyTamVang extends GiaoDienChung {
+public class DangKyTamTru extends GiaoDienChung {
 
+    private JTextField txtDiaChiThuongTru;
+    private JFormattedTextField txtNgayDangKy;
+    private JFormattedTextField txtThoiHan;
     private JTextField txtMaNhanKhau;
-    private JFormattedTextField txtNgayTamVang;
-    private JTextField txtNoiDen;
-    private JButton btnDangKyTamVang;
+    private JButton btnDangKyTamTru;
 
-    public DangKyTamVang() {
+    public DangKyTamTru() {
         super();
 
+        txtDiaChiThuongTru = new JTextField();
+        txtNgayDangKy = createFormattedTextField();
+        txtThoiHan = createFormattedTextField();
         txtMaNhanKhau = new JTextField();
-        txtNgayTamVang = createFormattedTextField();
-        txtNoiDen = new JTextField();
-        btnDangKyTamVang = new JButton("Đăng ký tạm vắng");
+        btnDangKyTamTru = new JButton("Đăng ký tạm trú");
 
         JPanel inputPanel = new JPanel();
-        inputPanel.setLayout(new GridLayout(4, 2));
+        inputPanel.setLayout(new GridLayout(7, 2));
+        inputPanel.add(createLabel("Địa chỉ thường trú:"));
+        inputPanel.add(txtDiaChiThuongTru);
+        inputPanel.add(createLabel("Ngày đăng ký:"));
+        inputPanel.add(txtNgayDangKy);
+        inputPanel.add(createLabel("Thời hạn:"));
+        inputPanel.add(txtThoiHan);
         inputPanel.add(createLabel("Mã nhân khẩu:"));
         inputPanel.add(txtMaNhanKhau);
-        inputPanel.add(createLabel("Ngày tạm vắng:"));
-        inputPanel.add(txtNgayTamVang);
-        inputPanel.add(createLabel("Nơi đến:"));
-        inputPanel.add(txtNoiDen);
         inputPanel.add(new JLabel());
-        inputPanel.add(btnDangKyTamVang);
+        inputPanel.add(btnDangKyTamTru);
 
         // Add "Quay về" button
         JButton btnQuayVe = new JButton("Quay về");
         btnQuayVe.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                quayVeQuanLyHoKhau();
+                frame.dispose();
+                new QuanLyHoKhau();
+                frame.dispose();
+
             }
         });
         // Add the "Quay về" button to the rightPanel
@@ -55,17 +61,18 @@ public class DangKyTamVang extends GiaoDienChung {
 
         frame.setVisible(true);
 
-        btnDangKyTamVang.addActionListener(new ActionListener() {
+        btnDangKyTamTru.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int confirmResult = JOptionPane.showConfirmDialog(frame, "Bạn có chắc chắn muốn đăng ký tạm vắng không?", "Xác nhận", JOptionPane.YES_NO_OPTION);
+                int confirmResult = JOptionPane.showConfirmDialog(frame, "Bạn có chắc chắn muốn đăng ký tạm trú không?", "Xác nhận", JOptionPane.YES_NO_OPTION);
 
                 if (confirmResult == JOptionPane.YES_OPTION) {
+                    String diaChiThuongTru = txtDiaChiThuongTru.getText();
+                    String ngayDangKy = txtNgayDangKy.getText();
+                    String thoiHan = txtThoiHan.getText();
                     String maNhanKhau = txtMaNhanKhau.getText();
-                    String ngayTamVang = txtNgayTamVang.getText();
-                    String noiDen = txtNoiDen.getText();
 
-                    if (maNhanKhau.isEmpty() || ngayTamVang.isEmpty() || noiDen.isEmpty()) {
+                    if (diaChiThuongTru.isEmpty() || ngayDangKy.isEmpty() || thoiHan.isEmpty() || maNhanKhau.isEmpty()) {
                         JOptionPane.showMessageDialog(frame, "Vui lòng nhập đầy đủ thông tin.");
                         return;
                     }
@@ -79,21 +86,12 @@ public class DangKyTamVang extends GiaoDienChung {
                         return;
                     }
 
-                    // Kiểm tra xem Ma_nhan_khau có tồn tại trong bảng Nhan_khau không
-                    try {
-                        if (!checkNhanKhauExistence(connection, Integer.parseInt(maNhanKhau))) {
-                            JOptionPane.showMessageDialog(frame, "Mã nhân khẩu không tồn tại trong bảng Nhan_khau.");
-                            return;
-                        }
-                    } catch (SQLException ex) {
-                        throw new RuntimeException(ex);
-                    }
-
                     try (
                             // Truy vấn cơ sở dữ liệu để lấy giá trị ID hiện tại
                             Statement statement = connection.createStatement();
-                            ResultSet resultSet = statement.executeQuery("SELECT MAX(id) FROM tam_vang");
-                            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO tam_vang (id, Ma_nhan_khau, Ngay_tam_vang, Noi_den, Da_xac_nhan) VALUES (?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS)
+                            ResultSet resultSet = statement.executeQuery("SELECT MAX(id) FROM so_tam_tru");
+                            // Thêm RETURNING ID để nhận giá trị ID tự động tăng
+                            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO so_tam_tru (id, dia_chi_thuong_tru, ngay_dang_ky, thoi_han, ma_nhan_khau, da_xac_nhan) VALUES (?, ?, ?, ?, ?, ?)")
                     ) {
                         int currentMaxId = 0;
 
@@ -107,33 +105,29 @@ public class DangKyTamVang extends GiaoDienChung {
 
                         // Truyền giá trị ID cụ thể vào câu lệnh SQL
                         preparedStatement.setInt(1, yourSpecificId);
-                        preparedStatement.setInt(2, Integer.parseInt(maNhanKhau));
-                        preparedStatement.setDate(3, Date.valueOf(ngayTamVang));
-                        preparedStatement.setString(4, noiDen);
-                        preparedStatement.setBoolean(5, true);
+                        preparedStatement.setString(2, diaChiThuongTru);
+                        preparedStatement.setDate(3, Date.valueOf(ngayDangKy));
+                        preparedStatement.setDate(4, Date.valueOf(thoiHan));
+                        preparedStatement.setInt(5, Integer.parseInt(maNhanKhau));
+                        preparedStatement.setBoolean(6, true);
 
+                        // Thực hiện lấy giá trị ID từ kết quả của câu lệnh SQL
                         int affectedRows = preparedStatement.executeUpdate();
 
                         if (affectedRows > 0) {
-                            // Retrieve the automatically generated ID
-                            ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
-                            if (generatedKeys.next()) {
-                                int generatedId = generatedKeys.getInt(1);
-                                System.out.println("ID tạo tự động: " + generatedId);
-                            }
-
-                            JOptionPane.showMessageDialog(frame, "Đăng ký tạm vắng thành công!");
+                            JOptionPane.showMessageDialog(frame, "Đăng ký tạm trú thành công!");
 
                             // Làm sạch trường sau khi thêm dữ liệu
+                            txtDiaChiThuongTru.setText("");
+                            txtNgayDangKy.setValue(null);
+                            txtThoiHan.setValue(null);
                             txtMaNhanKhau.setText("");
-                            txtNgayTamVang.setValue(null);
-                            txtNoiDen.setText("");
                         } else {
                             JOptionPane.showMessageDialog(frame, "Lỗi khi thêm dữ liệu, không có dòng nào bị ảnh hưởng.");
                         }
                     } catch (SQLException ex) {
                         ex.printStackTrace();
-                        JOptionPane.showMessageDialog(frame, "Lỗi thực hiện đăng ký tạm vắng: " + ex.getMessage());
+                        JOptionPane.showMessageDialog(frame, "Lỗi thực hiện đăng ký tạm trú: " + ex.getMessage());
                     }
                 }
             }
@@ -155,13 +149,6 @@ public class DangKyTamVang extends GiaoDienChung {
         setVisible(true);
     }
 
-    private boolean checkNhanKhauExistence(Connection connection, int maNhanKhau) throws SQLException {
-        try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM Nhan_khau WHERE Ma_nhan_khau = ?")) {
-            preparedStatement.setInt(1, maNhanKhau);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            return resultSet.next();
-        }
-    }
 
     private JLabel createLabel(String text) {
         JLabel label = new JLabel(text);
@@ -177,5 +164,5 @@ public class DangKyTamVang extends GiaoDienChung {
         return formattedTextField;
     }
 
-}
 
+}

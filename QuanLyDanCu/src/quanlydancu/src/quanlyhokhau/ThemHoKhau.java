@@ -1,11 +1,19 @@
 package quanlydancu.src.quanlyhokhau;
-
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import quanlydancu.src.giaodien.*;
+import quanlydancu.src.quanlyhokhau.QuanLyHoKhau;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,6 +34,8 @@ public class ThemHoKhau extends GiaoDienChung {
     private JTextField txtDienTich;
     private JComboBox<String> cboDiaDiem;
     private JButton btnThemHoKhau;
+    private JButton btnChonFile;
+    private JButton btnQuayVe;
 
     public ThemHoKhau() {
         super();
@@ -40,9 +50,11 @@ public class ThemHoKhau extends GiaoDienChung {
         txtDienTich = new JTextField();
         cboDiaDiem = new JComboBox<>(new String[]{"Chung cư BlueMoon", "Tổ dân phố 7"});
         btnThemHoKhau = new JButton("Thêm hộ khẩu");
+        btnChonFile = new JButton("Chọn file");
+        btnQuayVe = new JButton("Quay về");
 
-        JPanel inputPanel = new JPanel();
-        inputPanel.setLayout(new GridLayout(10, 2));
+        JPanel inputPanel = new JPanel(new GridLayout(11, 2, 10, 10));
+
         inputPanel.add(createLabel("Số nhà:"));
         inputPanel.add(txtSoNha);
         inputPanel.add(createLabel("Tên đường:"));
@@ -63,6 +75,15 @@ public class ThemHoKhau extends GiaoDienChung {
         inputPanel.add(txtDienTich);
         inputPanel.add(new JLabel());
         inputPanel.add(btnThemHoKhau);
+
+        btnChonFile.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                chonFile();
+            }
+        });
+        inputPanel.add(new JLabel());
+        inputPanel.add(btnChonFile);
 
         btnThemHoKhau.addActionListener(new ActionListener() {
             @Override
@@ -157,28 +178,120 @@ public class ThemHoKhau extends GiaoDienChung {
 
         frame.setVisible(true);
 
-        // Add "Quay về" button
         JButton btnQuayVe = new JButton("Quay về");
         btnQuayVe.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                quayVeQuanLyHoKhau();
+                frame.dispose();
+                new QuanLyHoKhau();
+                frame.dispose();
             }
         });
 
-        // Add the "Quay về" button to the rightPanel
         rightPanel.add(btnQuayVe, BorderLayout.SOUTH);
 
         frame.setVisible(true);
     }
 
-    private void quayVeQuanLyHoKhau() {
-        QuanLyHoKhau quanLyHoKhau = new QuanLyHoKhau();
-        showFrame();
-        frame.dispose();
+    private void chonFile() {
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Chọn file Excel");
+        int userSelection = fileChooser.showOpenDialog(frame);
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            String filePath = fileChooser.getSelectedFile().getAbsolutePath();
+            importDataFromExcel(filePath);
+        }
     }
 
-    public void showFrame() {
+    private void importDataFromExcel(String filePath) {
+        try (FileInputStream fileInputStream = new FileInputStream(new File(filePath));
+             XSSFWorkbook workbook = new XSSFWorkbook(fileInputStream)) {
+
+            Sheet sheet = workbook.getSheetAt(0);
+
+            Connection connection = getConnectDatabase();
+
+            // Lấy giá trị Ma_ho_khau lớn nhất từ cơ sở dữ liệu
+            int maxMaHoKhau = getMaxMaHoKhau(connection);
+
+            // Chuẩn bị câu lệnh INSERT
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "INSERT INTO ho_khau (Ma_ho_khau, Dia_diem, So_nha, Ten_duong, Ten_phuong, Ten_quan, Ten_thanh_pho, Da_xac_nhan, So_luong_xe_may, So_luong_o_to, Dien_tich) " +
+                            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+            for (int rowIndex = 1; rowIndex <= sheet.getLastRowNum(); rowIndex++) {
+                Row row = sheet.getRow(rowIndex);
+
+                String soNha = getCellValueAsString(row.getCell(0));
+                String tenDuong = getCellValueAsString(row.getCell(1));
+                String tenPhuong = getCellValueAsString(row.getCell(2));
+                String tenQuan = getCellValueAsString(row.getCell(3));
+                String tenThanhPho = getCellValueAsString(row.getCell(4));
+                String diaDiem = getCellValueAsString(row.getCell(5));
+                String soLuongXeMay = getCellValueAsString(row.getCell(6));
+                String soLuongOTo = getCellValueAsString(row.getCell(7));
+                String dienTich = getCellValueAsString(row.getCell(8));
+
+                if (soNha.isEmpty() || tenDuong.isEmpty() || tenPhuong.isEmpty() || tenQuan.isEmpty() || tenThanhPho.isEmpty() || diaDiem.isEmpty() || soLuongXeMay.isEmpty() || soLuongOTo.isEmpty() || dienTich.isEmpty()) {
+                    JOptionPane.showMessageDialog(frame, "Dữ liệu trong file không hợp lệ. Vui lòng kiểm tra và thử lại.");
+                    return;
+                }
+
+                try {
+                    // Tăng giá trị Ma_ho_khau lên 1
+                    maxMaHoKhau++;
+
+                    preparedStatement.setInt(1, maxMaHoKhau);
+                    preparedStatement.setString(2, diaDiem);
+                    preparedStatement.setString(3, soNha);
+                    preparedStatement.setString(4, tenDuong);
+                    preparedStatement.setString(5, tenPhuong);
+                    preparedStatement.setString(6, tenQuan);
+                    preparedStatement.setString(7, tenThanhPho);
+                    preparedStatement.setBoolean(8, true);
+                    preparedStatement.setInt(9, Integer.parseInt(soLuongXeMay));
+                    preparedStatement.setInt(10, Integer.parseInt(soLuongOTo));
+                    preparedStatement.setInt(11, Integer.parseInt(dienTich));
+
+                    preparedStatement.executeUpdate();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                    JOptionPane.showMessageDialog(frame, "Lỗi khi thêm dữ liệu vào cơ sở dữ liệu: " + ex.getMessage());
+                    return;
+                }
+            }
+            JOptionPane.showMessageDialog(frame, "Nhập dữ liệu từ file Excel thành công!");
+        } catch (IOException | SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(frame, "Lỗi khi đọc file Excel hoặc kết nối cơ sở dữ liệu: " + e.getMessage());
+        }
+    }
+
+    // Phương thức để lấy giá trị Ma_ho_khau lớn nhất từ cơ sở dữ liệu
+    private int getMaxMaHoKhau(Connection connection) throws SQLException {
+        try (Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery("SELECT MAX(Ma_ho_khau) FROM ho_khau")) {
+
+            if (resultSet.next()) {
+                return resultSet.getInt(1);
+            } else {
+                // Nếu không có dữ liệu, trả về 0 hoặc một giá trị mặc định khác tùy thuộc vào yêu cầu của bạn
+                return 0;
+            }
+        }
+    }
+
+
+
+    private String getCellValueAsString(Cell cell) {
+        if (cell == null) {
+            return "";
+        }
+        cell.setCellType(CellType.STRING);
+        return cell.getStringCellValue();
+    }
+
+    private void showFrame() {
         setVisible(true);
     }
 

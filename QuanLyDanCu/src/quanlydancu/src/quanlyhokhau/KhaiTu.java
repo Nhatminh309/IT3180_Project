@@ -33,7 +33,7 @@ public class KhaiTu extends GiaoDienChung {
         btnKhaiTu = new JButton("Khai tử");
 
         JPanel inputPanel = new JPanel();
-        inputPanel.setLayout(new GridLayout(5, 2));
+        inputPanel.setLayout(new GridLayout(7, 2));
         inputPanel.add(createLabel("Mã nhân khẩu:"));
         inputPanel.add(txtMaNhanKhau);
         inputPanel.add(createLabel("Ngày mất:"));
@@ -113,7 +113,10 @@ public class KhaiTu extends GiaoDienChung {
         btnQuayVe.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                quayVeQuanLyHoKhau();
+
+                frame.dispose();
+                new QuanLyHoKhau();
+                frame.dispose();
             }
         });
         // Add the "Quay về" button to the rightPanel

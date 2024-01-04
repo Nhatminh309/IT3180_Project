@@ -7,12 +7,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import static com.sun.glass.ui.Cursor.setVisible;
 
 public class DoiChuHo extends GiaoDienChung {
 
@@ -24,13 +21,14 @@ public class DoiChuHo extends GiaoDienChung {
     public DoiChuHo() {
         super();
 
-        txtMaHoKhau = new JTextField(15);
-        txtMaChuHoCu = new JTextField(15);
-        txtMaChuHoMoi = new JTextField(15);
+        txtMaHoKhau = new JTextField(50);
+        txtMaChuHoCu = new JTextField(50);
+        txtMaChuHoMoi = new JTextField(50);
         btnDoiChuHo = new JButton("Đổi Chủ Hộ");
 
+
         JPanel inputPanel = new JPanel();
-        inputPanel.setLayout(new GridLayout(4, 2));
+        inputPanel.setLayout(new GridLayout(7, 2));
         inputPanel.add(createLabel("Mã Hộ Khẩu:"));
         inputPanel.add(txtMaHoKhau);
         inputPanel.add(createLabel("Mã Chủ Hộ Cũ:"));
@@ -45,7 +43,10 @@ public class DoiChuHo extends GiaoDienChung {
         btnQuayVe.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                quayVeQuanLyHoKhau();
+
+                frame.dispose();
+                new QuanLyHoKhau();
+                frame.dispose();
             }
         });
         // Add the "Quay về" button to the rightPanel
@@ -77,8 +78,12 @@ public class DoiChuHo extends GiaoDienChung {
                 try {
                     if (checkNhanKhauExistence(connection, Integer.parseInt(maChuHoMoi))) {
                         if (checkChuHoMatch(connection, Integer.parseInt(maHoKhau), Integer.parseInt(maChuHoCu))) {
-                            updateChuHo(connection, Integer.parseInt(maHoKhau), Integer.parseInt(maChuHoCu), Integer.parseInt(maChuHoMoi));
-                            JOptionPane.showMessageDialog(frame, "Đổi Chủ Hộ thành công!");
+                            if (checkNhanKhauInHoKhau(connection, Integer.parseInt(maChuHoMoi), Integer.parseInt(maHoKhau))) {
+                                updateChuHo(connection, Integer.parseInt(maHoKhau), Integer.parseInt(maChuHoCu), Integer.parseInt(maChuHoMoi));
+                                JOptionPane.showMessageDialog(frame, "Đổi Chủ Hộ thành công!");
+                            } else {
+                                JOptionPane.showMessageDialog(frame, "Nhân khẩu không nằm trong hộ khẩu.");
+                            }
                         } else {
                             JOptionPane.showMessageDialog(frame, "Thông tin Mã Hộ Khẩu và Mã Chủ Hộ Cũ không khớp.");
                         }
@@ -96,15 +101,10 @@ public class DoiChuHo extends GiaoDienChung {
 
         frame.setVisible(true);
     }
+
     private void quayVeQuanLyHoKhau() {
-        // Tạo đối tượng QuanLyHoKhau và hiển thị nó
-        QuanLyHoKhau quanLyHoKhau = new QuanLyHoKhau();
-        showFrame();
-        frame.dispose(); // Đóng frame hiện tại nếu cần
-    }
-    public void showFrame() {
-        // Make the frame visible
-        setVisible(true);
+        new QuanLyHoKhau();
+        frame.dispose();
     }
 
     private boolean checkNhanKhauExistence(Connection connection, int maChuHoMoi) throws SQLException {
@@ -133,11 +133,19 @@ public class DoiChuHo extends GiaoDienChung {
         }
     }
 
+    private boolean checkNhanKhauInHoKhau(Connection connection, int maNhanKhau, int maHoKhau) throws SQLException {
+        try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM Nhan_khau WHERE Ma_nhan_khau = ? AND Ma_ho_khau = ?")) {
+            preparedStatement.setInt(1, maNhanKhau);
+            preparedStatement.setInt(2, maHoKhau);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return resultSet.next();
+        }
+    }
+
     private JLabel createLabel(String text) {
         JLabel label = new JLabel(text);
-        label.setFont(new Font("Arial", Font.PLAIN, leftPanel.getHeight() / 30));
+        label.setFont(new Font("Arial", Font.PLAIN, 16));
         label.setForeground(Color.BLACK);
         return label;
     }
-
 }
