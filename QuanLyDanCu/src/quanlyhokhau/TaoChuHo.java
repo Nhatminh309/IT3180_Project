@@ -1,6 +1,6 @@
-package QuanLyDanCu.src.quanlyhokhau;
+package quanlydancu.src.quanlyhokhau;
 
-import QuanLyDanCu.src.giaodien.GiaoDienChung;
+import quanlydancu.src.giaodien.GiaoDienChung;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import static com.sun.glass.ui.Cursor.setVisible;
 
 public class TaoChuHo extends GiaoDienChung {
 
@@ -78,6 +80,29 @@ public class TaoChuHo extends GiaoDienChung {
         rightPanel.add(inputPanel, BorderLayout.CENTER);
 
         frame.setVisible(true);
+        // Add "Quay về" button
+        JButton btnQuayVe = new JButton("Quay về");
+        btnQuayVe.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                quayVeQuanLyHoKhau();
+            }
+        });
+        // Add the "Quay về" button to the rightPanel
+        rightPanel.add(btnQuayVe, BorderLayout.SOUTH);
+
+        frame.setVisible(true);
+    }
+
+    private void quayVeQuanLyHoKhau() {
+        // Tạo đối tượng QuanLyHoKhau và hiển thị nó
+        QuanLyHoKhau quanLyHoKhau = new QuanLyHoKhau();
+        showFrame();
+        frame.dispose(); // Đóng frame hiện tại nếu cần
+    }
+    public void showFrame() {
+        // Make the frame visible
+        setVisible(true);
     }
 
     private boolean checkChuHoExistence(Connection connection, int maHoKhau) throws SQLException {
@@ -119,7 +144,5 @@ public class TaoChuHo extends GiaoDienChung {
         return label;
     }
 
-    public static void main(String[] args) {
-        new TaoChuHo();
-    }
+
 }

@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b5203c58-0239-4128-8ea1-20b7b71121bc" name="Changes" comment="c" />
+    <list default="true" id="b5203c58-0239-4128-8ea1-20b7b71121bc" name="Changes" comment="c">
+      <change beforePath="$PROJECT_DIR$/quanlyhokhau/QuanLyHoKhau.java" beforeDir="false" afterPath="$PROJECT_DIR$/quanlyhokhau/QuanLyHoKhau.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,7 +34,11 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "bugfix/update-database"
+    "git-widget-placeholder": "bugfix/update-database",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Test/src1",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -43,6 +49,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1701399108773</updated>
+      <workItem from="1704369805292" duration="193000" />
     </task>
     <task id="LOCAL-00001" summary="c">
       <option name="closed" value="true" />
@@ -54,6 +61,9 @@
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="c" />

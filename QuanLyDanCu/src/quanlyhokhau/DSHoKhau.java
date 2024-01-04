@@ -1,15 +1,19 @@
-package QuanLyDanCu.src.quanlyhokhau;
+package quanlydancu.src.quanlyhokhau;
 
-import QuanLyDanCu.src.giaodien.GiaoDienChung;
+import quanlydancu.src.giaodien.GiaoDienChung;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import static com.sun.glass.ui.Cursor.setVisible;
 
 public class DSHoKhau extends GiaoDienChung {
 
@@ -33,7 +37,31 @@ public class DSHoKhau extends GiaoDienChung {
         // Load data into the table
         loadData();
 
+        // Add "Quay về" button
+        JButton btnQuayVe = new JButton("Quay về");
+        btnQuayVe.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                quayVeQuanLyHoKhau();
+            }
+        });
+        // Add the "Quay về" button to the rightPanel
+        rightPanel.add(btnQuayVe, BorderLayout.SOUTH);
+
         frame.setVisible(true);
+
+        frame.setVisible(true);
+    }
+
+    private void quayVeQuanLyHoKhau() {
+        // Tạo đối tượng QuanLyHoKhau và hiển thị nó
+        QuanLyHoKhau quanLyHoKhau = new QuanLyHoKhau();
+        showFrame();
+        frame.dispose(); // Đóng frame hiện tại nếu cần
+    }
+    public void showFrame() {
+        // Make the frame visible
+        setVisible(true);
     }
 
     private void loadData() {
@@ -88,7 +116,4 @@ public class DSHoKhau extends GiaoDienChung {
         }
     }
 
-    public static void main(String[] args) {
-        new DSHoKhau();
-    }
 }
