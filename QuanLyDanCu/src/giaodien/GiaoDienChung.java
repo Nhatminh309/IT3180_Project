@@ -2,10 +2,7 @@ package giaodien;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
+import java.awt.event.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -18,7 +15,6 @@ public class GiaoDienChung {
     protected static JPanel rightPanel;
     protected static JPanel horizontalBar;
     protected static JPanel homePanel;
-    protected static JPanel aboutPanel;
     public GiaoDienChung() {
         frame = new JFrame("Quản lý dân cư");
         frame.setSize(1000, 578);
@@ -26,6 +22,8 @@ public class GiaoDienChung {
         frame.setLocationRelativeTo(null);
         frame.setResizable(true);
         frame.setMinimumSize(new Dimension(600, 400));
+        frame.setUndecorated(true);
+
         leftPanel = new JPanel() {
             @Override
             public Dimension getPreferredSize() {
@@ -147,6 +145,58 @@ public class GiaoDienChung {
         horizontalBar.setLayout(new BoxLayout(horizontalBar, BoxLayout.X_AXIS));
         horizontalBar.setBackground(Color.decode("#004AAD"));
         rightPanel.add(horizontalBar, BorderLayout.NORTH);
+
+        btnAbout.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //frame.remove(splitPane);
+                frame.setOpacity(0.7f);
+                JDialog dialog = new JDialog(frame, "About", Dialog.ModalityType.APPLICATION_MODAL);
+                dialog.setLayout(new BorderLayout());
+                dialog.setSize(new Dimension(frame.getWidth() *2 / 5, frame.getHeight()));
+                dialog.setLocationRelativeTo(frame);
+
+                JPanel topPanel = new JPanel();
+                topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.Y_AXIS));
+                topPanel.setBackground(Color.decode("#004AAD"));
+                topPanel.setOpaque(true);
+                topPanel.setPreferredSize(new Dimension(dialog.getWidth(), dialog.getHeight()/8));
+                JLabel topLabel = new JLabel("Thông tin");
+                topLabel.setForeground(Color.WHITE);
+                topLabel.setFont(new Font("Arial", Font.PLAIN, 30));
+                topLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+                topLabel.setAlignmentY(Component.CENTER_ALIGNMENT);
+
+                topPanel.add(Box.createVerticalGlue());
+                topPanel.add(topLabel);
+                topPanel.add(Box.createVerticalGlue());
+                dialog.add(topPanel, BorderLayout.NORTH);
+
+                JPanel mainPanel = new JPanel();
+                JLabel aboutLabel = new JLabel("<html><div style='text-align:justify;'>Phần mềm quản lý dân cư của Tổ dân phố 7 và Chung cư Bluemoon với các " +
+                        "chức năng: Quản lý hộ khẩu, nhân khẩu; Quản lý thu phí; Quản lý phát thưởng</div></html>");
+
+
+                // Ensure the text wraps within the width of the dialog
+                aboutLabel.setPreferredSize(new Dimension(dialog.getWidth(), 100));
+                aboutLabel.setVerticalAlignment(JLabel.TOP); // Aligns text to the top
+
+                mainPanel.add(aboutLabel);
+
+                dialog.add(mainPanel);
+
+                dialog.addWindowListener(new WindowAdapter() {
+                    @Override
+                    public void windowClosing(WindowEvent e) {
+                        frame.setOpacity(1.0f);
+                        //frame.setUndecorated(false);
+                    }
+                });
+
+                // Display the dialog
+                dialog.setVisible(true);
+            }
+        });
 
         frame.add(splitPane);
         frame.setVisible(true);
