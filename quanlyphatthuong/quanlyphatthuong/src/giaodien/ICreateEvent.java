@@ -1,4 +1,4 @@
-package giaodien.phatthuong;
+package giaodien;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
