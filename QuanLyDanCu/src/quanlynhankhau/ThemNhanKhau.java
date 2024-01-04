@@ -73,6 +73,7 @@ public class ThemNhanKhau extends ConnectDatabase {
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                frame.dispose();
                 //back to giao dien ban dau
             }
         });
@@ -157,13 +158,7 @@ public class ThemNhanKhau extends ConnectDatabase {
         addButton.setBackground(Color.decode("#38B6FF"));
         addButton.setOpaque(true);
         addButton.setBorder(BorderFactory.createEmptyBorder());
-        addButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //back to giao dien ban dau
-
-            }
-        });
+        
         //Add popMenu to gioiTinhField
         JPopupMenu popupMenu1 = new JPopupMenu();
         gioiTinhField.add(popupMenu1);
@@ -332,6 +327,7 @@ public class ThemNhanKhau extends ConnectDatabase {
             public void actionPerformed(ActionEvent e) {
                 addNKToSQL();
                 JOptionPane.showMessageDialog(mainPanel, "Đã thêm nhân khẩu thành công");
+                resetTextField();
             }
         });
 
@@ -343,7 +339,7 @@ public class ThemNhanKhau extends ConnectDatabase {
         try {
             Connection connection = getConnectDatabase();
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO nhan_khau(ho_va_ten, ngay_sinh, gioi_tinh, noi_sinh, " +
-                    "que_quan, dan_toc, ton_giao, nghe_nghiep, noi_lam_viec, ngay_dang_ky, so_cccd, so_dien_thoai, quan_he_voi_chu_ho,, ma_ho_khau, da_xac_nhan) "+
+                    "que_quan, dan_toc, ton_giao, nghe_nghiep, noi_lam_viec, ngay_dang_ky, so_cccd, so_dien_thoai, quan_he_voi_chu_ho, ma_ho_khau, da_xac_nhan) "+
                     " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             preparedStatement.setString(1, hoTenField.getText());
             preparedStatement.setDate(2, java.sql.Date.valueOf(dobField.getText()));
@@ -367,6 +363,21 @@ public class ThemNhanKhau extends ConnectDatabase {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    public void resetTextField() {
+        hoTenField.setText("");
+        dobField.setText("");
+        gioiTinhField.setText("");
+        noiSinhField.setText("");
+        queQuanField.setText("");
+        tonGiaoField.setText("");
+        ngheNghiepField.setText("");
+        noiLamViecField.setText("");
+        ngayDKField.setText("");
+        cccdField.setText("");
+        sdtField.setText("");
+        quanHeField.setText("");
+        maHKField.setText("");
     }
     public static void main(String[] args) {
         new ThemNhanKhau();
