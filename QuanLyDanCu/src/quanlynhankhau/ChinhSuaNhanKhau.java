@@ -323,9 +323,14 @@ public class ChinhSuaNhanKhau extends ConnectDatabase {
         removeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                removeInSQL();
-                resetTextField();
-                JOptionPane.showMessageDialog(mainPanel, "Đã xoá nhân khẩu này");
+                if(quanHeField.getText().equals("Chủ hộ")) {
+                    JOptionPane.showMessageDialog(mainPanel, "Không thể xoá! Hãy đổi chủ hộ trước");
+                    resetTextField();
+                } else {
+                    removeInSQL();
+                    resetTextField();
+                    JOptionPane.showMessageDialog(mainPanel, "Đã xoá nhân khẩu này");
+                }
             }
         });
         frame.add(topPanel, BorderLayout.NORTH);
@@ -495,11 +500,35 @@ public class ChinhSuaNhanKhau extends ConnectDatabase {
     public void removeInSQL() {
         try {
             Connection connection = getConnectDatabase();
-            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM nhan_khau WHERE ma_nhan_khau = ?");
-            preparedStatement.setInt(1, Integer.parseInt(searchField.getText()));
-            preparedStatement.executeUpdate();
+            PreparedStatement preparedStatement1 = connection.prepareStatement("DELETE FROM tam_vang " +
+                    "WHERE ma_nhan_khau = ? " +
+                    "AND EXISTS ( " +
+                    "SELECT 1 " +
+                    "FROM nhan_khau " +
+                    "WHERE ma_nhan_khau = ?" +
+                    ");");
+            preparedStatement1.setInt(1, Integer.parseInt(searchField.getText()));
+            preparedStatement1.setInt(2, Integer.parseInt(searchField.getText()));
+            preparedStatement1.executeUpdate();
 
-            preparedStatement.close();
+            PreparedStatement preparedStatement2 = connection.prepareStatement("DELETE FROM so_tam_tru " +
+                    "WHERE ma_nhan_khau = ? " +
+                    "AND EXISTS ( " +
+                    "SELECT 1 " +
+                    "FROM nhan_khau " +
+                    "WHERE ma_nhan_khau = ?" +
+                    ");");
+            preparedStatement2.setInt(1, Integer.parseInt(searchField.getText()));
+            preparedStatement2.setInt(2, Integer.parseInt(searchField.getText()));
+            preparedStatement2.executeUpdate();
+
+            PreparedStatement preparedStatement3 = connection.prepareStatement("DELETE FROM nhan_khau WHERE ma_nhan_khau = ?");
+            preparedStatement3.setInt(1, Integer.parseInt(searchField.getText()));
+            preparedStatement3.executeUpdate();
+
+            preparedStatement1.close();
+            preparedStatement2.close();
+            preparedStatement3.close();
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
