@@ -1,6 +1,7 @@
 package QuanLyDanCu.src.dangnhap;
 
 import QuanLyDanCu.src.connect.ConnectDatabase;
+import QuanLyDanCu.src.giaodien.GiaoDienBanDau;
 
 import javax.swing.*;
 import java.awt.*;
@@ -36,12 +37,16 @@ public class ThayDoiMatKhau extends ConnectDatabase {
         topPanel.setBackground(Color.WHITE);
 
         JButton backButton = new JButton();
-        ImageIcon icon = new ImageIcon("src/icon/goBackIcon.png");
+        ImageIcon icon = new ImageIcon("QuanLyDanCu/src/icon/goBackIcon.png");
         Image img = icon.getImage();
         Image scaledImg = img.getScaledInstance(35, 30, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(scaledImg);
         backButton.setIcon(scaledIcon);
-        backButton.setBorder(BorderFactory.createEmptyBorder());
+        backButton.setBorder(null);
+        backButton.setBackground(Color.WHITE);
+        backButton.setFocusable(false);
+        backButton.setContentAreaFilled(false);
+
         topPanel.add(backButton, BorderLayout.WEST);
 
         JLabel dangNhapLabel = new JLabel("Thay đổi mật khẩu");
@@ -116,7 +121,7 @@ public class ThayDoiMatKhau extends ConnectDatabase {
                 if(!String.valueOf(matKhauMoiField.getPassword()).equals(String.valueOf(nhapLaiMKField.getPassword()))) {
                     JLabel warnLabel = new JLabel("Mật khẩu không trùng nhau");
                     warnLabel.setFont(new Font("Arial", Font.PLAIN, 18));
-                    ImageIcon icon2 = new ImageIcon("QuanLyDanCu/src/icon/aboutIcon.png");
+                    ImageIcon icon2 = new ImageIcon("src/icon/aboutIcon.png");
                     Image img2 = icon2.getImage();
                     Image scaledImg2 = img2.getScaledInstance(15, 15, Image.SCALE_SMOOTH);
                     ImageIcon scaledIcon2 = new ImageIcon(scaledImg2);
@@ -138,7 +143,12 @@ public class ThayDoiMatKhau extends ConnectDatabase {
                 }
             }
         });
-
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+            }
+        });
         taiKhoanField.setPreferredSize(new Dimension(300, 50));
         matKhauMoiField.setPreferredSize(new Dimension(300, 50));
         nhapLaiMKField.setPreferredSize(new Dimension(300, 50));

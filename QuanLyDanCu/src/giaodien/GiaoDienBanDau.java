@@ -1,14 +1,30 @@
 package QuanLyDanCu.src.giaodien;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
+
 import java.awt.* ;
+
+import QuanLyDanCu.src.dangky.DangKy;
+import QuanLyDanCu.src.dangnhap.DangNhap;
+import QuanLyDanCu.src.graphics.RoundBorder;
 
 
 public class GiaoDienBanDau extends GiaoDienChung {
+    protected static JButton dangNhap;
+    protected static JButton dangKy;
+    protected static JButton btnQuanLyHoKhau;
+    protected static JButton btnQuanLyNhanKhau;
+    protected static JButton btnQuanLyThuPhi;
+    protected static JButton btnQuanLyPhatThuong;
+    protected static Border lineBorder = new RoundBorder(10);
+    protected static Border emptyBorder = BorderFactory.createEmptyBorder(0, 20, 0, 20);
+    protected static Border compoundBorder = new CompoundBorder(lineBorder, emptyBorder);
 
     public GiaoDienBanDau() {
         super();
-        JButton dangNhap = new JButton("Đăng nhập") {
+         dangNhap = new JButton("Đăng nhập") {
             @Override
             public Dimension getPreferredSize() {
                 return new Dimension(horizontalBar.getWidth() / 6, horizontalBar.getHeight() / 2);
@@ -21,8 +37,12 @@ public class GiaoDienBanDau extends GiaoDienChung {
         dangNhap.setForeground(Color.WHITE);
         dangNhap.setBorder(BorderFactory.createEmptyBorder(5, 15, 5, 15)); // Thiết lập border
         dangNhap.setFocusPainted(false); // Loại bỏ viền focus
+        dangNhap.addActionListener(e -> {
+                    frame.dispose();
+                    new DangNhap();
+                });
 
-        JButton dangKy = new JButton("Đăng ký") {
+        dangKy = new JButton("Đăng ký") {
             @Override
             public Dimension getPreferredSize() {
                 return new Dimension(horizontalBar.getWidth() / 6, horizontalBar.getHeight() / 2);
@@ -36,6 +56,10 @@ public class GiaoDienBanDau extends GiaoDienChung {
         dangKy.setForeground(Color.WHITE);
         dangKy.setBorder(BorderFactory.createEmptyBorder(5, 15, 5, 15)); // Thiết lập border
         dangKy.setFocusPainted(false); // Loại bỏ viền focus
+        dangKy.addActionListener(e -> {
+            frame.dispose();
+            new DangKy();
+        });
 
         horizontalBar.add(Box.createHorizontalGlue()); // Thêm glue đưa các thành phần về bên phải
         horizontalBar.add(dangKy);
@@ -43,23 +67,13 @@ public class GiaoDienBanDau extends GiaoDienChung {
         horizontalBar.add(dangNhap);
         horizontalBar.add(Box.createRigidArea(new Dimension(40, 0))); // Để tạo khoảng cách giữa nút
 
-        mainPanel = new JPanel() {
-            @Override
-            public Dimension getPreferredSize() {
-                return new Dimension(rightPanel.getWidth(), rightPanel.getHeight());
-            }
-        };
-        mainPanel.setLayout(new BorderLayout());
-        mainPanel.setBackground(Color.WHITE);
-
-        JPanel northPanel = new JPanel() {
+        northPanel = new JPanel() {
             @Override
             public Dimension getPreferredSize() {
                 return new Dimension(mainPanel.getWidth(), mainPanel.getHeight() / 4);
             }
         };
         northPanel.setLayout(new BorderLayout());
-        northPanel.setBackground(Color.WHITE);
 
         JLabel title = new JLabel("HỆ THỐNG QUẢN LÝ DÂN CƯ") {
             @Override
@@ -68,47 +82,52 @@ public class GiaoDienBanDau extends GiaoDienChung {
             }
             @Override
             public Font getFont() {
-                return new Font("Arial", Font.PLAIN, mainPanel.getHeight() / 15);
+                return new Font("Arial", Font.PLAIN, mainPanel.getHeight() / 20);
             }
         };
         title.setHorizontalAlignment(JLabel.CENTER);
         title.setVerticalAlignment(JLabel.CENTER);
-        title.setForeground(Color.decode("#0097B2"));
+        title.setForeground(Color.BLACK);
 
         northPanel.add(title, BorderLayout.CENTER);
         mainPanel.add(northPanel, BorderLayout.NORTH);
-
-        JPanel centerPanel = new JPanel() {
+        centerPanel = new JPanel() {
             @Override
             public Dimension getPreferredSize() {
                 return new Dimension(mainPanel.getWidth(), mainPanel.getHeight() / 2);
             }
         };
+
         centerPanel.setLayout(new BorderLayout());
-        centerPanel.setBackground(Color.WHITE);
+        centerPanel.setBackground(Color.decode("#F5F5F5"));
+        centerPanel.setBorder(BorderFactory.createEmptyBorder(0, 30, 0, 30));
         mainPanel.add(centerPanel, BorderLayout.CENTER);
 
-        JPanel buttonPanel = new JPanel() {
+        mainButtonPanel = new JPanel() {
             @Override
             public Dimension getPreferredSize() {
                 return new Dimension(centerPanel.getWidth(), centerPanel.getHeight());
             }
         };
-        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.X_AXIS));
-        buttonPanel.setBackground(Color.WHITE);
-        centerPanel.add(buttonPanel, BorderLayout.CENTER);
-        JButton btnQuanLyHoKhau = new JButton("Quản lý hộ khẩu") {
+        mainButtonPanel.setLayout(new BoxLayout(mainButtonPanel, BoxLayout.X_AXIS));
+        mainButtonPanel.setBackground(Color.decode("#F5F5F5"));
+        centerPanel.add(mainButtonPanel, BorderLayout.CENTER);
+
+        mainButtonPanel.add(Box.createHorizontalGlue());
+        mainButtonPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        mainButtonPanel.add(Box.createHorizontalStrut(10));
+         btnQuanLyHoKhau = new JButton("HỘ KHẨU") {
             @Override
             public Dimension getPreferredSize() {
-                return new Dimension(centerPanel.getWidth() / 3, centerPanel.getHeight());
+                return new Dimension(centerPanel.getWidth() / 4, centerPanel.getWidth() / 4);
             }
             public Font getFont() {
-                return new Font("Arial", Font.PLAIN, centerPanel.getHeight() / 20);
+                return new Font("Arial", Font.PLAIN, centerPanel.getHeight() / 30);
             }
         };
         btnQuanLyHoKhau.setBackground(Color.WHITE);
         btnQuanLyHoKhau.setForeground(Color.BLACK);
-        btnQuanLyHoKhau.setBorder(BorderFactory.createEmptyBorder(5, 15, 5, 15)); // Thiết lập border
+        btnQuanLyHoKhau.setBorder(compoundBorder);
         btnQuanLyHoKhau.setFocusPainted(false); // Loại bỏ viền focus
 
         ImageIcon quanLyHoKhauIcon = new ImageIcon("QuanLyDanCu/src/icon/hoKhauIcon.png");
@@ -121,22 +140,23 @@ public class GiaoDienBanDau extends GiaoDienChung {
         btnQuanLyHoKhau.setVerticalTextPosition(SwingConstants.BOTTOM);
         btnQuanLyHoKhau.setIconTextGap(15); // Đặt khoảng cách giữa icon và văn bản
 
-        buttonPanel.add(btnQuanLyHoKhau);
-        buttonPanel.add(Box.createRigidArea(new Dimension(10, 0))); // Để tạo khoảng cách giữa nút
+        mainButtonPanel.add(btnQuanLyHoKhau);
+        mainButtonPanel.add(Box.createHorizontalStrut(10));
 
-        JButton btnQuanLyNhanKhau = new JButton("Quản lý nhân khẩu") {
+         btnQuanLyNhanKhau = new JButton("NHÂN KHẨU") {
             @Override
             public Dimension getPreferredSize() {
-                return new Dimension(centerPanel.getWidth() / 3, centerPanel.getHeight());
+                return new Dimension(centerPanel.getWidth() / 4, centerPanel.getWidth() / 4);
             }
             public Font getFont() {
-                return new Font("Arial", Font.PLAIN, centerPanel.getHeight() / 20);
+                return new Font("Arial", Font.PLAIN, centerPanel.getHeight() / 30);
             }
         };
 
         btnQuanLyNhanKhau.setBackground(Color.WHITE);
         btnQuanLyNhanKhau.setForeground(Color.BLACK);
-        btnQuanLyNhanKhau.setBorder(BorderFactory.createEmptyBorder(5, 15, 5, 15)); // Thiết lập border
+//        btnQuanLyNhanKhau.setBorder(BorderFactory.createLineBorder(Color.decode("#38B6FF"), 3, true)); // Thiết lập border
+        btnQuanLyNhanKhau.setBorder(compoundBorder);
         btnQuanLyNhanKhau.setFocusPainted(false); // Loại bỏ viền focus
 
         ImageIcon quanLyNhanKhauIcon = new ImageIcon("QuanLyDanCu/src/icon/nhanKhauIcon.png");
@@ -149,22 +169,23 @@ public class GiaoDienBanDau extends GiaoDienChung {
         btnQuanLyNhanKhau.setVerticalTextPosition(SwingConstants.BOTTOM);
         btnQuanLyNhanKhau.setIconTextGap(15); // Đặt khoảng cách giữa icon và văn bản
 
-        buttonPanel.add(btnQuanLyNhanKhau);
-        buttonPanel.add(Box.createRigidArea(new Dimension(10, 0))); // Để tạo khoảng cách giữa nút
+        mainButtonPanel.add(btnQuanLyNhanKhau);
+        mainButtonPanel.add(Box.createHorizontalStrut(10));
 
-        JButton btnQuanLyThuPhi = new JButton("Quản lý thu phí") {
+         btnQuanLyThuPhi = new JButton("THU PHÍ, ĐÓNG GÓP") {
             @Override
             public Dimension getPreferredSize() {
-                return new Dimension(centerPanel.getWidth() / 3, centerPanel.getHeight());
+                return new Dimension(centerPanel.getWidth() / 4, centerPanel.getWidth() / 4);
             }
             public Font getFont() {
-                return new Font("Arial", Font.PLAIN, centerPanel.getHeight() / 20);
+                return new Font("Arial", Font.PLAIN, centerPanel.getHeight() / 30);
             }
         };
 
         btnQuanLyThuPhi.setBackground(Color.WHITE);
         btnQuanLyThuPhi.setForeground(Color.BLACK);
-        btnQuanLyThuPhi.setBorder(BorderFactory.createEmptyBorder(5, 15, 5, 15)); // Thiết lập border
+//        btnQuanLyThuPhi.setBorder(BorderFactory.createLineBorder(Color.decode("#38B6FF"), 3, true)); // Thiết lập border
+        btnQuanLyThuPhi.setBorder(compoundBorder);
         btnQuanLyThuPhi.setFocusPainted(false); // Loại bỏ viền focus
 
         ImageIcon quanLyThuPhiIcon = new ImageIcon("QuanLyDanCu/src/icon/thuPhiIcon.png");
@@ -177,22 +198,23 @@ public class GiaoDienBanDau extends GiaoDienChung {
         btnQuanLyThuPhi.setVerticalTextPosition(SwingConstants.BOTTOM);
         btnQuanLyThuPhi.setIconTextGap(15); // Đặt khoảng cách giữa icon và văn bản
 
-        buttonPanel.add(btnQuanLyThuPhi);
-        buttonPanel.add(Box.createRigidArea(new Dimension(10, 0))); // Để tạo khoảng cách giữa nút
+        mainButtonPanel.add(btnQuanLyThuPhi);
+        mainButtonPanel.add(Box.createHorizontalStrut(10));
 
-        JButton btnQuanLyPhatThuong = new JButton("Quản lý phát thưởng") {
+         btnQuanLyPhatThuong = new JButton("PHÁT THƯỞNG") {
             @Override
             public Dimension getPreferredSize() {
-                return new Dimension(centerPanel.getWidth() / 3, centerPanel.getHeight());
+                return new Dimension(centerPanel.getWidth() / 4, centerPanel.getWidth() / 4);
             }
             public Font getFont() {
-                return new Font("Arial", Font.PLAIN, centerPanel.getHeight() / 20);
+                return new Font("Arial", Font.PLAIN, centerPanel.getHeight() / 30);
             }
         };
 
         btnQuanLyPhatThuong.setBackground(Color.WHITE);
         btnQuanLyPhatThuong.setForeground(Color.BLACK);
-        btnQuanLyPhatThuong.setBorder(BorderFactory.createEmptyBorder(5, 15, 5, 15)); // Thiết lập border
+//        btnQuanLyPhatThuong.setBorder(BorderFactory.createLineBorder(Color.decode("#38B6FF"), 3, true)); // Thiết lập border
+        btnQuanLyPhatThuong.setBorder(compoundBorder);
         btnQuanLyPhatThuong.setFocusPainted(false); // Loại bỏ viền focus
 
         ImageIcon quanLyPhatThuongIcon = new ImageIcon("QuanLyDanCu/src/icon/phatThuongIcon.png");
@@ -205,10 +227,11 @@ public class GiaoDienBanDau extends GiaoDienChung {
         btnQuanLyPhatThuong.setVerticalTextPosition(SwingConstants.BOTTOM);
         btnQuanLyPhatThuong.setIconTextGap(15); // Đặt khoảng cách giữa icon và văn bản
 
-        buttonPanel.add(btnQuanLyPhatThuong);
-        buttonPanel.add(Box.createRigidArea(new Dimension(10, 0))); // Để tạo khoảng cách giữa nút
+        mainButtonPanel.add(btnQuanLyPhatThuong);
+        mainButtonPanel.add(Box.createHorizontalStrut(10));
 
-        rightPanel.add(mainPanel, BorderLayout.CENTER);
+        frame.revalidate();
+        frame.repaint();
     }
 
     public static void main(String[] args) {

@@ -13,7 +13,13 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="45fffacf-5f53-415f-bf78-0e85919c2eb7">
-      <console name="Connection" type="STANDARD" schema="" session="Main" />
+      <console name="Connection" type="STANDARD" schema="public" session="Main"><![CDATA[SELECT * 
+FROM nhan_khau
+WHERE ma_ho_khau IN (
+    SELECT ma_ho_khau
+    FROM ho_khau
+    WHERE dia_diem LIKE 'Chung cư BlueMoon'
+)]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -21,7 +27,7 @@
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files>
-      <object connection-id="45fffacf-5f53-415f-bf78-0e85919c2eb7" object-ref="schemas/public/tables/phat_thuong" />
+      <object connection-id="45fffacf-5f53-415f-bf78-0e85919c2eb7" object-ref="schemas/public/tables/can_bo" />
       <object connection-id="45fffacf-5f53-415f-bf78-0e85919c2eb7" object-ref="schemas/public/tables/nhan_khau" />
     </open-files>
   </component>
@@ -30,10 +36,13 @@
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
     <filter-actions connection-id="45fffacf-5f53-415f-bf78-0e85919c2eb7" dataset="public.nhan_khau" active-filter-id="" />
+    <filter-actions connection-id="45fffacf-5f53-415f-bf78-0e85919c2eb7" dataset="public.ho_khau" active-filter-id="" />
     <filter-actions connection-id="45fffacf-5f53-415f-bf78-0e85919c2eb7" dataset="public.cancuoccongdan" active-filter-id="" />
     <filter-actions connection-id="45fffacf-5f53-415f-bf78-0e85919c2eb7" dataset="public.can_bo" active-filter-id="" />
+    <filter-actions connection-id="45fffacf-5f53-415f-bf78-0e85919c2eb7" dataset="public.bang_phi" active-filter-id="" />
     <filter-actions connection-id="45fffacf-5f53-415f-bf78-0e85919c2eb7" dataset="public.phan_thuong" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="45fffacf-5f53-415f-bf78-0e85919c2eb7" dataset="public.phat_thuong" active-filter-id="" />
+    <filter-actions connection-id="45fffacf-5f53-415f-bf78-0e85919c2eb7" dataset="public.dangnhap" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />
@@ -79,7 +88,7 @@
           <deprecated-pwd value="YW5oYm9wY29sZW4=" />
         </database>
         <properties>
-          <auto-commit value="false" />
+          <auto-commit value="true" />
         </properties>
         <ssh-settings>
           <active value="false" />
@@ -102,7 +111,7 @@
           <session-management value="true" />
           <ddl-file-binding value="true" />
           <database-logging value="true" />
-          <connect-automatically value="true" />
+          <connect-automatically value="false" />
           <restore-workspace value="true" />
           <restore-workspace-deep value="false" />
           <environment-type value="default" />

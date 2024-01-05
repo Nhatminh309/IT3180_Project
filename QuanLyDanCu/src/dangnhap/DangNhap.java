@@ -1,7 +1,11 @@
 package QuanLyDanCu.src.dangnhap;
 
 import QuanLyDanCu.src.connect.ConnectDatabase;
-
+import QuanLyDanCu.src.dangky.DangKy;
+import QuanLyDanCu.src.giaodien.GiaoDienBanDau;
+import QuanLyDanCu.src.giaodien.GiaoDienDangNhap;
+import QuanLyDanCu.src.giaodien.GiaoDienDangNhapChungCu;
+import QuanLyDanCu.src.giaodien.GiaoDienDangNhapToDanPho;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -12,7 +16,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import QuanLyDanCu.src.giaodien.GiaoDienBanDau;
+import java.util.Arrays;
 
 public class DangNhap extends ConnectDatabase {
     private static JPanel topPanel;
@@ -45,7 +49,10 @@ public class DangNhap extends ConnectDatabase {
         Image scaledImg = img.getScaledInstance(35, 30, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(scaledImg);
         backButton.setIcon(scaledIcon);
-        backButton.setBorder(BorderFactory.createEmptyBorder());
+        backButton.setBorder(null);
+        backButton.setBackground(Color.WHITE);
+        backButton.setFocusable(false);
+        backButton.setContentAreaFilled(false);
         topPanel.add(backButton, BorderLayout.WEST);
 
         JLabel dangNhapLabel = new JLabel("Đăng nhập");
@@ -73,22 +80,47 @@ public class DangNhap extends ConnectDatabase {
         dangNhapButton.setBackground(Color.decode("#38B6FF"));
         dangNhapButton.setOpaque(true);
         dangNhapButton.setBorder(BorderFactory.createEmptyBorder());
-        quenMatKhauButton.setBorder(BorderFactory.createEmptyBorder());
-
+        quenMatKhauButton.setForeground(Color.decode("#38B6FF"));
+        quenMatKhauButton.setBorder(null);
+        quenMatKhauButton.setFocusable(false);
+        quenMatKhauButton.setContentAreaFilled(false);
+        quenMatKhauButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               new ThayDoiMatKhau();
+            }
+        });
 
         dangKyPanel = new JPanel();
         dangKyPanel.setLayout(new BoxLayout(dangKyPanel, BoxLayout.X_AXIS));
         dangKyPanel.setBorder(BorderFactory.createEmptyBorder());
         dangKyPanel.setOpaque(false);
-        JLabel askLabel = new JLabel("Chưa có tài khoản ? ");
+        JLabel askLabel = new JLabel("Chưa có tài khoản ? ") {
+            @Override
+            public Font getFont() {
+                return new Font("Arial", Font.PLAIN, 20);
+            }
+        };
         askLabel.setFont(newFont);
-        JButton dangKyButton = new JButton("Đăng ký");
+        JButton dangKyButton = new JButton("Đăng ký") {
+            @Override
+            public Font getFont() {
+                return new Font("Arial", Font.PLAIN, 20);
+            }
+        };
         dangKyButton.setFont(newFont);
         dangKyButton.setForeground(Color.decode("#38B6FF"));
-        dangKyButton.setBorder(BorderFactory.createEmptyBorder());
+        dangKyButton.setBorder(null);
         dangKyButton.setBorderPainted(false);
         dangKyButton.setFocusable(false);
-
+        dangKyButton.setContentAreaFilled(false);
+        dangKyButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                new DangKy();
+            }
+        });
         dangKyPanel.add(askLabel);
         dangKyPanel.add(dangKyButton);
 
@@ -146,6 +178,16 @@ public class DangNhap extends ConnectDatabase {
                     JOptionPane.showMessageDialog(mainPanel, "Tài khoản hoặc mật khẩu chưa chính xác");
                 } else {
                     JOptionPane.showMessageDialog(mainPanel, "Đăng nhập thành công");
+                    System.out.println(1);
+                    if (validateSignIn(taiKhoanField.getText(),String.valueOf(matKhauField.getPassword())).contains("Chung cư")) {
+                        frame.dispose();
+                        new GiaoDienDangNhapChungCu(taiKhoanField.getText());
+                    }
+                    if (validateSignIn(taiKhoanField.getText(),String.valueOf(matKhauField.getPassword())).contains("tổ dân phố")) {
+                        frame.dispose();
+                        new GiaoDienDangNhapToDanPho(taiKhoanField.getText());
+                    }
+
                 }
             }
         });

@@ -2,40 +2,41 @@ package QuanLyDanCu.src;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class test {
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Spaced Image Button");
+        JFrame frame = new JFrame("SplitPane on LayeredPane Example");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(300, 200);
-        frame.setLayout(new FlowLayout());
+        frame.setSize(600, 400);
 
-        // Tạo button
-        JButton button = new JButton("Home");
+        // Khai báo JLayeredPane
+        JLayeredPane layeredPane = new JLayeredPane();
+        layeredPane.setPreferredSize(new Dimension(600, 400));
 
-        // Đường dẫn đến ảnh ngôi nhà
-        String imagePath = "QuanLyDanCu/src/icon/homeIcon"; // Thay đổi đường dẫn đến ảnh ngôi nhà
+        // Tạo JSplitPane
+        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+        splitPane.setDividerLocation(300);
 
-        // Tạo icon từ ảnh
-        ImageIcon originalIcon = new ImageIcon(imagePath);
-        Image img = originalIcon.getImage();
+        // Thêm các thành phần vào JSplitPane
+        JButton leftButton = new JButton("Left");
+        JButton rightButton = new JButton("Right");
 
-        // Lấy kích thước của icon
-        int iconWidth = originalIcon.getIconWidth();
-        int iconHeight = originalIcon.getIconHeight();
+        JPanel leftPanel = new JPanel();
+        leftPanel.add(leftButton);
 
-        // Scale ảnh theo một nửa kích thước ban đầu
-        Image scaledImage = img.getScaledInstance(iconWidth - 1, iconHeight - 1, Image.SCALE_SMOOTH);
-        ImageIcon scaledIcon = new ImageIcon(scaledImage);
+        JPanel rightPanel = new JPanel();
+        rightPanel.add(rightButton);
 
-        // Đặt icon và văn bản cho button
-        button.setIcon(scaledIcon);
-        button.setHorizontalTextPosition(SwingConstants.RIGHT);
-        button.setVerticalTextPosition(SwingConstants.CENTER);
-        button.setMargin(new Insets(0, 10, 0, 10)); // Thiết lập khoảng cách xung quanh văn bản
+        splitPane.setLeftComponent(leftPanel);
+        splitPane.setRightComponent(rightPanel);
 
-        frame.add(button);
+        // Thêm JSplitPane vào JLayeredPane với lớp khác nhau
+        layeredPane.add(splitPane, JLayeredPane.DEFAULT_LAYER);
+
+        // Hiển thị frame chứa JLayeredPane
+        frame.add(layeredPane);
         frame.setVisible(true);
     }
-    }
-
+}

@@ -26,6 +26,7 @@
     <connection id="79d8dada-2bbb-4f65-bad9-eebfeb98a5ca" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="79d8dada-2bbb-4f65-bad9-eebfeb98a5ca" dataset="public.nhan_khau" active-filter-id="" />
     <filter-actions connection-id="79d8dada-2bbb-4f65-bad9-eebfeb98a5ca" dataset="public.can_bo" active-filter-id="" />
     <filter-actions connection-id="79d8dada-2bbb-4f65-bad9-eebfeb98a5ca" dataset="public.dangnhap" active-filter-id="" />
   </component>

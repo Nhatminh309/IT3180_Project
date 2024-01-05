@@ -1,5 +1,6 @@
 CREATE TABLE Ho_khau(
-    Ma_ho_khau INT PRIMARY KEY,
+    Ma_ho_khau SERIAL PRIMARY KEY,
+    Dia_diem VARCHAR(50) NOT NULL,
     So_nha VARCHAR(10) NOT NULL,
     Ten_duong VARCHAR(50) NOT NULL,
     Ten_phuong VARCHAR(50) NOT NULL,
@@ -11,6 +12,7 @@ CREATE TABLE Ho_khau(
     Dien_tich INT NOT NULL
 );
 
+
 CREATE TABLE Can_cuoc_cong_dan(
     So_CCCD VARCHAR(20) PRIMARY KEY,
     Ngay_cap DATE NOT NULL,
@@ -21,7 +23,7 @@ CREATE TABLE Can_cuoc_cong_dan(
 );
 
 CREATE TABLE Nhan_khau(
-    Ma_nhan_khau INT PRIMARY KEY,
+    Ma_nhan_khau SERIAL PRIMARY KEY,
     Ho_va_ten VARCHAR(50) NOT NULL,
     Bi_danh VARCHAR(50),
     Ngay_sinh DATE NOT NULL,
@@ -43,8 +45,8 @@ CREATE TABLE Nhan_khau(
 );
 
 CREATE TABLE Chu_ho(
-    Ma_ho_khau INT,
-    Ma_nhan_khau INT,
+    Ma_ho_khau SERIAL,
+    Ma_nhan_khau SERIAL,
     PRIMARY KEY (Ma_ho_khau, Ma_nhan_khau),
     Ngay_tao DATE NOT NULL,
     Da_xac_nhan BOOLEAN DEFAULT FALSE,
@@ -53,7 +55,7 @@ CREATE TABLE Chu_ho(
 );
 
 CREATE TABLE So_tam_tru(
-    ID INT PRIMARY KEY,
+    ID SERIAL PRIMARY KEY,
     Dia_chi_thuong_tru VARCHAR(255),
     Ngay_dang_ky DATE NOT NULL,
     Thoi_han DATE NOT NULL,
@@ -63,8 +65,8 @@ CREATE TABLE So_tam_tru(
 );
 
 CREATE TABLE Tam_vang(
-    ID INT PRIMARY KEY,
-    Ma_nhan_khau INT, 
+    ID SERIAL PRIMARY KEY,
+    Ma_nhan_khau INT,
     Ngay_tam_vang DATE NOT NULL,
     Noi_den VARCHAR(255),
     Da_xac_nhan BOOLEAN DEFAULT FALSE,
@@ -72,7 +74,7 @@ CREATE TABLE Tam_vang(
 );
 
 CREATE TABLE Khai_tu(
-    ID INT PRIMARY KEY,
+    ID SERIAL PRIMARY KEY,
     Ma_nhan_khau INT,
     Ngay_mat DATE,
     Noi_mat VARCHAR(255),
@@ -82,11 +84,11 @@ CREATE TABLE Khai_tu(
 );
 
 CREATE TABLE Thay_doi_chu_ho(
-    ID INT PRIMARY KEY,
+    ID SERIAL PRIMARY KEY,
     Ngay_thay_doi DATE,
     Ly_do  VARCHAR(255),
     Ma_ho_khau INT NOT NULL,
-    Ma_chu_moi INT NOT NULL, 
+    Ma_chu_moi INT NOT NULL,
     Ma_chu_cu INT NOT NULL,
     Da_xac_nhan BOOLEAN DEFAULT FALSE,
     FOREIGN KEY (Ma_ho_khau) REFERENCES Ho_khau(Ma_ho_khau),
@@ -95,7 +97,7 @@ CREATE TABLE Thay_doi_chu_ho(
 );
 
 CREATE TABLE Phieu_chuyen_di(
-    ID INT PRIMARY KEY,
+    ID SERIAL PRIMARY KEY,
     Ma_nhan_khau INT NOT NULL,
     Noi_chuyen_den VARCHAR(255),
     Ngay_chuyen_di DATE NOT NULL,
@@ -105,7 +107,7 @@ CREATE TABLE Phieu_chuyen_di(
 );
 
 CREATE TABLE Phieu_chuyen_den(
-    ID INT PRIMARY KEY,
+    ID SERIAL PRIMARY KEY,
     Ma_nhan_khau INT,
     Noi_chuyen_di VARCHAR(255),
     Ngay_chuyen_den DATE NOT NULL,
@@ -115,18 +117,16 @@ CREATE TABLE Phieu_chuyen_den(
 );
 
 
-CREATE TABLE Bang_phi(
-    Ma_hoa_don VARCHAR(20) PRIMARY KEY,
-    Dia_diem VARCHAR(20) CHECK (Dia_diem IN ('Tổ dân phố 7', 'Chung cư BlueMoon')) NOT NULL,
-    Phi_ve_sinh INTEGER,
+CREATE TABLE Hoa_don(
+    ma_hoa_don SERIAL PRIMARY KEY NOT NULL,
     Phi_qly_chung_cu INTEGER,
     Phi_dvu_chung_cu INTEGER,
-    Phi_dong_gop INTEGER,
     Phi_gui_xe INTEGER,
     Phi_dien INTEGER,
     Phi_nuoc INTEGER,
     Phi_Internet INTEGER,
-    Thoi_diem_dong DATE CHECK (Thoi_diem_dong = to_date(Thoi_diem_dong::text, 'YYYY-MM-DD')),
+    Thoi_diem_dong VARCHAR(10) CHECK (Thoi_diem_dong LIKE 'YYYY-MM-DD'),
+	Han_dong VARCHAR(10) CHECK (Han_dong LIKE 'YYYY-MM-DD'),
     Da_xac_nhan BOOLEAN DEFAULT FALSE,
     Ma_ho_khau INT,
     FOREIGN KEY (Ma_ho_khau) REFERENCES Ho_khau(Ma_ho_khau)
@@ -135,35 +135,55 @@ CREATE TABLE Bang_phi(
 CREATE TABLE DangNhap (
     username VARCHAR(20) NOT NULL,
     password VARCHAR(20) NOT NULL,
-    vaitro VARCHAR(10) NOT NULL,
-    Ma_nhan_khau INT REFERENCES Nhan_khau(Ma_nhan_khau)
+    vaitro VARCHAR(30) NOT NULL,
+    Ma_can_bo serial REFERENCES Can_bo(ma_can_bo)
 );
 
 CREATE TABLE Can_bo(
-    Ma_can_bo INTEGER PRIMARY KEY,
+    Ma_can_bo serial PRIMARY KEY,
     Ho_ten VARCHAR(30),
     Ngay_sinh DATE,
     Gioi_tinh VARCHAR(10),
     Chuc_vu VARCHAR(30)
 );
-CREATE TABLE Phan_thuong(
-    Ma_phan_thuong INTEGER PRIMARY KEY,
-    Loai_phan_thuong VARCHAR(100),
-    Gia_tri NUMERIC(10, 2)
+CREATE TABLE phan_thuong(
+    ma_phan_thuong integer NOT NULL,
+    loai_phan_thuong varchar(100),
+    gia_tri numeric,
+    so_luong integer,
+    PRIMARY KEY(ma_phan_thuong),
+    CONSTRAINT phan_thuong_so_luong_check CHECK ((so_luong > 0))
 );
 
-CREATE TABLE Phat_thuong (
-    Ma_phat_thuong INTEGER PRIMARY KEY,
-    Ma_phan_thuong INTEGER,
-    Ma_nhan_khau INTEGER,
-    Ma_can_bo INTEGER,
-    Ngay_phat DATE,
-    Dip_le VARCHAR(15) CHECK (Dip_le IN ('Tết Nguyên Đán', 'Tết Thiếu Nhi', 'Cuối Năm Học', 'Tết Trung Thu')),
-    Loai_phan_thuong VARCHAR(15),
-    So_luong INTEGER,
-    Da_xac_nhan BOOLEAN DEFAULT FALSE,
-    FOREIGN KEY (Ma_phan_thuong) REFERENCES Phan_thuong(Ma_phan_thuong),
-    FOREIGN KEY (Ma_nhan_khau) REFERENCES Nhan_khau(Ma_nhan_khau),
-    FOREIGN KEY (Ma_can_bo) REFERENCES Can_bo(Ma_can_bo),
-    FOREIGN KEY (Loai_phan_thuong) REFERENCES Phan_thuong(Loai_phan_thuong)
+CREATE TABLE phat_thuong(
+    ma_phat_thuong SERIAL NOT NULL,
+    ma_phan_thuong integer,
+    ma_nhan_khau integer,
+    ngay_phat date,
+    dip_le varchar(15),
+    so_luong integer,
+    da_xac_nhan boolean DEFAULT false,
+    ngay date,
+    PRIMARY KEY(ma_phat_thuong),
+    CONSTRAINT phat_thuong_ma_phan_thuong_fkey FOREIGN key(ma_phan_thuong) REFERENCES phan_thuong(ma_phan_thuong),
+    CONSTRAINT phat_thuong_ma_nhan_khau_fkey FOREIGN key(ma_nhan_khau) REFERENCES nhan_khau(ma_nhan_khau),
+    CONSTRAINT aa FOREIGN key(dip_le,ngay) REFERENCES dip_le(ten_dip_le,ngay),
+    CONSTRAINT phat_thuong_dip_le_check CHECK (((dip_le)::text = ANY ((ARRAY['Tết Nguyên Đán'::character varying, 'Tết Thiếu Nhi'::character varying, 'Cuối Năm Học'::character varying, 'Tết Trung Thu'::character varying])::text[])))
 );
+
+CREATE TABLE dip_le(
+    ten_dip_le varchar(200) NOT NULL,
+    ngay date NOT NULL,
+    PRIMARY KEY(ten_dip_le,ngay)
+);
+
+CREATE TABLE thanh_tich_hoc_tap(
+    ten_hoc_sinh varchar(100),
+    ma_nhan_khau integer NOT NULL,
+    nam_hoc integer NOT NULL,
+    thanh_tich varchar(255),
+    PRIMARY KEY(ma_nhan_khau,nam_hoc),
+    CONSTRAINT thanh_tich_hoc_tap_ma_nhan_khau_fkey FOREIGN key(ma_nhan_khau) REFERENCES nhan_khau(ma_nhan_khau)
+);
+
+
